@@ -1,0 +1,95 @@
+/* resets */
+html {
+  font-size: 62.5%;
+}
+body {
+  background-color: #dfa;
+  margin: 0;
+  padding: 0;
+}
+h1, h2, h3, ul, p, li {
+  margin: 0;
+  padding: 0;
+}
+em {
+  font-style: normal;
+}
+
+/* grid */
+#wrapper {
+  background-color: white;
+  margin: 0 auto; /* TODO: fix centering for IE6 */
+  width: 875px;
+}
+#header {
+  background-color: #ff8b00;
+  height: 137px;
+}
+#photo {
+  height: 257px;
+  width: 100%;
+}
+#content {
+  padding: 20px 50px;
+}
+#ingredients {
+  float: left;
+  width: 309px;
+}
+#instructions {
+  float: right;
+  width: 439px;
+}
+#footer {
+  background-color: #402; /* that's purple; green (#482) instead? */
+  color: white;
+  font-family: Arial, sans-serif;
+  height: 52px;
+  padding-top: 27px;
+  text-align: center;
+}
+
+/* individual sections */
+h1, h2 {
+  color: white;
+}
+h1 {
+  font-family: Harrington, Palatino;
+  font-size: 47px;
+  position: relative;
+  top: 59px;
+  left: 23px;
+}
+h2 {
+  font-family: "Arial Narrow", Arial, sans-serif;
+  font-weight: normal;
+  font-size: 28px;
+  position: relative;
+  top: -29px;
+  float: right;
+  margin-right: 32px;
+}
+h2 em {
+  font-weight: bold;
+}
+h3 {
+  color: #482;
+  font-family: "Arial Bold", "Avant Garde", Arial, sans-serif;
+  font-size: 22px;
+}
+p, li {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.65em;
+}
+ul {
+  margin: 10px 0 25px;
+}
+li {
+  list-style-type: circle;
+  margin-left: 1.5em;
+}
+p {
+  margin: 20px 0;
+}
+
