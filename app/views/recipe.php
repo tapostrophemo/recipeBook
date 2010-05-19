@@ -21,6 +21,12 @@
 
 <div id="photo"></div>
 
+<ul id="controls">
+ <li><a href="#">edit</a></li>
+ <li><a href="#">delete</a></li>
+ <li><a href="#">logout</a></li>
+</ul>
+
 <div id="content">
 
 <div id="ingredients">

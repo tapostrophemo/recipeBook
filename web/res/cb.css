@@ -28,11 +28,17 @@ td {
   background-color: #ff8b00;
   height: 137px;
 }
+#controls {
+  float: right;
+  margin: 0;
+  text-align: right;
+}
 #photo {
   height: 257px;
   width: 100%;
 }
 #content {
+  margin-top: 2em;
   padding: 20px 50px;
 }
 #ingredients {
@@ -86,6 +92,24 @@ h3 {
   color: #482;
   font-family: "Arial Bold", "Avant Garde", Arial, sans-serif;
   font-size: 22px;
+}
+
+#controls li {
+  -moz-border-radius-bottomleft: 4px;
+  -moz-border-radius-bottomright: 4px;
+  background-color: black;
+  list-style: none;
+  float: left;
+  margin: 0;
+  margin-left: 4px;
+  padding: 2px 15px;
+}
+#controls li a {
+  color: white;
+  font-family: "Arial Bold", "Avant Garde", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 p, li, .msg {

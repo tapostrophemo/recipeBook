@@ -14,6 +14,11 @@
  <h2>The <em>Slice-up</em> Cookbook</h2>
 </div>
 
+<ul id="controls">
+ <li><a href="#">add recipe</a></li>
+ <li><a href="#">logout</a></li>
+</ul>
+
 <div id="content">
 <?=$content?>
 </div><!-- /#content -->
