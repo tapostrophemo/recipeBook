@@ -102,22 +102,23 @@ h3 {
   float: left;
   margin: 0;
   margin-left: 4px;
-  padding: 2px 15px;
 }
 #controls li a {
   color: white;
+  display: inline-block;
   font-family: "Arial Bold", "Avant Garde", Arial, sans-serif;
   font-size: 11px;
   font-weight: bold;
+  padding: 2px 15px;
   text-decoration: none;
 }
 #simplemodal-overlay {
   background-color: #eff;
 }
 #simplemodal-container {
-  -moz-border-radius: 8px;
-  background-color: #dbc;
-  border: 3px solid #402;
+  -moz-border-radius: 6px;
+  background-color: #dfa;
+  border: 3px solid #482;
   font-family: Arial, sans-serif;
   padding: 9px;
 }
