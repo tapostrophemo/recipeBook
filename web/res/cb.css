@@ -14,6 +14,9 @@ h1, h2, h3, ul, p, li {
 em {
   font-style: normal;
 }
+td {
+  vertical-align: top;
+}
 
 /* grid */
 #wrapper {
@@ -84,7 +87,8 @@ h3 {
   font-family: "Arial Bold", "Avant Garde", Arial, sans-serif;
   font-size: 22px;
 }
-p, li {
+
+p, li, .msg {
   font-family: Arial, sans-serif;
   font-size: 12px;
   line-height: 1.65em;
@@ -98,5 +102,24 @@ li {
 }
 p {
   margin: 20px 0;
+}
+
+a {
+  color: #482;
+}
+
+.msg {
+  border: 1px solid black;
+  margin: 1em 0;
+  text-align: center;
+}
+
+td h3 {
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+td ul {
+  margin: 0 auto 4em auto;
+  width:55%;
 }
 

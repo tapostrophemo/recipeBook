@@ -3,7 +3,9 @@
 class Book extends Controller
 {
   function index() {
-    $this->load->view('pageTemplate', array('content' => 'TODO: add content<br/>' . anchor('recipe/1', 'Eggplant Parmesan')));
+    $this->load->view('pageTemplate', array(
+      'title' => 'Table of Contents',
+      'content' => $this->load->view('toc', null, true)));
   }	
 }
 

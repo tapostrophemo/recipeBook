@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>The Slice-up Cookbook</title>
-<link rel="stylesheet" type="text/css" href="res/cb.css"/>
+<title><?php if (isset($title)) echo "$title - "; ?>The Slice-up Cookbook</title>
+<link rel="stylesheet" type="text/css" href="<?=base_url()?>res/cb.css"/>
 </head>
 <body>
 
