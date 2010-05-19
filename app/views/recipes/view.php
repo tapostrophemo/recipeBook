@@ -3,6 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title><?=$recipe->name?> - The Slice-up Cookbook</title>
+<script type="text/javascript" src="<?=base_url()?>res/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="<?=base_url()?>res/jquery.simplemodal-1.3.5.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<?=base_url()?>res/cb.css"/>
 <style type="text/css">
 #photo {
@@ -22,10 +24,12 @@
 <div id="photo"></div>
 
 <ul id="controls">
- <li><a href="#">edit</a></li>
+ <li><?=anchor('edit/'.$recipe->id, 'edit', array('id' => 'editControl'))?></li>
  <li><a href="#">delete</a></li>
  <li><a href="#">logout</a></li>
 </ul>
+
+<div id="dialog" style="display:none"></div>
 
 <div id="content">
 
@@ -54,6 +58,21 @@ Copyright &copy; 2010, Dan Parks. All Rights Reserved.
 </div>
 
 </div><!-- /#wrapper -->
+
+<script type="text/javascript">
+$(document).ready(function () {
+
+  $("#editControl").click(function () {
+    $("#dialog").load(this.href);
+    // SimpleModal docs: http://www.ericmmartin.com/projects/simplemodal/
+    $("#dialog").modal({
+      position: ["15%", "30%"]
+    });
+    return false;
+  });
+
+});
+</script>
 
 </body>
 </html>

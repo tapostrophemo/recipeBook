@@ -111,6 +111,16 @@ h3 {
   font-weight: bold;
   text-decoration: none;
 }
+#simplemodal-overlay {
+  background-color: #eff;
+}
+#simplemodal-container {
+  -moz-border-radius: 8px;
+  background-color: #dbc;
+  border: 3px solid #402;
+  font-family: Arial, sans-serif;
+  padding: 9px;
+}
 
 p, li, .msg {
   font-family: Arial, sans-serif;
@@ -130,6 +140,10 @@ p {
 
 a {
   color: #482;
+}
+
+label {
+  font-weight: bold;
 }
 
 .msg {

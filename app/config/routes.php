@@ -43,7 +43,8 @@
 $route['default_controller'] = "book";
 $route['scaffolding_trigger'] = "";
 
-$route['recipe/(:num)'] = 'recipes/recipe/$1';
+$route['recipe/(:num)'] = 'recipes/view/$1';
+$route['edit/(:num)'] = 'recipes/edit/$1';
 
 /* End of file routes.php */
 /* Location: ./system/application/config/routes.php */
