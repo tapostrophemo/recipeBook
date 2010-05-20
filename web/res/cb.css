@@ -63,7 +63,7 @@ h1, h2 {
   color: white;
 }
 h1 {
-  font-family: Harrington, Palatino;
+  font-family: Harrington, Palatino, serif;
   font-size: 47px;
   position: relative;
   top: 59px;
@@ -148,6 +148,7 @@ label {
 }
 
 .msg {
+  -moz-border-radius: 3px;
   border: 1px solid black;
   margin: 1em 0;
   text-align: center;

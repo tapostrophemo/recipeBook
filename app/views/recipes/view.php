@@ -64,7 +64,6 @@ $(document).ready(function () {
 
   $("#editControl").click(function () {
     $("#dialog").load(this.href);
-    // SimpleModal docs: http://www.ericmmartin.com/projects/simplemodal/
     $("#dialog").modal({
       position: ["15%", "30%"]
     });

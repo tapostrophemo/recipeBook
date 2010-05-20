@@ -1,4 +1,4 @@
-insert into recipes(name, photo, ingredients, instructions) values('Eggplant Parmesan', '0517102209_cropped.jpg',
+insert into recipes(name, category, photo, ingredients, instructions) values('Eggplant Parmesan', 1, '0517102209_cropped.jpg',
 '2 medium eggplants
 salt
 flour

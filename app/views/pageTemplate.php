@@ -4,6 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title><?php if (isset($title)) echo "$title - "; ?>The Slice-up Cookbook</title>
 <link rel="stylesheet" type="text/css" href="<?=base_url()?>res/cb.css"/>
+<script type="text/javascript" src="<?=base_url()?>res/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="<?=base_url()?>res/jquery.simplemodal-1.3.5.min.js"></script>
 </head>
 <body>
 
@@ -15,9 +17,11 @@
 </div>
 
 <ul id="controls">
- <li><a href="#">add recipe</a></li>
+ <li><?=anchor('add', 'add recipe', array('id' => 'addControl'))?></li>
  <li><a href="#">logout</a></li>
 </ul>
+
+<div id="dialog" style="display:none"></div>
 
 <div id="content">
 <?=$content?>
@@ -28,6 +32,20 @@ Copyright &copy; 2010, Dan Parks. All Rights Reserved.
 </div>
 
 </div><!-- /#wrapper -->
+
+<script type="text/javascript">
+$(document).ready(function () {
+
+  $("#addControl").click(function () {
+    $("#dialog").load(this.href);
+    $("#dialog").modal({
+      position: ["15%", "30%"]
+    });
+    return false;
+  });
+
+});
+</script>
 
 </body>
 </html>

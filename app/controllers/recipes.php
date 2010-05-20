@@ -7,6 +7,10 @@ class Recipes extends Controller
     $this->load->model('Recipe');
   }
 
+  function add() {
+    $this->load->view('recipes/add');
+  }
+
   function view($id) {
     $recipe = $this->Recipe->getById($id);
     if ($recipe) {
