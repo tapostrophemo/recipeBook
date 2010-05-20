@@ -2,14 +2,25 @@
 
 class Recipe extends Model
 {
+  const MAIN_DISH = 1;
+  const SIDE_DISH = 2;
+  const APPETIZER = 3;
+  const BREAD     = 4;
+  const DESSERT   = 5;
+  const BEVERAGE  = 6;
+
   function getCategoryMap() {
     return array(
-      'Main Dish' => 1,
-      'Side Dish' => 2,
-      'Appetizer' => 3,
-      'Bread'     => 4,
-      'Dessert'   => 5,
-      'Beverage'  => 6);
+      'Main Dish' => self::MAIN_DISH,
+      'Side Dish' => self::SIDE_DISH,
+      'Appetizer' => self::APPETIZER,
+      'Bread'     => self::BREAD,
+      'Dessert'   => self::DESSERT,
+      'Beverage'  => self::BEVERAGE);
+  }
+
+  function getAllNames() {
+    return $this->db->select('id, name, category')->order_by('category, name')->get('recipes')->result();
   }
 
   function getById($id) {
