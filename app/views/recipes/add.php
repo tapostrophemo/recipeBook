@@ -1,3 +1,4 @@
+<?=form_open_multipart('add')?>
 <img style="float:right" src="<?=base_url()?>res/x.png" alt="(close)" onclick="$.modal.close()"/>
 <table>
  <tr>
@@ -16,7 +17,7 @@
  </tr>
  <tr>
   <td><label for="photo">Photo</label></td>
-  <td><input type="file" name="photo"/></td>
+  <td><input type="file" name="photo" disabled="true"/></td>
  </tr>
  <tr>
   <td><label for="ingredients">Ingredients</label></td>
@@ -33,4 +34,5 @@
   </td>
  </tr>
 </table>
+</form>
 

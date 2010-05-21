@@ -1,3 +1,5 @@
+<?php if (!isset($recipes)) $recipes = array(); ?>
+
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
  <tr>
   <td width="33%"><?php writeRecipesInCategory('Appetizers', Recipe::APPETIZER, $recipes); ?></td>

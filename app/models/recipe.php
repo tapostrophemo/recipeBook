@@ -33,5 +33,15 @@ class Recipe extends Model
     $recipe->instructions = split("\n", $recipe->instructions);
     return $recipe;
   }
+
+  function create($name, $category, $ingredients, $instructions) {
+    $data = array(
+      'name' => $name,
+      'category' => $category,
+      'ingredients' => $ingredients,
+      'instructions' => $instructions);
+    $this->db->insert('recipes', $data);
+    return $this->db->insert_id();
+  }
 }
 

@@ -1,5 +1,7 @@
 require 'spec/expectations'
 
+require 'ruby-debug'
+
 require 'webrat'
 
 require 'test/unit/assertions'

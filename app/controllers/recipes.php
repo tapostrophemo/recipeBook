@@ -8,7 +8,18 @@ class Recipes extends Controller
   }
 
   function add() {
-    $this->load->view('recipes/add');
+    if (!$this->form_validation->run('recipe_add')) {
+      $this->load->view('recipes/add');
+    }
+    else {
+      $recipeId = $this->Recipe->create( // TODO: check $recipeId; react if null/0
+        $this->input->post('name'),
+        $this->input->post('category'),
+        $this->input->post('ingredients'),
+        $this->input->post('instructions'));
+      $this->session->set_flashdata('msg', 'Recipe created');
+      redirect('/');
+    }
   }
 
   function view($id) {
