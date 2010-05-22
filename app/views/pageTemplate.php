@@ -13,12 +13,11 @@
 
 <div id="header">
  <h1><?php if (isset($title)) echo $title; ?>&nbsp;</h1>
- <h2>The <em>Slice-up</em> Cookbook</h2>
+ <h2><?=anchor('/', 'The <em>Slice-up</em> Cookbook')?></h2>
 </div>
 
 <ul id="controls">
  <li><?=anchor('add', 'add recipe', array('id' => 'addControl'))?></li>
- <li><a href="#">logout</a></li>
 </ul>
 
 <div id="dialog" style="display:none"></div>
