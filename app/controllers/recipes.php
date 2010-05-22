@@ -18,7 +18,7 @@ class Recipes extends Controller
         $this->input->post('ingredients'),
         $this->input->post('instructions'));
       $this->session->set_flashdata('msg', 'Recipe created');
-      redirect('/');
+      redirect("recipe/$recipeId");
     }
   }
 

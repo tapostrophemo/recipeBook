@@ -1,3 +1,4 @@
+@wip
 Feature: Add recipes
   As a user of the recipeBook site
   I want to add recipes
@@ -14,7 +15,12 @@ Feature: Add recipes
 # in app/views/recipe/(add|edit).php for cucumber
     When I press "Save"
     Then I should see "Recipe created"
-    And I should see the following categories and recipes
+    And a recipe should exist with name: "Peanut Butter and Jelly"
+    And I should see "Peanut Butter and Jelly"
+    #... or I should be on the recipe page with title "Crab Cakes"
+    And I should not see "Table of Contents"
+    When I go to the home page
+    Then I should see the following categories and recipes
       | Category    | Recipe                  |
       | Main Dishes | Peanut Butter and Jelly |
 
