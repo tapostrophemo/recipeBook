@@ -27,6 +27,18 @@ Feature: Add recipes
     Given I am on the home page
     And I follow "add recipe"
     And I fill in "name" with " "
-    And I press "Save"
+    When I press "Save"
     Then I should see "The recipe name field is required"
+
+  Scenario: Preserves values if validation fails
+    Given I am on the home page
+    And I follow "add recipe"
+    And I fill in "name" with " "
+    And I select "Side Dish" from "category"
+    And I fill in "ingredients" with " list of ingredients "
+    And I fill in "instructions" with " list of instructions "
+    When I press "Save"
+    Then the "category" field should contain "2"
+    And the "ingredients" field should contain "list of ingredients"
+    And the "instructions" field should contain "list of instructions"
 
