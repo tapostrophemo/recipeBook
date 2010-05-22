@@ -1,7 +1,11 @@
 <?=validation_errors()?>
 
 <?=form_open_multipart('add')?>
+
+<?php if ($this->input->is_ajax()): ?>
 <img style="float:right" src="<?=base_url()?>res/x.png" alt="(close)" onclick="$.modal.close()"/>
+<?php endif; ?>
+
 <table>
  <tr>
   <td><label for="name">Name</label></td>
@@ -32,7 +36,11 @@
  <tr>
   <td colspan="2">
    <input type="submit" value="Save"/>
+  <?php if ($this->input->is_ajax()): ?>
    <input type="button" value="Cancel" onclick="$.modal.close()"/>
+  <?php else: ?>
+   <input type="button" value="Cancel" onclick="document.location.href='<?=base_url()?>'"/>
+  <?php endif; ?>
   </td>
  </tr>
 </table>

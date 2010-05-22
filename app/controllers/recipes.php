@@ -9,7 +9,14 @@ class Recipes extends Controller
 
   function add() {
     if (!$this->form_validation->run('recipe_add')) {
-      $this->load->view('recipes/add');
+      if ($this->input->is_ajax()) {
+        $this->load->view('recipes/add');
+      }
+      else {
+        $this->load->view('pageTemplate', array(
+          'title' => 'New Recipe',
+          'content' => $this->load->view('recipes/add', null, true)));
+      }
     }
     else {
       $recipeId = $this->Recipe->create( // TODO: check $recipeId; react if null/0
