@@ -1,8 +1,15 @@
 Feature: view recipes
   As a user of recipeBook
-  I want to view recipes and useful commentary about them
+  I want to view recipes
 
-  Scenario: view helpful message when recipe not found
+  Scenario: view recipe details
+    Given a recipe exists with name: "Peanut Butter and Jelly", category: 1, ingredients: "2 slices of bread\npeanut butter\njelly (of your favorite flavor)", instructions: "spread peanut butter on one slice of bread\nspread jelly on the other\nsmush the two pieces of bread together and eat"
+    When I go to the "recipe/1" page
+    Then I should see "Peanut Butter and Jelly"
+    And I should see "Ingredients 2 slices of bread peanut butter jelly (of your favorite flavor)"
+    And I should see "Instructions spread peanut butter on one slice of bread spread jelly on the other smush the two pieces of bread together and eat"
+
+  Scenario: view message when recipe not found
     Given the following recipes exist
       | name           | category |
       | Eggs and Bacon | 1        |
