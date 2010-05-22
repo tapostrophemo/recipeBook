@@ -23,6 +23,7 @@
 <div id="dialog" style="display:none"></div>
 
 <div id="content">
+<?=$this->load->view('msg');?>
 <?=$content?>
 </div><!-- /#content -->
 

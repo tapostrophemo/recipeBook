@@ -7,6 +7,9 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
 
+    when /the "recipe\/(.*)" page/
+      '/recipe/' + $1
+
     else
       begin
         page_name =~ /the (.*) page/

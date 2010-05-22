@@ -28,9 +28,8 @@ class Recipes extends Controller
       $this->load->view('recipes/view', array('recipe' => $recipe));
     }
     else {
-      $this->load->view('pageTemplate', array(
-        'title' => 'Table of Contents',
-        'content' => '<div class="msg">That recipe was not found.</div>' . $this->load->view('toc', null, true)));
+      $this->session->set_flashdata('msg', 'That recipe was not found.');
+      redirect('/');
     }
   }
 

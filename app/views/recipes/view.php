@@ -32,9 +32,7 @@
 
 <div id="content">
 
-<?php if ($this->session->flashdata('msg')): ?>
-<div class="msg"><?=$this->session->flashdata('msg')?></div>
-<?php endif; ?>
+<?=$this->load->view('msg')?>
 
 <div id="ingredients">
 <h3>Ingredients</h3>
