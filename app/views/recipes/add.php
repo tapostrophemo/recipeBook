@@ -1,3 +1,5 @@
+<?=validation_errors()?>
+
 <?=form_open_multipart('add')?>
 <img style="float:right" src="<?=base_url()?>res/x.png" alt="(close)" onclick="$.modal.close()"/>
 <table>

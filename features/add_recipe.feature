@@ -23,10 +23,10 @@ Feature: Add recipes
       | Category    | Recipe                  |
       | Main Dishes | Peanut Butter and Jelly |
 
-#  Scenario: Add recipe validations
-#    Given I am on the home page
-#    And I follow "add recipe"
-#    And I fill in "name" with ""
-#    And I press "Save"
-#    Then I should see "The recipe name field is required"
+  Scenario: Add recipe validations
+    Given I am on the home page
+    And I follow "add recipe"
+    And I fill in "name" with " "
+    And I press "Save"
+    Then I should see "The recipe name field is required"
 
