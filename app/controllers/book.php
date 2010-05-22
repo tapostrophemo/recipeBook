@@ -8,7 +8,7 @@ class Book extends Controller
 
     $this->load->view('pageTemplate', array(
       'title' => 'Table of Contents',
-      'content' => $this->load->view('toc', array('recipes' => $recipes), true)));
+      'content' => $this->load->view('book/toc', array('recipes' => $recipes), true)));
   }	
 }
 
