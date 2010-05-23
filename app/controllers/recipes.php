@@ -20,9 +20,22 @@ class Recipes extends Controller
       }
     }
     else {
+      $this->load->library('upload');
+      $uploaded = $this->upload->do_upload('photo');
+      if (!$uploaded && !$this->upload->display_errors() == $this->lang->line('upload_no_file_selected')) {
+        $this->session->set_flashdata('msg', $this->upload->display_errors());
+        redirect ('/');
+      }
+
+      $uploadData = $this->upload->data();
+      if ($uploaded && $uploadData['file_name']) {
+        $uploadData['file_name'] = 'uploads/'.$uploadData['file_name'];
+      }
+
       $recipeId = $this->Recipe->create( // TODO: check $recipeId; react if null/0
         $this->input->post('name'),
         $this->input->post('category'),
+        $uploadData['file_name'],
         $this->input->post('ingredients'),
         $this->input->post('instructions'));
       $this->session->set_flashdata('msg', 'Recipe created');
@@ -61,6 +74,11 @@ class Recipes extends Controller
   function delete($id) {
     $recipe = $this->_findRecipeValidateExists($id);
     $this->Recipe->delete($id);
+
+    if (isset($recipe->photo)) {
+      @unlink($recipe->photo);
+    }
+
     $this->session->set_flashdata('msg', "Recipe for '$recipe->name' deleted");
     redirect('/');
   }

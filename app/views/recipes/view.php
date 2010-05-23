@@ -8,7 +8,11 @@
 <link rel="stylesheet" type="text/css" href="<?=base_url()?>res/cb.css"/>
 <style type="text/css">
 #photo {
-  background: black url(<?=base_url()?>res/<?=$recipe->photo?>) center center no-repeat;
+<?php if ($recipe->photo): ?>
+  background: black url(<?=base_url().$recipe->photo?>) center center no-repeat;
+<?php else: ?>
+  display: none;
+<?php endif; ?>
 }
 </style>
 </head>

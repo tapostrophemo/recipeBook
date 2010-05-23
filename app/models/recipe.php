@@ -34,10 +34,11 @@ class Recipe extends Model
     return $recipe;
   }
 
-  function create($name, $category, $ingredients, $instructions) {
+  function create($name, $category, $photo, $ingredients, $instructions) {
     $data = array(
       'name' => $name,
       'category' => $category,
+      'photo' => $photo,
       'ingredients' => $ingredients,
       'instructions' => $instructions);
     $this->db->insert('recipes', $data);
