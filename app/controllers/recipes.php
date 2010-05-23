@@ -30,21 +30,13 @@ class Recipes extends Controller
   }
 
   function view($id) {
-    $recipe = $this->Recipe->getById($id);
-    if ($recipe) {
-      $this->load->view('recipes/view', array('recipe' => $recipe));
-    }
-    else {
-      $this->session->set_flashdata('msg', 'That recipe was not found.');
-      redirect('/');
-    }
+    $recipe = $this->_findRecipeValidateExists($id);
+    $this->load->view('recipes/view', array('recipe' => $recipe));
   }
 
-  // TODO: verify a recipe w/given id exists for edit, delete functions
-
   function edit($id) {
+    $recipe = $this->_findRecipeValidateExists($id);
     if (!$this->form_validation->run('recipe')) {
-      $recipe = $this->Recipe->getById($id);
       if ($this->input->is_ajax()) {
         $this->load->view('recipes/edit', array('recipe' => $recipe));
       }
@@ -66,9 +58,19 @@ class Recipes extends Controller
   }
 
   function delete($id) {
+    $recipe = $this->_findRecipeValidateExists($id);
     $this->Recipe->delete($id);
-    $this->session->set_flashdata('msg', 'Recipe deleted');
+    $this->session->set_flashdata('msg', "Recipe for '$recipe->name' deleted");
     redirect('/');
+  }
+
+  function _findRecipeValidateExists($id) {
+    $recipe = $this->Recipe->getById($id);
+    if (!$recipe) {
+      $this->session->set_flashdata('msg', 'That recipe was not found.');
+      redirect('/');
+    }
+    return $recipe;
   }
 }
 

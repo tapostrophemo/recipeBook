@@ -36,3 +36,9 @@ Feature: edit recipes
     And the "ingredients" field should contain "ingredient 1 2 3"
     And the "instructions" field should contain "instruction 1 2 3"
 
+  Scenario: validate that recipe exists before editing
+    Given a recipe exists with name: "recipe name", category: 4
+    When I go to the "edit/2" page
+    Then I should see "That recipe was not found"
+    And I should see "Table of Contents"
+
