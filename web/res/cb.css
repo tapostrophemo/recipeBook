@@ -21,7 +21,7 @@ td {
 /* grid */
 #wrapper {
   background-color: white;
-  margin: 0 auto; /* TODO: fix centering for IE6 */
+  margin: 0 auto;
   width: 875px;
 }
 #header {
@@ -41,16 +41,16 @@ td {
   margin-top: 2em;
   padding: 20px 50px;
 }
-#ingredients {
+#ingredientsList {
   float: left;
   width: 309px;
 }
-#instructions {
+#instructionsList {
   float: right;
   width: 439px;
 }
 #footer {
-  background-color: #402; /* that's purple; green (#482) instead? */
+  background-color: #402;
   color: white;
   font-family: Arial, sans-serif;
   height: 52px;

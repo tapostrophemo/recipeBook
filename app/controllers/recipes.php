@@ -41,8 +41,26 @@ class Recipes extends Controller
   }
 
   function edit($id) {
-    $recipe = $this->Recipe->getById($id);
-    $this->load->view('recipes/edit', array('recipe' => $recipe));
+    if (!$this->form_validation->run('recipe_edit')) {
+      $recipe = $this->Recipe->getById($id);
+      if ($this->input->is_ajax()) {
+        $this->load->view('recipes/edit', array('recipe' => $recipe));
+      }
+      else {
+        $this->load->view('pageTemplate', array(
+          'title' => 'Edit "' . $recipe->name . '"',
+          'content' => $this->load->view('recipes/edit', array('recipe' => $recipe), true)));
+      }
+    }
+    else {
+      $this->Recipe->update($id,
+        $this->input->post('name'),
+        $this->input->post('category'),
+        $this->input->post('ingredients'),
+        $this->input->post('instructions'));
+      $this->session->set_flashdata('msg', 'Recipe updated');
+      redirect("recipe/$id");
+    }
   }
 }
 

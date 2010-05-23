@@ -8,11 +8,11 @@
 
 <table>
  <tr>
-  <td><label for="name">Name</label></td>
+  <td><label for="name">*Name</label></td>
   <td><input type="text" name="name" value="<?=set_value('name')?>"/></td>
  </tr>
  <tr>
-  <td><label for="category">Category</label></td>
+  <td><label for="category">*Category</label></td>
   <td>
    <select name="category" id="category">
    <?php foreach ($this->Recipe->getCategoryMap() as $name => $value): ?>

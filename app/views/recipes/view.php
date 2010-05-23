@@ -34,7 +34,7 @@
 
 <?=$this->load->view('msg')?>
 
-<div id="ingredients">
+<div id="ingredientsList">
 <h3>Ingredients</h3>
 <ul>
 <?php foreach ($recipe->ingredients as $ingredient): ?>
@@ -43,7 +43,7 @@
 </ul>
 </div>
 
-<div id="instructions">
+<div id="instructionsList">
 <h3>Instructions</h3>
 <?php foreach ($recipe->instructions as $instruction): ?>
 <p><?=$instruction?></p>

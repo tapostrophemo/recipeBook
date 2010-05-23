@@ -43,5 +43,14 @@ class Recipe extends Model
     $this->db->insert('recipes', $data);
     return $this->db->insert_id();
   }
+
+  function update($id, $name, $category, $ingredients, $instructions) {
+    $data = array(
+      'name' => $name,
+      'category' => $category,
+      'ingredients' => preg_replace("/(\\n)+/", "\n", $ingredients),
+      'instructions' => preg_replace("/(\\n)+/", "\n", $instructions));
+    $this->db->where('id', $id)->update('recipes', $data);
+  }
 }
 
