@@ -17,7 +17,9 @@
 </div>
 
 <ul id="controls">
+<?php $segment = $this->uri->segment(1, ''); if ( $segment != 'edit' && $segment != 'add'): ?>
  <li><?=anchor('add', 'add recipe', array('id' => 'addControl'))?></li>
+<?php endif; ?>
 </ul>
 
 <div id="dialog" style="display:none"></div>
