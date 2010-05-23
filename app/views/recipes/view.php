@@ -25,7 +25,7 @@
 
 <ul id="controls">
  <li><?=anchor('edit/'.$recipe->id, 'edit', array('id' => 'editControl'))?></li>
- <li><a href="#">delete</a></li>
+ <li><?=anchor('delete/'.$recipe->id, 'delete')?></li>
 </ul>
 
 <div id="dialog" style="display:none"></div>

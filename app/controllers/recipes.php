@@ -40,8 +40,9 @@ class Recipes extends Controller
     }
   }
 
+  // TODO: verify a recipe w/given id exists for edit, delete functions
+
   function edit($id) {
-    // TODO: verify a recipe w/given id exists
     if (!$this->form_validation->run('recipe')) {
       $recipe = $this->Recipe->getById($id);
       if ($this->input->is_ajax()) {
@@ -62,6 +63,12 @@ class Recipes extends Controller
       $this->session->set_flashdata('msg', 'Recipe updated');
       redirect("recipe/$id");
     }
+  }
+
+  function delete($id) {
+    $this->Recipe->delete($id);
+    $this->session->set_flashdata('msg', 'Recipe deleted');
+    redirect('/');
   }
 }
 

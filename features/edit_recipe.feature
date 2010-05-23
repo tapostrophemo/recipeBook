@@ -20,7 +20,6 @@ Feature: edit recipes
     And I should see "Ingredients other ingredients"
     And I should see "Instructions other instructions"
 
-@wip
   Scenario: edit recipe validations
     Given a recipe exists with name: "recipe name", category: 4, ingredients: "list of ingredients", instructions: "list of instructions"
     When I go to the "recipe/1" page

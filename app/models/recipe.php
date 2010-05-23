@@ -52,5 +52,9 @@ class Recipe extends Model
       'instructions' => preg_replace("/(\\n)+/", "\n", $instructions));
     $this->db->where('id', $id)->update('recipes', $data);
   }
+
+  function delete($id) {
+    $this->db->where('id', $id)->delete('recipes');
+  }
 }
 
