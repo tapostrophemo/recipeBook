@@ -121,6 +121,8 @@ h3 {
   border: 3px solid #482;
   font-family: Arial, sans-serif;
   padding: 9px;
+  width: 500px;
+  height: 440px;
 }
 
 p, li, .msg {

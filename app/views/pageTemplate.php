@@ -40,9 +40,7 @@ $(document).ready(function () {
 
   $("#addControl").click(function () {
     $("#dialog").load(this.href);
-    $("#dialog").modal({
-      position: ["15%", "30%"]
-    });
+    $("#dialog").modal();
     return false;
   });
 
