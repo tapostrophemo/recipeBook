@@ -8,7 +8,7 @@ class Recipes extends Controller
   }
 
   function add() {
-    if (!$this->form_validation->run('recipe_add')) {
+    if (!$this->form_validation->run('recipe')) {
       if ($this->input->is_ajax()) {
         $this->load->view('recipes/add');
       }
@@ -41,7 +41,8 @@ class Recipes extends Controller
   }
 
   function edit($id) {
-    if (!$this->form_validation->run('recipe_edit')) {
+    // TODO: verify a recipe w/given id exists
+    if (!$this->form_validation->run('recipe')) {
       $recipe = $this->Recipe->getById($id);
       if ($this->input->is_ajax()) {
         $this->load->view('recipes/edit', array('recipe' => $recipe));
