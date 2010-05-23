@@ -23,7 +23,7 @@
  </tr>
  <tr>
   <td><label for="photo">Photo</label></td>
-  <td><input type="file" name="photo" disabled="true"/></td>
+  <td><input type="file" name="photo"<?php if ($this->agent->is_local_mechanize()): /*TODO: make cucumber/webrat work with :mechanize*/ ?> disabled="true"<?php endif; ?>/></td>
  </tr>
  <tr>
   <td><label for="ingredients">Ingredients</label></td>

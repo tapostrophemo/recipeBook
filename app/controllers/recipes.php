@@ -5,6 +5,7 @@ class Recipes extends Controller
   function __construct() {
     Controller::__construct();
     $this->load->model('Recipe');
+    $this->load->library('user_agent');
   }
 
   function add() {
