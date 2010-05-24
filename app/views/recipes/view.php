@@ -27,10 +27,7 @@
 
 <div id="photo"></div>
 
-<ul id="controls">
- <li><?=anchor('edit/'.$recipe->id, 'edit', array('id' => 'editControl'))?></li>
- <li><?=anchor('delete/'.$recipe->id, 'delete')?></li>
-</ul>
+<?=$this->load->view('controls')?>
 
 <div id="dialog" style="display:none"></div>
 

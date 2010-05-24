@@ -16,11 +16,7 @@
  <h2><?=anchor('/', 'The <em>Slice-up</em> Cookbook')?></h2>
 </div>
 
-<ul id="controls">
-<?php $segment = $this->uri->segment(1, ''); if ( $segment != 'edit' && $segment != 'add'): ?>
- <li><?=anchor('add', 'add recipe', array('id' => 'addControl'))?></li>
-<?php endif; ?>
-</ul>
+<?=$this->load->view('controls')?>
 
 <div id="dialog" style="display:none"></div>
 
