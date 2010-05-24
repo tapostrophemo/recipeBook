@@ -1,2 +1,3 @@
+TRUNCATE TABLE users;
 TRUNCATE TABLE recipes;
 

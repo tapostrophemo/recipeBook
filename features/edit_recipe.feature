@@ -2,6 +2,10 @@ Feature: edit recipes
   As a user of recipeBook
   I want to edit recipes
 
+  Background:
+    Given a user exists with username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
+    And I am logged in with username: "testUser1", password: "Password1"
+
   Scenario: edit recipe details
     Given a recipe exists with name: "recipe name", category: 4, ingredients: "list of ingredients", instructions: "list of instructions"
     When I go to the "recipe/1" page

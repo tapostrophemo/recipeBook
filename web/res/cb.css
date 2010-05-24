@@ -112,6 +112,9 @@ h3 {
   padding: 2px 15px;
   text-decoration: none;
 }
+#controls li a:hover {
+  text-decoration: underline;
+}
 #simplemodal-overlay {
   background-color: #eff;
 }

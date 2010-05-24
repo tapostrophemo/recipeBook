@@ -2,6 +2,10 @@ Feature: Add recipes
   As a user of the recipeBook site
   I want to add recipes
 
+  Background:
+    Given a user exists with username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
+    And I am logged in with username: "testUser1", password: "Password1"
+
   Scenario: Add recipe
     Given I am on the home page
     And I follow "add recipe"
