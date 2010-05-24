@@ -46,3 +46,12 @@ Feature: edit recipes
     Then I should see "That recipe was not found"
     And I should see "Table of Contents"
 
+  Scenario: must be logged in to edit recipes - no cheating with the back button
+    Given a recipe exists with name: "recipe name", category: 4
+    When I follow "logout"
+    And I go to the "edit/1" page
+    Then I should see "You must be logged in to edit recipes"
+    And I should see "Login"
+    And I should see "login"
+    But I should not see "logout"
+

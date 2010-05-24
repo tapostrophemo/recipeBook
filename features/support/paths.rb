@@ -7,6 +7,9 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
 
+    when /the add recipe page/
+      '/add'
+
     when /the "(recipe|edit|delete)\/(.*)" page/
       '/' + $1 + '/' + $2
 

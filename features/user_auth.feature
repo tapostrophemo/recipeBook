@@ -1,4 +1,3 @@
-@wip
 Feature: User Authentication
   As a registered user of the recipeBook site
   I want to be able to log in and out of the site

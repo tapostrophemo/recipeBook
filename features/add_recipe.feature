@@ -41,3 +41,11 @@ Feature: Add recipes
     And the "ingredients" field should contain "list of ingredients"
     And the "instructions" field should contain "list of instructions"
 
+  Scenario: must be logged in to add recipes - no cheating with the back button
+    When I follow "logout"
+    And I go to the add recipe page
+    Then I should see "You must be logged in to add recipes"
+    And I should see "Login"
+    And I should see "login"
+    But I should not see "logout"
+

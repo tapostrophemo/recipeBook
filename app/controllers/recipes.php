@@ -6,6 +6,12 @@ class Recipes extends Controller
     Controller::__construct();
     $this->load->model('Recipe');
     $this->load->library('user_agent');
+
+    $segment = $this->uri->segment(1);
+    if (in_array($segment, array('add', 'edit', 'delete')) && !$this->session->userdata('logged_in')) {
+      $this->session->set_flashdata('msg', "You must be logged in to $segment recipes");
+      redirect('/login');
+    }
   }
 
   function add() {
