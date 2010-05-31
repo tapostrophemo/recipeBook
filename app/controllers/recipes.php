@@ -51,7 +51,10 @@ class Recipes extends Controller
 
   function view($id) {
     $recipe = $this->_findRecipeValidateExists($id);
-    $this->load->view('recipes/view', array('recipe' => $recipe));
+    $this->load->view('pageTemplate', array(
+      'title' => $recipe->name,
+      'photo' => $recipe->photo,
+      'content' => $this->load->view('recipes/view', array('recipe' => $recipe), true)));
   }
 
   function edit($id) {

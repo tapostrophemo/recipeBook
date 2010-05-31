@@ -1,9 +1,22 @@
+/* colors (TODO: make switchable) */
+.orangeTricolor { background-color: #dfa; }
+.orangeTricolor #wrapper { background-color: white; }
+.orangeTricolor #header { background-color: #ff8b00; }
+.orangeTricolor h1, .orangeTricolor h2 { color: white; }
+.orangeTricolor h2 a { color: white; }
+.orangeTricolor h3 { color: #482; }
+.orangeTricolor a { color: #482; }
+.orangeTricolor #controls li { background-color: black; }
+.orangeTricolor #controls li a { color: white; }
+.orangeTricolor #simplemodal-overlay { background-color: #eff; }
+.orangeTricolor #simplemodal-container { background-color: #dfa; }
+.orangeTricolor #footer { background-color: #402; color: white; }
+
 /* resets */
 html {
   font-size: 62.5%;
 }
 body {
-  background-color: #dfa;
   margin: 0;
   padding: 0;
 }
@@ -20,12 +33,10 @@ td {
 
 /* grid */
 #wrapper {
-  background-color: white;
   margin: 0 auto;
   width: 875px;
 }
 #header {
-  background-color: #ff8b00;
   height: 137px;
 }
 #controls {
@@ -50,8 +61,6 @@ td {
   width: 439px;
 }
 #footer {
-  background-color: #402;
-  color: white;
   font-family: Arial, sans-serif;
   height: 52px;
   padding-top: 27px;
@@ -59,9 +68,6 @@ td {
 }
 
 /* individual sections */
-h1, h2 {
-  color: white;
-}
 h1 {
   font-family: Harrington, Palatino, serif;
   font-size: 47px;
@@ -82,14 +88,12 @@ h2 em {
   font-weight: bold;
 }
 h2 a {
-  color: white;
   text-decoration: none;
 }
 h2 a:hover {
   text-decoration: underline;
 }
 h3 {
-  color: #482;
   font-family: "Arial Bold", "Avant Garde", Arial, sans-serif;
   font-size: 22px;
 }
@@ -97,14 +101,12 @@ h3 {
 #controls li {
   -moz-border-radius-bottomleft: 4px;
   -moz-border-radius-bottomright: 4px;
-  background-color: black;
   list-style: none;
   float: left;
   margin: 0;
   margin-left: 4px;
 }
 #controls li a {
-  color: white;
   display: inline-block;
   font-family: "Arial Bold", "Avant Garde", Arial, sans-serif;
   font-size: 11px;
@@ -115,12 +117,8 @@ h3 {
 #controls li a:hover {
   text-decoration: underline;
 }
-#simplemodal-overlay {
-  background-color: #eff;
-}
 #simplemodal-container {
   -moz-border-radius: 6px;
-  background-color: #dfa;
   border: 3px solid #482;
   font-family: Arial, sans-serif;
   padding: 9px;
@@ -142,10 +140,6 @@ li {
 }
 p {
   margin: 20px 0;
-}
-
-a {
-  color: #482;
 }
 
 label {

@@ -6,8 +6,17 @@
 <link rel="stylesheet" type="text/css" href="<?=base_url()?>res/cb.css"/>
 <script type="text/javascript" src="<?=base_url()?>res/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="<?=base_url()?>res/jquery.simplemodal-1.3.5.min.js"></script>
+<style type="text/css">
+#photo {
+<?php if (isset($photo)): ?>
+  background: black url(<?=base_url().$photo?>) center center no-repeat;
+<?php else: ?>
+  display: none;
+<?php endif; ?>
+}
+</style>
 </head>
-<body>
+<body class="orangeTricolor">
 
 <div id="wrapper">
 
@@ -15,6 +24,8 @@
  <h1><?php if (isset($title)) echo $title; ?>&nbsp;</h1>
  <h2><?=anchor('/', 'The <em>Slice-up</em> Cookbook')?></h2>
 </div>
+
+<div id="photo"></div>
 
 <?=$this->load->view('controls')?>
 
@@ -35,6 +46,12 @@ Copyright &copy; 2010, Dan Parks. All Rights Reserved.
 $(document).ready(function () {
 
   $("#addControl").click(function () {
+    $("#dialog").load(this.href);
+    $("#dialog").modal();
+    return false;
+  });
+
+  $("#editControl").click(function () {
     $("#dialog").load(this.href);
     $("#dialog").modal();
     return false;
