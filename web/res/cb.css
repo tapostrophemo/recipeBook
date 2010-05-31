@@ -10,7 +10,22 @@
 .orangeTricolor #controls li a { color: white; }
 .orangeTricolor #simplemodal-overlay { background-color: #eff; }
 .orangeTricolor #simplemodal-container { background-color: #dfa; }
+.orangeTricolor #simplemodal-container { border: 3px solid #482; }
 .orangeTricolor #footer { background-color: #402; color: white; }
+
+.redBicolor { background-color: #ccf; }
+.redBicolor #wrapper { background-color: white; }
+.redBicolor #header { background-color: #c00; }
+.redBicolor h1, .redBicolor h2 { color: white; }
+.redBicolor h2 a { color: white; }
+.redBicolor h3 { color: #900; }
+.redBicolor a { color: #900; }
+.redBicolor #controls li { background-color: black; }
+.redBicolor #controls li a { color: white; }
+.redBicolor #simplemodal-overlay { background-color: #eff; }
+.redBicolor #simplemodal-container { background-color: #ddf; }
+.redBicolor #simplemodal-container { border: 3px solid black; }
+.redBicolor #footer { background-color: black; color: white; }
 
 /* resets */
 html {
@@ -119,7 +134,6 @@ h3 {
 }
 #simplemodal-container {
   -moz-border-radius: 6px;
-  border: 3px solid #482;
   font-family: Arial, sans-serif;
   padding: 9px;
   width: 500px;

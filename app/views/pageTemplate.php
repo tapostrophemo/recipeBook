@@ -57,6 +57,12 @@ $(document).ready(function () {
     return false;
   });
 
+  $("#colorToggleControl").click(function () {
+    $("body").toggleClass("orangeTricolor redBicolor");
+    // TODO: save color scheme name they choose in cookie
+    return false;
+  });
+
 });
 </script>
 

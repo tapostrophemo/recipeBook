@@ -8,10 +8,12 @@
  <li><?=anchor('delete/'.$recipe->id, 'delete')?></li>
 <?php endif; ?>
 
+ <li><?=anchor('#', 'toggle color', array('id' => 'colorToggleControl'))?></li>
  <li><?=anchor('logout', 'logout')?></li>
 
 <?php else: ?>
 
+ <li><?=anchor('#', 'toggle color', array('id' => 'colorToggleControl'))?></li>
  <li><?=anchor('login', 'login')?></li>
 
 <?php endif; ?>
