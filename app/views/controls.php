@@ -9,6 +9,11 @@
 <?php endif; ?>
 
  <li><?=anchor('#', 'toggle color', array('id' => 'colorToggleControl'))?></li>
+
+<?php if ($this->session->userdata('is_admin')): ?>
+ <li><?=anchor('/admin', 'admin')?></li>
+<?php endif; ?>
+
  <li><?=anchor('logout', 'logout')?></li>
 
 <?php else: ?>

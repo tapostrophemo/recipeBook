@@ -2,7 +2,7 @@
 
 class Book extends Controller
 {
-  var $_username;
+  var $_user;
 
   function index() {
     $this->load->model('Recipe');
@@ -21,15 +21,16 @@ class Book extends Controller
     }
     else {
       $this->session->set_userdata('logged_in', true);
-      $this->session->set_flashdata('msg', 'Welcome back, '.$this->_username);
+      $this->session->set_userdata('is_admin', $this->_user->is_admin);
+      $this->session->set_flashdata('msg', 'Welcome back, '.$this->_user->username);
       redirect('/');
     }
   }
 
   function _validate_login($junk) {
     $this->load->model('User');
-    if ($this->User->validateLogin($this->input->post('username'), $this->input->post('password'))) {
-      $this->_username = $this->input->post('username');
+    if ($user = $this->User->validateLogin($this->input->post('username'), $this->input->post('password'))) {
+      $this->_user = $user;
       return true;
     }
     else {
