@@ -168,7 +168,7 @@ h3 {
   height: 440px;
 }
 
-p, li, .msg {
+p, li, .msg, td, th {
   font-family: Arial, sans-serif;
   font-size: 12px;
   line-height: 1.65em;
@@ -182,6 +182,9 @@ li {
 }
 p {
   margin: 20px 0;
+}
+td {
+  padding: 0 2em 0 0;
 }
 
 label {

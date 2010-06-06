@@ -11,6 +11,13 @@ $config = array(
     array('field' => 'category', 'label' => 'category', 'rules' => 'trim|required|integer'),
     array('field' => 'ingredients', 'label' => 'ingredients', 'rules' => 'trim|xss_clean'),
     array('field' => 'instructions', 'label' => 'instructions', 'rules' => 'trim|xss_clean')
+  ),
+
+
+  'admin_adduser' => array(
+    array('field' => 'username', 'label' => 'Username', 'rules' => 'trim|required'),
+    array('field' => 'password', 'label' => 'Password', 'rules' => 'trim|required'),
+    array('field' => 'email', 'label' => 'Email', 'rules' => 'trim|required')
   )
 );
 
