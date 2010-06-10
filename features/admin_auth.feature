@@ -13,7 +13,6 @@ Feature: Administrator Login
     Then I should see "Admin Menu"
     And I should see "List Users"
     And I should see "Add User"
-    And I should see "Registration/Activation Report"
 
   Scenario: non-admin cannot see admin link nor menu
     When I am logged in with username: "testUser1", password: "Password1"
