@@ -35,7 +35,7 @@ class Admin extends Controller
         $this->input->post('password'),
         $this->input->post('email'));
       $this->session->set_flashdata('msg', "User with id=$newUserId created");
-      redirect('/admin');
+      redirect('/admin/userlist');
     }
   }
 

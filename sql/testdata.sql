@@ -14,3 +14,6 @@ Pre-heat oven to 375&deg; F (190&deg; C). Brown the onion in olive oil over low 
 Arrange a layer of the fried, sliced eggplant in a baking dish. Spread several spoonfuls of tomato sauce over them. Add a layer mozzarella, and sprinkle with Parmesan cheese. Repeat in layers with the remaining ingredients.
 Bake in pre-heated oven for about 20 minutes. Serve over pasta, sprinkled with Parmesan cheese.');
 
+insert into users(username, email, crypted_password, password_salt, is_admin)
+  values('asdf', 'asdf@asdf.com', sha1('asdfasdfabc123'), 'abc123', 1);
+

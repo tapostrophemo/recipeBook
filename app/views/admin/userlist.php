@@ -10,3 +10,5 @@
 <?php endforeach; ?>
 </table>
 
+<p><?=anchor('admin/adduser', 'Add User?', array('id' => 'addUserControl'))?></p>
+

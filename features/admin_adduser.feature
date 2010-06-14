@@ -15,8 +15,7 @@ Feature: administrator adds/edits users
     And I fill in "email" with "testUser1@somewhere.com"
     And I press "Save"
     Then a user should exist with username: "testUser1", email: "testUser1@somewhere.com"
-    When I follow "List Users"
-    Then I should see the following users
+    And I should see the following users
       | Username   | Email                    |
       | testAdmin1 | testAdmin1@somewhere.com |
       | testUser1  | testUser1@somewhere.com  |
