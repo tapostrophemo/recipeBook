@@ -27,15 +27,20 @@ class Recipes extends Controller
     }
     else {
       $this->load->library('upload');
+
       $uploaded = $this->upload->do_upload('photo');
-      if (!$uploaded && !$this->upload->display_errors() == $this->lang->line('upload_no_file_selected')) {
+      $noFile = $this->upload->display_errors() == '<p>'.$this->lang->line('upload_no_file_selected').'</p>';
+      if (!$uploaded && !$noFile) {
         $this->session->set_flashdata('msg', $this->upload->display_errors());
         redirect ('/');
       }
 
-      $uploadData = $this->upload->data();
-      if ($uploaded && $uploadData['file_name']) {
+      if ($uploaded) {
+        $uploadData = $this->upload->data();
         $uploadData['file_name'] = 'uploads/'.$uploadData['file_name'];
+      }
+      else {
+        $uploadData['file_name'] = null;
       }
 
       $recipeId = $this->Recipe->create( // TODO: check $recipeId; react if null/0
