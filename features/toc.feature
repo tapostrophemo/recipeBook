@@ -14,7 +14,7 @@ Feature: Table of Contents
       | Hot Chocolate  | 6        |
       | Carrot Sticks  | 2        |
       | Horchata       | 6        |
-    When I go to the home page
+    When I go to the table of contents page
     Then I should see the following categories and recipes
       | Category    | Recipe                   |
       | Main Dishes | Eggs and Bacon           |

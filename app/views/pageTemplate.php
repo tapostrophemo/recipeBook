@@ -23,7 +23,13 @@
 
 <div id="header">
  <h1><?php if (isset($title)) echo $title; ?>&nbsp;</h1>
- <h2><?=anchor('/', 'The <em>Slice-up</em> Cookbook')?></h2>
+ <h2>
+ <?php if ($this->session->userdata('logged_in')): ?>
+  <?=anchor('/book', 'Your <em>Slice-up</em> Cookbook')?>
+ <?php else: ?>
+  <?=anchor('', 'The <em>Slice-up</em> Cookbook')?>
+ <?php endif; ?>
+ </h2>
 </div>
 
 <div id="photo"></div>

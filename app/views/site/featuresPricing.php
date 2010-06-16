@@ -17,5 +17,5 @@
  </ul>
 </div>
 
-<p style="clear:both; text-align:center; font-size:200%">Ready to create your own online cookbook? <?=anchor('', 'Signup today!')?></p>
+<p style="clear:both; text-align:center; font-size:200%">Ready to create your own online cookbook? <?=anchor('signup', 'Signup today!')?></p>
 
