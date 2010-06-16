@@ -1,3 +1,5 @@
+<?php if (!$this->session->userdata('in_beta')): ?>
+
 <ul id="controls">
 <?php if ($this->session->userdata('logged_in')): ?>
 
@@ -23,4 +25,6 @@
 
 <?php endif; ?>
 </ul>
+
+<?php endif; ?>
 
