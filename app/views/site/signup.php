@@ -8,12 +8,12 @@
 <form method="post">
 <table style="background-color:#eff; padding:10px 30px; -moz-border-radius:10px">
  <tr>
-  <td><label for="bookname">Cookbook name</label></td>
-  <td><input type="text" name="bookname"/></td>
+  <td><label for="username">Choose a Username</label></td>
+  <td><input type="text" name="username"/></td>
  </tr>
  <tr>
-  <td><label for="username">Username</label></td>
-  <td><input type="text" name="username"/></td>
+  <td><label for="email">Email Address</label></td>
+  <td><input type="text" name="Email"/></td>
  </tr>
  <tr>
   <td colspan="2" style="text-align:center"><input type="image" src="<?=site_url()?>res/signup.png"/></td>
