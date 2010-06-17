@@ -7,7 +7,7 @@ Feature: Add recipes
     And I am logged in with username: "testUser1", password: "Password1"
 
   Scenario: Add recipe
-    Given I am on the home page
+    Given I am on the table of contents page
     And I follow "add recipe"
     And I fill in "name" with "Peanut Butter and Jelly"
     And I fill in "ingredients" with "2 slices of bread\npeanut butter\njelly (of your favorite flavor)"

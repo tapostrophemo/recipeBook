@@ -18,6 +18,14 @@ Feature: User Authentication
     And I should see "Welcome back, testUser1"
     And I should see "logout"
 
+  Scenario: cookbook title changes when user logged in
+    When I am on the home page
+    Then I should see "The Slice-up Cookbook"
+    When I am logged in with username: "testUser1", password: "Password1"
+    Then I should see "testUser1's Slice-up Cookbook"
+    When I follow "logout"
+    Then I should see "The Slice-up Cookbook"
+
   Scenario: registered user with bad password gets warning message
     When I fill in "username" with "testUser1"
     And I fill in "password" with "badPassword1"

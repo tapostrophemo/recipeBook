@@ -94,14 +94,14 @@ class Recipes extends Controller
     }
 
     $this->session->set_flashdata('msg', "Recipe for '$recipe->name' deleted");
-    redirect('/');
+    redirect('/book');
   }
 
   function _findRecipeValidateExists($id) {
     $recipe = $this->Recipe->getById($id);
     if (!$recipe) {
       $this->session->set_flashdata('msg', 'That recipe was not found.');
-      redirect('/');
+      redirect('/book');
     }
     return $recipe;
   }

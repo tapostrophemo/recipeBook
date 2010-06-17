@@ -141,6 +141,17 @@ h3 {
   font-size: 22px;
 }
 
+#signup {
+  width: 442px;
+  margin: 0 auto;
+}
+#signup table {
+  margin: 0 auto;
+}
+#signup td {
+  padding: 2px;
+}
+
 #controls li {
   -moz-border-radius-bottomleft: 4px;
   -moz-border-radius-bottomright: 4px;

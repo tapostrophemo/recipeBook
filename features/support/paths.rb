@@ -7,6 +7,9 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
 
+    when /the table of contents page/
+      '/book'
+
     when /the add recipe page/
       '/add'
 

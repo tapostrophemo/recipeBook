@@ -21,9 +21,10 @@ class Book extends Controller
     }
     else {
       $this->session->set_userdata('logged_in', true);
+      $this->session->set_userdata('username', $this->_user->username);
       $this->session->set_userdata('is_admin', $this->_user->is_admin);
       $this->session->set_flashdata('msg', 'Welcome back, '.$this->_user->username);
-      redirect('/');
+      redirect('/book');
     }
   }
 

@@ -1,7 +1,7 @@
 <ul id="controls">
 <?php if ($this->session->userdata('logged_in')): ?>
 
-<?php $segment = $this->uri->segment(1, ''); if ($segment == ''): ?>
+<?php $segment = $this->uri->segment(1, ''); if ($segment == 'book'): ?>
  <li><?=anchor('add', 'add recipe', array('id' => 'addControl'))?></li>
 <?php elseif ($segment == 'recipe'): ?>
  <li><?=anchor('edit/'.$recipe->id, 'edit', array('id' => 'editControl'))?></li>

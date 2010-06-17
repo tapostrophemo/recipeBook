@@ -7,7 +7,12 @@ class Admin extends Controller
 
     if (!$this->session->userdata('is_admin')) {
       $this->session->set_flashdata('msg', 'Authorized users only!');
-      redirect('/');
+      if ($this->session->userdata('logged_in')) {
+        redirect('/book');
+      }
+      else {
+        redirect('/');
+      }
     }
   }
 

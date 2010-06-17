@@ -57,5 +57,9 @@ class Recipe extends Model
   function delete($id) {
     $this->db->where('id', $id)->delete('recipes');
   }
+
+  function getRandomId() {
+    return $this->db->query('SELECT id FROM recipes ORDER BY Rand() LIMIT 1')->row(0)->id;
+  }
 }
 
