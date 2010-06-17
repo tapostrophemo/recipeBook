@@ -2,8 +2,8 @@
 
 <h3>Sign Up Today!</h3>
 
-<p>Don't wait! Your dinner will never be better! Fill in the form below with your desired cookbook
- title and username and press the button to begin:</p>
+<p>Don't wait! Your dinner will never be better! Fill in the form below with your information and
+ press the button to begin:</p>
 
 <form method="post">
 <table style="background-color:#eff; padding:10px 30px; -moz-border-radius:10px">
