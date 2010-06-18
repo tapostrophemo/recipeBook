@@ -62,3 +62,6 @@ end
 
 class Book < ActiveRecord::Base
 end
+
+class Editor < ActiveRecord::Base
+end
