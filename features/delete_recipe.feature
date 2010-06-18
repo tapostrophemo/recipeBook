@@ -3,8 +3,9 @@ Feature: delete recipes
   I want to delete recipes
 
   Background:
-    Given a recipe exists with name: "recipe name", category: 4
-    And a user exists with username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
+    Given a user exists with username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
+    And a book exists with owner_id: 1
+    And a recipe exists with name: "recipe name", category: 4, book_id: 1
     And I am logged in with username: "testUser1", password: "Password1"
 
   Scenario: delete recipe

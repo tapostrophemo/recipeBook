@@ -16,10 +16,3 @@
 </table>
 </form>
 
-<br/>
-<br/>
-
-<p><small><b>Note:</b> Anyone can view this site and use the recipes here. However, <br/>
- edits to the site's contents are limited to friends and family. If you'd<br/>
- like an account, please contact me personally.</small></p>
-

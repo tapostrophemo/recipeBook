@@ -4,10 +4,11 @@ Feature: edit recipes
 
   Background:
     Given a user exists with username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
+    And a book exists with owner_id: 1
     And I am logged in with username: "testUser1", password: "Password1"
 
   Scenario: edit recipe details
-    Given a recipe exists with name: "recipe name", category: 4, ingredients: "list of ingredients", instructions: "list of instructions"
+    Given a recipe exists with name: "recipe name", category: 4, book_id: 1, ingredients: "list of ingredients", instructions: "list of instructions"
     When I go to the "recipe/1" page
     And I follow "edit"
     Then the "name" field should contain "recipe name"
@@ -25,7 +26,7 @@ Feature: edit recipes
     And I should see "Instructions other instructions"
 
   Scenario: edit recipe validations
-    Given a recipe exists with name: "recipe name", category: 4, ingredients: "list of ingredients", instructions: "list of instructions"
+    Given a recipe exists with name: "recipe name", category: 4, book_id: 1, ingredients: "list of ingredients", instructions: "list of instructions"
     When I go to the "recipe/1" page
     And I follow "edit"
     And I fill in "name" with " "
@@ -41,13 +42,13 @@ Feature: edit recipes
     And the "instructions" field should contain "instruction 1 2 3"
 
   Scenario: validate that recipe exists before editing
-    Given a recipe exists with name: "recipe name", category: 4
+    Given a recipe exists with name: "recipe name", category: 4, book_id: 1
     When I go to the "edit/2" page
     Then I should see "That recipe was not found"
     And I should see "Table of Contents"
 
   Scenario: must be logged in to edit recipes - no cheating with the back button
-    Given a recipe exists with name: "recipe name", category: 4
+    Given a recipe exists with name: "recipe name", category: 4, book_id: 1
     When I follow "logout"
     And I go to the "edit/1" page
     Then I should see "You must be logged in to edit recipes"

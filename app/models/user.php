@@ -8,12 +8,14 @@ class User extends Model
       return false;
     }
 
-    $salted = sha1($password.$query->row()->password_salt);
-    $query = $this->db->select('id, username, is_admin')
-      ->where('username', $username)
-      ->where('crypted_password', $salted)
-      ->get('users');
-
+    $sql = "
+      SELECT u.id, u.username, u.email, u.is_admin, b.id AS owns_book_id, e.book_id AS edits_book_id
+      FROM users u
+        LEFT JOIN books b ON b.owner_id = u.id
+        LEFT JOIN editors e ON e.user_id = u.id
+      WHERE username = ?
+      AND crypted_password = ?";
+    $query = $this->db->query($sql, array($username, sha1($password.$query->row()->password_salt)));
     return $query->num_rows == 1 ? $query->row() : null;
   }
 

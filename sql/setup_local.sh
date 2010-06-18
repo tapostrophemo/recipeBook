@@ -11,6 +11,8 @@ if [ $PWD != $SCRIPTS_DIR ]; then
 fi
 
 for f in teardown setup delta testdata; do
+  echo -n "Executing $f.sql..."
   $SQL_COMMAND < $f.sql
+  echo "done."
 done
 

@@ -1,4 +1,6 @@
-drop table if exists
-  users,
-  recipes;
+DROP TABLE IF EXISTS
+  editors,
+  recipes,
+  books,
+  users;
 

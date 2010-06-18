@@ -44,6 +44,7 @@ class Recipes extends Controller
       }
 
       $recipeId = $this->Recipe->create( // TODO: check $recipeId; react if null/0
+        $this->session->userdata('current_book_id'),
         $this->input->post('name'),
         $this->input->post('category'),
         $uploadData['file_name'],

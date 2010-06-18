@@ -59,3 +59,6 @@ class User < ActiveRecord::Base
     Authlogic::CryptoProviders::Sha1.stretches = 1
   end
 end
+
+class Book < ActiveRecord::Base
+end

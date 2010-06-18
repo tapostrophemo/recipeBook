@@ -34,8 +34,9 @@ class Recipe extends Model
     return $recipe;
   }
 
-  function create($name, $category, $photo, $ingredients, $instructions) {
+  function create($bookId, $name, $category, $photo, $ingredients, $instructions) {
     $data = array(
+      'book_id' => $bookId,
       'name' => $name,
       'category' => $category,
       'photo' => $photo,

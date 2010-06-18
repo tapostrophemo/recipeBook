@@ -8,7 +8,11 @@
  <li><?=anchor('delete/'.$recipe->id, 'delete')?></li>
 <?php endif; ?>
 
- <li><?=anchor('#', 'toggle color', array('id' => 'colorToggleControl'))?></li>
+ <!--li><?=anchor('#', 'toggle color', array('id' => 'colorToggleControl'))?></li-->
+
+<?php if ($this->session->userdata('is_owner')): ?>
+ <li><?=anchor('/manage', 'manage')?></li>
+<?php endif; ?>
 
 <?php if ($this->session->userdata('is_admin')): ?>
  <li><?=anchor('/admin', 'admin')?></li>
@@ -18,7 +22,7 @@
 
 <?php else: ?>
 
- <li><?=anchor('#', 'toggle color', array('id' => 'colorToggleControl'))?></li>
+ <!--li><?=anchor('#', 'toggle color', array('id' => 'colorToggleControl'))?></li-->
  <li><?=anchor('login', 'login')?></li>
 
 <?php endif; ?>
