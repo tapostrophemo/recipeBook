@@ -91,14 +91,6 @@ $(document).ready(function () {
     return false;
   });
 
-<?php if ($this->session->userdata('is_admin')): ?>
-  $("#addUserControl").click(function () {
-    $("#dialog").load(this.href);
-    $("#dialog").modal();
-    return false;
-  });
-<?php endif; ?>
-
 });
 </script>
 

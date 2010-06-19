@@ -9,7 +9,7 @@ class User extends Model
     }
 
     $sql = "
-      SELECT u.id, u.username, u.email, u.is_admin, b.id AS owns_book_id, e.book_id AS edits_book_id
+      SELECT u.id, u.username, u.email, b.id AS owns_book_id, e.book_id AS edits_book_id
       FROM users u
         LEFT JOIN books b ON b.owner_id = u.id
         LEFT JOIN editors e ON e.user_id = u.id

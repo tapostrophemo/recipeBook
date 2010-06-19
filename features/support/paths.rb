@@ -16,9 +16,6 @@ module NavigationHelpers
     when /the "(recipe|edit|delete)\/(.*)" page/
       '/' + $1 + '/' + $2
 
-    when /the admin menu page/
-      '/admin'
-
     else
       begin
         page_name =~ /the (.*) page/

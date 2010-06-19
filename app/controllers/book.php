@@ -25,7 +25,6 @@ class Book extends Controller
       $currentBookId = isset($this->_user->owns_book_id) ? $this->_user->owns_book_id : $this->_user->edits_book_id;
 
       $this->session->set_userdata('logged_in', true);
-      $this->session->set_userdata('is_admin', $this->_user->is_admin);
       $this->session->set_userdata('is_owner', isset($this->_user->owns_book_id));
       $this->session->set_userdata('current_book_id', $currentBookId);
       $this->session->set_userdata('bookname', $this->Cookbook->getNameById($currentBookId));

@@ -1,6 +1,6 @@
 -- first user/owner
-insert into users(username, email, crypted_password, password_salt, is_admin)
-  values('asdf', 'asdf@asdf.com', sha1('asdfasdfabc123'), 'abc123', 1);
+insert into users(username, email, crypted_password, password_salt)
+  values('asdf', 'asdf@asdf.com', sha1('asdfasdfabc123'), 'abc123');
 
 insert into books(owner_id) values(1);
 

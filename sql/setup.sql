@@ -6,7 +6,6 @@ CREATE TABLE users (
   password_salt     VARCHAR(255) NOT NULL,
   persistence_token VARCHAR(255) NOT NULL,
   perishable_token  VARCHAR(255) NOT NULL,
-  is_admin BOOLEAN DEFAULT FALSE,
   PRIMARY KEY (id),
   UNIQUE KEY email (email),
   UNIQUE KEY username (username)
