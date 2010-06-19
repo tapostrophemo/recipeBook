@@ -33,7 +33,7 @@ class Beta extends Controller
 
   function signup() {
     $this->load->view('pageTemplate', array(
-      'title' => 'Get Your Cookbook',
+      'title' => 'Create Your Cookbook',
       'content' => $this->load->view('site/signup', null, true)));
   }
 }
