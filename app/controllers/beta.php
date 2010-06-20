@@ -36,5 +36,45 @@ class Beta extends Controller
       'title' => 'Create Your Cookbook',
       'content' => $this->load->view('site/signup', null, true)));
   }
+
+  function checkUserAvailability() {
+    if (!$this->form_validation->run('signup_check_user_avail')) {
+      $this->signup();
+    }
+    else {
+      $this->session->set_userdata('signup_username', $this->input->post('username'));
+      $this->session->set_userdata('signup_email', $this->input->post('email'));
+      $this->load->view('pageTemplate', array(
+        'title' => 'Your Online Cookbook',
+        'content' => $this->load->view('site/signup2', null, true)));
+    }
+  }
+
+  function _username_available($junk) {
+    $this->load->model('User');
+    if ($this->User->getByUsername($this->input->post('username'))) {
+      $this->form_validation->set_message('_username_available', 'That username is already taken');
+      return false;
+    }
+    return true;
+  }
+
+  function createAccount() {
+    if (!$this->form_validation->run('signup_create_account')) {
+      $this->load->view('pageTemplate', array(
+        'title' => 'Your Online Cookbook',
+        'content' => $this->load->view('site/signup2', null, true)));
+    }
+    else {
+      $this->load->model('User');
+      $userId = $this->User->create(
+        $this->session->userdata('signup_username'),
+        $this->input->post('password'),
+        $this->session->userdata('signup_email'));
+      $this->load->model('Cookbook');
+      $bookId = $this->Cookbook->create($userId);
+      echo "Your account has been created";
+    }
+  }
 }
 

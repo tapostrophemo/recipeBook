@@ -42,5 +42,10 @@ class User extends Model
   function getAll() {
     return $this->db->select('id, username, email')->get('users')->result();
   }
+
+  function getByUsername($username) {
+    $query = $this->db->select('id, username, email')->where('username', $username)->get('users');
+    return $query->num_rows == 1 ? $query->row() : null;
+  }
 }
 

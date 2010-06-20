@@ -146,7 +146,10 @@ h3 {
   margin: 0 auto;
 }
 #signup table {
+  background-color: #eff;
   margin: 0 auto;
+  padding: 10px 30px;
+  -moz-border-radius: 10px;
 }
 #signup td {
   padding: 2px;

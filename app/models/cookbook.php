@@ -11,5 +11,10 @@ class Cookbook extends Model
     $query = $this->db->query($sql, array($id));
     return $query->num_rows == 1 ? $query->row(0)->username : '';
   }
+
+  function create($ownerId) {
+    $this->db->insert('books', array('owner_id' => $ownerId));
+    return $this->db->insert_id();
+  }
 }
 

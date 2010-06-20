@@ -6,6 +6,8 @@ $route['scaffolding_trigger'] = '';
 $route['random'] = 'beta/random';
 $route['features'] = 'beta/features';
 $route['signup'] = 'beta/signup';
+$route['signup1'] = 'beta/checkUserAvailability';
+$route['signup2'] = 'beta/createAccount';
 
 $route['login'] = 'book/login';
 $route['logout'] = 'book/logout';
