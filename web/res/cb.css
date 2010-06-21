@@ -182,7 +182,7 @@ h3 {
   height: 440px;
 }
 
-p, li, .msg, td, th {
+p, li, .msg, .err, td, th {
   font-family: Arial, sans-serif;
   font-size: 12px;
   line-height: 1.65em;
@@ -208,6 +208,14 @@ label {
 .msg {
   -moz-border-radius: 3px;
   border: 1px solid black;
+  margin: 1em 0;
+  text-align: center;
+}
+.err {
+  -moz-border-radius: 3px;
+  border: 2px solid red;
+  color: black;
+  font-weight: bold;
   margin: 1em 0;
   text-align: center;
 }
