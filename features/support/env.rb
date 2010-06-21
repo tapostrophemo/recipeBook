@@ -61,6 +61,7 @@ class User < ActiveRecord::Base
 end
 
 class Book < ActiveRecord::Base
+  has_many :recipes
 end
 
 class Editor < ActiveRecord::Base

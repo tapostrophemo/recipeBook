@@ -16,7 +16,7 @@ class Site extends Controller
 
   function toc() {
     $this->load->model('Recipe');
-    $recipes = $this->Recipe->getAllNames();
+    $recipes = $this->Recipe->getAllNamesInBook($this->session->userdata('current_book_id'));
 
     $this->load->view('pageTemplate', array(
       'title' => 'Table of Contents',

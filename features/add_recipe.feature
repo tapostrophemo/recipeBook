@@ -1,4 +1,3 @@
-@wip
 Feature: Add recipes
   As a user of the recipeBook site
   I want to add recipes

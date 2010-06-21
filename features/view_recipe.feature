@@ -5,6 +5,7 @@ Feature: view recipes
   Background:
     Given a user exists with username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
     And a book exists with owner_id: 1, plan: "free"
+    And I am logged in with username: "testUser1", password: "Password1"
 
   Scenario: view recipe details
     Given a recipe exists with name: "Peanut Butter and Jelly", book_id: 1, category: 1, ingredients: "2 slices of bread\npeanut butter\njelly (of your favorite flavor)", instructions: "spread peanut butter on one slice of bread\nspread jelly on the other\nsmush the two pieces of bread together and eat"

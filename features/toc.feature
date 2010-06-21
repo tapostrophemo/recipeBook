@@ -8,7 +8,8 @@ Feature: Table of Contents
     And a book exists with owner_id: 1, plan: "free"
 
   Scenario: View recipes alphabetically under various categories in the TOC
-    Given the following recipes exist
+    Given I am logged in with username: "testUser1", password: "Password1"
+    And the following recipes exist
       | name           | category | book_id |
       | Eggs and Bacon | 1        | 1       |
       | Brown Rice     | 2        | 1       |

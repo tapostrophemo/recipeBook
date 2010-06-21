@@ -23,6 +23,14 @@ class Recipe extends Model
     return $this->db->select('id, name, category')->order_by('category, name')->get('recipes')->result();
   }
 
+  function getAllNamesInBook($bookId) {
+    return $this->db
+      ->select('id, name, category')
+      ->where('book_id', $bookId)
+      ->order_by('category, name')
+      ->get('recipes')->result();
+  }
+
   function getById($id) {
     $query = $this->db->select('id, name, category, photo, ingredients, instructions')->where('id', $id)->get('recipes');
     if ($query->num_rows() == 0) {
