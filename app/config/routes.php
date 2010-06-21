@@ -1,16 +1,18 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$route['default_controller'] = 'beta';
+$route['default_controller'] = 'site';
 $route['scaffolding_trigger'] = '';
 
-$route['random'] = 'beta/random';
-$route['features'] = 'beta/features';
-$route['signup'] = 'beta/signup';
-$route['signup1'] = 'beta/checkUserAvailability';
-$route['signup2'] = 'beta/createAccount';
+$route['random'] = 'site/random';
+$route['features'] = 'site/features';
+$route['signup'] = 'site/signup';
+$route['signup1'] = 'site/checkUserAvailability';
+$route['signup2'] = 'site/createAccount';
 
-$route['login'] = 'book/login';
-$route['logout'] = 'book/logout';
+$route['login'] = 'site/login';
+$route['logout'] = 'site/logout';
+
+$route['toc'] = 'site/toc';
 
 $route['recipe/(:num)'] = 'recipes/view/$1';
 $route['add'] = 'recipes/add';

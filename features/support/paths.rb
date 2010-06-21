@@ -8,7 +8,7 @@ module NavigationHelpers
       '/'
 
     when /the table of contents page/
-      '/book'
+      '/toc'
 
     when /the add recipe page/
       '/add'

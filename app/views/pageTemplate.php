@@ -25,7 +25,7 @@
  <h1><?php if (isset($title)) echo $title; ?>&nbsp;</h1>
  <h2>
  <?php if ($this->session->userdata('logged_in')): ?>
-  <?=anchor('/book', $this->session->userdata('bookname') . "'s <em>Slice-up</em> Cookbook")?>
+  <?=anchor('/toc', $this->session->userdata('bookname') . "'s <em>Slice-up</em> Cookbook")?>
  <?php else: ?>
   <?=anchor('', 'The <em>Slice-up</em> Cookbook')?>
  <?php endif; ?>

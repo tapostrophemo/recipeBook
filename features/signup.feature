@@ -14,12 +14,13 @@ Feature: Signup for the application
     And I should see "Small (free)"
     And I should see "Medium ($12.99/year)"
     And I should see "Large ($24.99/year)"
-    When I choose "free" from "plan"
+    When I choose "medium" from "plan"
     And I fill in "password" with "Password1"
     And I press "signupButton"
-    Then I should see "Your account has been created"
+    Then I should be logged in
+    And I should see "Your account has been created"
     And a user should exist with username: "testUser1"
-    And a book should exist with owner_id: 1
+    And a book should exist with owner_id: 1, plan: "medium"
 
   Scenario: validates required fields
     When I signup with username: " ", email: " "

@@ -4,7 +4,7 @@ Feature: edit recipes
 
   Background:
     Given a user exists with username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
-    And a book exists with owner_id: 1
+    And a book exists with owner_id: 1, plan: "free"
     And I am logged in with username: "testUser1", password: "Password1"
 
   Scenario: edit recipe details

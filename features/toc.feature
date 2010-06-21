@@ -5,7 +5,7 @@ Feature: Table of Contents
 
   Background:
     Given a user exists with username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
-    And a book exists with owner_id: 1
+    And a book exists with owner_id: 1, plan: "free"
 
   Scenario: View recipes alphabetically under various categories in the TOC
     Given the following recipes exist

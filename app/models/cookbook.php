@@ -12,8 +12,8 @@ class Cookbook extends Model
     return $query->num_rows == 1 ? $query->row(0)->username : '';
   }
 
-  function create($ownerId) {
-    $this->db->insert('books', array('owner_id' => $ownerId));
+  function create($ownerId, $plan) {
+    $this->db->insert('books', array('owner_id' => $ownerId, 'plan' => $plan));
     return $this->db->insert_id();
   }
 }

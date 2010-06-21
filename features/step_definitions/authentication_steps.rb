@@ -5,3 +5,8 @@ Given /^I (?:am logged in|login) with username: "([^\"]*)", password: "([^\"]*)"
   fill_in "password", :with => password
   click_button("Login")
 end
+
+Then /^I should be logged in/ do
+  Then %{I should see "logout"}
+  But %{I should not see "login"}
+end

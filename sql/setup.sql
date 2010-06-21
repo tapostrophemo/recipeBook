@@ -6,6 +6,8 @@ CREATE TABLE users (
   password_salt     VARCHAR(255) NOT NULL,
   persistence_token VARCHAR(255) NOT NULL,
   perishable_token  VARCHAR(255) NOT NULL,
+  created_at        DATETIME NOT NULL,
+  last_login_at     DATETIME DEFAULT NULL,
   PRIMARY KEY (id),
   UNIQUE KEY email (email),
   UNIQUE KEY username (username)
@@ -14,6 +16,7 @@ CREATE TABLE users (
 CREATE TABLE books (
   id       INT(11) NOT NULL auto_increment,
   owner_id INT(11) NOT NULL,
+  plan     CHAR(16) NOT NULL,
   PRIMARY KEY (ID),
   FOREIGN KEY (owner_id) REFERENCES users(id)
 ) engine = InnoDB;
