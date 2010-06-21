@@ -26,8 +26,8 @@ class Site extends Controller
   function login() {
     if (!$this->form_validation->run('login')) {
       $this->load->view('pageTemplate', array(
-        'title' => 'Login',
-        'content' => $this->load->view('book/login', null, true)));
+        'title' => 'Your Online Cookbook',
+        'content' => $this->load->view('site/login', null, true)));
     }
     else {
       $this->_setLoginSession($this->_user);

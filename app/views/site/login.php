@@ -1,3 +1,5 @@
+<h3>Login</h3>
+
 <?=validation_errors()?>
 
 <?=form_open('login')?>
