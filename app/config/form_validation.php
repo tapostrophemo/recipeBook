@@ -13,14 +13,11 @@ $config = array(
     array('field' => 'instructions', 'label' => 'instructions', 'rules' => 'trim|xss_clean')
   ),
 
-  'signup_check_user_avail' => array(
+  'signup' => array(
     array('field' => 'username', 'label' => 'username', 'rules' => 'trim|required|max_length[255]|callback__username_available|xss_clean'),
-    array('field' => 'email', 'label' => 'email', 'rules' => 'trim|required|valid_email')
-  ),
-
-  'signup_create_account' => array(
+    array('field' => 'email', 'label' => 'email', 'rules' => 'trim|required|valid_email'),
     array('field' => 'password', 'label' => 'password', 'rules' => 'required'),
     array('field' => 'plan', 'label' => 'plan', 'rules' => 'required')
-  ),
+  )
 );
 

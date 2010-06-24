@@ -78,21 +78,25 @@ class Site extends Controller
   }
 
   function signup() {
-    $this->load->view('pageTemplate', array(
-      'title' => 'Create Your Cookbook',
-      'content' => $this->load->view('site/signup', null, true)));
-  }
-
-  function checkUserAvailability() {
-    if (!$this->form_validation->run('signup_check_user_avail')) {
-      $this->signup();
-    }
-    else {
-      $this->session->set_userdata('signup_username', $this->input->post('username'));
-      $this->session->set_userdata('signup_email', $this->input->post('email'));
+    if (!$this->form_validation->run('signup')) {
       $this->load->view('pageTemplate', array(
         'title' => 'Your Online Cookbook',
-        'content' => $this->load->view('site/signup2', null, true)));
+        'content' => $this->load->view('site/signup', null, true)));
+    }
+    else {
+      $this->load->model('User');
+      $userId = $this->User->create(
+        $this->input->post('username'),
+        $this->input->post('password'),
+        $this->input->post('email'));
+      $this->load->model('Cookbook');
+      $bookId = $this->Cookbook->create($userId, $this->input->post('plan'));
+
+      $user = $this->User->validateLogin($this->input->post('username'), $this->input->post('password'));
+      $this->_setLoginSession($user);
+
+      $this->session->set_flashdata('msg', 'Your account has been created');
+      redirect('/toc');
     }
   }
 
@@ -103,30 +107,6 @@ class Site extends Controller
       return false;
     }
     return true;
-  }
-
-  function createAccount() {
-    if (!$this->form_validation->run('signup_create_account')) {
-      $this->load->view('pageTemplate', array(
-        'title' => 'Your Online Cookbook',
-        'content' => $this->load->view('site/signup2', null, true)));
-    }
-    else {
-      $this->load->model('User');
-      $userId = $this->User->create(
-        $this->session->userdata('signup_username'),
-        $this->input->post('password'),
-        $this->session->userdata('signup_email'));
-      $this->load->model('Cookbook');
-      $bookId = $this->Cookbook->create($userId, $this->input->post('plan'));
-
-      $user = $this->User->validateLogin($this->session->userdata('signup_username'), $this->input->post('password'));
-      $this->_setLoginSession($user);
-
-      $this->session->unset_userdata(array('signup_username' => '', 'signup_email' => ''));
-      $this->session->set_flashdata('msg', 'Your account has been created');
-      redirect('/toc');
-    }
   }
 }
 

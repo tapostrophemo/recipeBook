@@ -1,7 +1,12 @@
-When /^I signup with username: "([^\"]*)", email: "([^\"]*)"$/ do |username, email|
+When /^I signup with username: "([^\"]*)", email: "([^\"]*)", password: "([^\"])*", plan: "([^\"]*)"$/ do |username, email, password, plan|
   When %{I go to the home page}
   fill_in "username", :with => username
   fill_in "email", :with => email
+  fill_in "password", :with => password
+  if plan != " "
+    radio_button = field_by_xpath(".//input[@type='radio'][@name='plan'][@value='#{plan}']")
+    radio_button.choose
+  end
   click_button("signupButton")
 end
 

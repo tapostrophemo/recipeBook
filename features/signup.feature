@@ -10,17 +10,13 @@ Feature: Signup for the application
 
   Scenario: happy path
     When I go to the home page
-    And I fill in "username" with "testUser1"
-    And I fill in "email" with "testUser1@somewhere.com"
-    And I press "signupButton"
-    Then I should see "Please enter a password and choose a plan."
-    And I should see "testUser1"
-    And I should see "testUser1@somewhere.com"
-    And I should see "Small (free)"
+    Then I should see "Small (free)"
     And I should see "Medium ($12.99/year)"
     And I should see "Large ($24.99/year)"
-    When I choose "medium" from "plan"
+    When I fill in "username" with "testUser1"
+    And I fill in "email" with "testUser1@somewhere.com"
     And I fill in "password" with "Password1"
+    When I choose "medium" from "plan"
     And I press "signupButton"
     Then I should be logged in
     And I should see "Your account has been created"
@@ -30,28 +26,33 @@ Feature: Signup for the application
     But I should not see "Cold Cereal"
 
   Scenario: validates required fields
-    When I signup with username: " ", email: " "
+    When I signup with username: " ", email: " ", password: " ", plan: " "
     Then I should see "The username field is required"
     And I should see "The email field is required"
+    And I should see "The password field is required"
+    And I should see "The plan field is required"
+
+# TODO: uncomment when silly webrat can find my fields
+#  Scenario: re-fills some fields on validation errors
+#    When I signup with username: "tetsUser1", email: "testUser1@somewhere.com", password: " ", plan: "medium"
+#    Then the "username" field should contain "testUser1"
+#    And the "email" field should contain "testUser1@somewhere.com"
+#    And the "plan" field should contain "medium"
 
   Scenario: validates email
-    When I signup with username: "bob", email: "emailtypo2somewhere.com"
+    When I go to the home page
+    And I fill in "email" with "emailtypo2somewhere.com"
+    And I press "signupButton"
     Then I should see "The email field must contain a valid email address."
 
   Scenario: validates maxlength of username
-    When I signup with username: "0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345", email: "testUser1@somewhere.com"
+    When I go to the home page
+    And I fill in "username" with "0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345"
+    And I press "signupButton"
     Then I should see "The username field can not exceed 255 characters in length."
 
   Scenario: desired username already chosen
     Given a user exists with username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
-    When I signup with username: "testUser1", email: "testUser1@somewhere.com"
+    When I signup with username: "testUser1", email: "testUser1@somewhere.com", password: "Password1", plan: "medium"
     Then I should see "That username is already taken"
-
-  Scenario: validates password on signup screen two
-    When I signup with username: "bob", email: "bob@somewhere.com"
-    And I fill in "password" with " "
-    # ...and I do not select a plan
-    And I press "signupButton"
-    Then I should see "The password field is required"
-    And I should see "The plan field is required"
 
