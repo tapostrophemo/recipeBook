@@ -18,4 +18,7 @@ Feature: Friends and Family - other uses of your cookbook
     And I fill in "email" with "testFriend1@somewhere.com"
     And I press "Send Invitation"
     Then I should see "An invitation was sent to testFriend1@somewhere.com"
+    And a user should exist with username: "testFriend1"
+    And an editor should exist with user_id: 2, book_id: 1
+    # TODO: send email, redirect/refresh screen, etc.
 

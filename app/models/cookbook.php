@@ -16,5 +16,9 @@ class Cookbook extends Model
     $this->db->insert('books', array('owner_id' => $ownerId, 'plan' => $plan));
     return $this->db->insert_id();
   }
+
+  function addEditorToBook($bookId, $userId) {
+    $this->db->insert('editors', array('book_id' => $bookId, 'user_id' => $userId));
+  }
 }
 

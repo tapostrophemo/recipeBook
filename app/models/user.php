@@ -39,6 +39,12 @@ class User extends Model
         getmypid()));
   }
 
+  function createGuest($username, $email) {
+    $tempPassword = $this->_salt();
+    $id = $this->create($username, $tempPassword, $email); // TODO: fail gracefully on error
+    return array('id' => $id, 'temp_password' => $tempPassword);
+  }
+
   function getAll() {
     return $this->db->select('id, username, email')->get('users')->result();
   }

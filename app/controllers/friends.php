@@ -24,6 +24,10 @@ class Friends extends Controller
       }
     }
     else {
+      $this->load->model('User');
+      $guestData = $this->User->createGuest($this->input->post('username'), $this->input->post('email'));
+      $this->load->model('Cookbook');
+      $this->Cookbook->addEditorToBook($this->session->userdata('current_book_id'), $guestData['id']);
       echo 'An invitation was sent to ' . $this->input->post('email');
     }
   }
