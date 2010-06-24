@@ -5,6 +5,8 @@
 <p>Don't wait! Your dinner will never be better! Fill in the form below with your information and
  press the button to begin:</p>
 
+<?=validation_errors()?>
+
 <?=form_open('signup')?>
 <table>
  <tr>
@@ -29,7 +31,6 @@
  </tr>
  <tr>
   <td colspan="2" style="text-align:center">
-   <?=validation_errors()?>
    <input type="image" src="<?=site_url()?>res/signup.png" id="signupButton"/>
   </td>
  </tr>

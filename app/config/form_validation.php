@@ -18,6 +18,11 @@ $config = array(
     array('field' => 'email', 'label' => 'email', 'rules' => 'trim|required|valid_email'),
     array('field' => 'password', 'label' => 'password', 'rules' => 'required'),
     array('field' => 'plan', 'label' => 'plan', 'rules' => 'required')
+  ),
+
+  'friend' => array(
+    array('field' => 'username', 'label' => 'username', 'rules' => 'trim|xss_clean'),
+    array('field' => 'email', 'label' => 'email', 'rules' => 'trim')
   )
 );
 

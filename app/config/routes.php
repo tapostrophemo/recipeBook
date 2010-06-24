@@ -12,6 +12,8 @@ $route['logout'] = 'site/logout';
 
 $route['toc'] = 'site/toc';
 
+$route['manage'] = 'friends';
+
 $route['recipe/(:num)'] = 'recipes/view/$1';
 $route['add'] = 'recipes/add';
 $route['edit/(:num)'] = 'recipes/edit/$1';

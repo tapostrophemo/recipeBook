@@ -85,6 +85,7 @@ class Site extends Controller
     }
     else {
       $this->load->model('User');
+      // TODO: detect successful/failed account creation and behave accordingly
       $userId = $this->User->create(
         $this->input->post('username'),
         $this->input->post('password'),
@@ -95,6 +96,7 @@ class Site extends Controller
       $user = $this->User->validateLogin($this->input->post('username'), $this->input->post('password'));
       $this->_setLoginSession($user);
 
+      // TODO: if user signed up for paid plan, redirect/popup to payment vendor, and don't "finalize" new account until $$ transaction completed
       $this->session->set_flashdata('msg', 'Your account has been created');
       redirect('/toc');
     }
