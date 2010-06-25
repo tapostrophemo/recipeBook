@@ -1,5 +1,6 @@
 module NavigationHelpers
   BASE_URL = 'http://localhost/recipeBook'
+  REWRITE_BASE = '/recipeBook'
 
   def path_to(page_name)
     case page_name
@@ -15,6 +16,9 @@ module NavigationHelpers
 
     when /the "(recipe|edit|delete)\/(.*)" page/
       '/' + $1 + '/' + $2
+
+    when /the manage friends page/
+      '/manage'
 
     else
       begin

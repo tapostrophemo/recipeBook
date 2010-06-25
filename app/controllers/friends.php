@@ -2,7 +2,14 @@
 
 class Friends extends Controller
 {
-  // TODO: disallow non-owner to call this method
+  function __construct() {
+    Controller::__construct();
+
+    if (!$this->session->userdata('is_owner')) {
+      $this->session->set_flashdata('err', 'Only cookbook owners are allowed to view that screen');
+      redirect('/toc');
+    }
+  }
 
   function index() {
     // TODO: lookup this user's friends

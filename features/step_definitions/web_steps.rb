@@ -2,7 +2,7 @@
 # additionally, it contains a few manual replacements of "response.<method...>" with
 # "response_body.<method...", per http://wiki.github.com/aslakhellesoy/cucumber/php
 #
-# I also included BASE_URL in a couple blocks...
+# I also included BASE_URL, REWRITE_BASE in a couple blocks...
 #
 # (all text below the dashed line was generated)
 #-----------------------------------------------------------------------------------
@@ -267,9 +267,9 @@ end
 Then /^(?:|I )should be on (.+)$/ do |page_name|
   current_path = URI.parse(current_url).path
   if current_path.respond_to? :should
-    current_path.should == path_to(page_name)
+    current_path.should == NavigationHelpers::REWRITE_BASE + path_to(page_name)
   else
-    assert_equal path_to(page_name), current_path
+    assert_equal NavigationHelpers::REWRITE_BASE + path_to(page_name), current_path
   end
 end
 

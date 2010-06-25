@@ -87,6 +87,11 @@ class Recipes extends Controller
   }
 
   function delete($id) {
+    if (!$this->session->userdata('is_owner')) {
+      $this->session->set_flashdata('err', 'Only cookbook owners are allowed to delete recipes');
+      redirect('/toc');
+    }
+
     $recipe = $this->_findRecipeValidateExists($id);
     $this->Recipe->delete($id);
 

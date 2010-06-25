@@ -38,7 +38,7 @@
 <div id="dialog" style="display:none"></div>
 
 <div id="content">
-<?=$this->load->view('msg');?>
+<?=$this->load->view('messages');?>
 <?=$content?>
 </div><!-- /#content -->
 

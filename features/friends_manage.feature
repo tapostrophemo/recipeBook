@@ -1,5 +1,4 @@
-@wip
-Feature: Friends and Family - other uses of your cookbook
+Feature: Add friends, family or other users to your cookbook
   As a paying subscriber to the site
   I want to allow friends and family to edit my cookbook
 
