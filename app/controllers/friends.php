@@ -12,8 +12,9 @@ class Friends extends Controller
   }
 
   function index() {
-    // TODO: lookup this user's friends
-    $data = array('friends' => array(), 'hasMore' => false, 'max' => 10);
+    $this->load->model('Cookbook');
+    $friends = $this->Cookbook->getEditors($this->session->userdata('current_book_id'));
+    $data = array('friends' => $friends, 'hasMore' => false, 'max' => 10);
     $this->load->view('pageTemplate', array(
       'title' => 'Manage Your Cookbook',
       'content' => $this->load->view('friends/view', $data, true)));

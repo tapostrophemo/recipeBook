@@ -18,7 +18,16 @@ class Cookbook extends Model
   }
 
   function addEditorToBook($bookId, $userId) {
-    $this->db->insert('editors', array('book_id' => $bookId, 'user_id' => $userId));
+    $this->db->insert('editors', array('book_id' => $bookId, 'user_id' => $userId, 'status' => 'invited'));
+  }
+
+  function getEditors($bookId) {
+    $sql = "
+      SELECT u.id, u.username, e.status
+      FROM editors e
+        JOIN users u ON u.id = e.user_id
+      WHERE e.book_id = ?";
+    return $this->db->query($sql, array($bookId))->result();
   }
 }
 

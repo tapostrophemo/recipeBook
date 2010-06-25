@@ -36,6 +36,7 @@ CREATE TABLE recipes (
 CREATE TABLE editors (
   user_id INT(11) NOT NULL,
   book_id INT(11) NOT NULL,
+  status  VARCHAR(16) DEFAULT NULL,
   PRIMARY KEY (book_id, user_id),
   FOREIGN KEY (user_id) REFERENCES users(id),
   FOREIGN KEY (book_id) REFERENCES books(id)

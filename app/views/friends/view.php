@@ -6,17 +6,23 @@ $total = 0;
 <p>Invite others to edit your cookbook.</p>
 
 <table>
- <tr><td></td><th style="text-align:left">Name</th></tr>
+ <tr>
+  <td></td>
+  <th style="text-align:left">Name</th>
+  <th>Status</th>
+ </tr>
 <?php foreach ($friends as $friend): ?>
  <tr>
   <td><?=++$total?></td>
-  <td><?=$friend->name?></td>
+  <td><?=$friend->username?></td>
+  <td><?=$friend->status?></td>
  </tr>
 <?php endforeach; ?>
 <?php while (++$total <= $max): ?>
  <tr>
   <td><?=$total?></td>
   <td>_________</td>
+  <td></td>
  </tr>
 <?php endwhile; ?>
 </table>
