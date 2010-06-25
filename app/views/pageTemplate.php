@@ -6,7 +6,6 @@
 <link rel="stylesheet" type="text/css" href="<?=base_url()?>res/cb.css"/>
 <script type="text/javascript" src="<?=base_url()?>res/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="<?=base_url()?>res/jquery.simplemodal-1.3.5.min.js"></script>
-<script type="text/javascript" src="<?=base_url()?>res/jquery.cookie-1.0.js"></script>
 <style type="text/css">
 #photo {
 <?php if (isset($photo)): ?>
@@ -51,41 +50,8 @@ Copyright &copy; 2010, Dan Parks. All Rights Reserved.
 
 <script type="text/javascript">
 $(document).ready(function () {
-  var allColorSchemes = ["orangeTricolor", "redBicolor", "greyMonochrome", "rubyRed"];
 
-  if ($.cookie("colorScheme")) {
-    $("body").removeClass(allColorSchemes.join(" "));
-    $("body").addClass(($.cookie("colorScheme")));
-  }
-
-  $("#colorToggleControl").click(function () {
-    var curScheme = $("body").attr("class");
-    $("body").removeClass(allColorSchemes.join(" "));
-
-    var nextScheme = "orangeTricolor";
-    var i;
-    for (i = 0; i < allColorSchemes.length; i++) {
-      if (allColorSchemes[i] == curScheme) {
-        nextScheme = allColorSchemes[(i+1) % allColorSchemes.length];
-        break;
-      }
-    }
-    $("body").addClass(nextScheme);
-    $.cookie("colorScheme", null, {path: "/"});
-    $.cookie("colorScheme", nextScheme, {path: "/"});
-
-    return false;
-  });
-
-  // TODO: factor out common dialog-loading function
-
-  $("#addControl").click(function () {
-    $("#dialog").load(this.href);
-    $("#dialog").modal();
-    return false;
-  });
-
-  $("#editControl").click(function () {
+  $("#addControl, #editControl").click(function () {
     $("#dialog").load(this.href);
     $("#dialog").modal();
     return false;

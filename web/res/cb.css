@@ -13,48 +13,6 @@
 .orangeTricolor #simplemodal-container { border: 3px solid #482; }
 .orangeTricolor #footer { background-color: #402; color: white; }
 
-.redBicolor { background-color: #ccf; }
-.redBicolor #wrapper { background-color: white; }
-.redBicolor #header { background-color: #c00; }
-.redBicolor h1, .redBicolor h2 { color: white; }
-.redBicolor h2 a { color: white; }
-.redBicolor h3 { color: #900; }
-.redBicolor a { color: #900; }
-.redBicolor #controls li { background-color: black; }
-.redBicolor #controls li a { color: white; }
-.redBicolor #simplemodal-overlay { background-color: #eff; }
-.redBicolor #simplemodal-container { background-color: #ddf; }
-.redBicolor #simplemodal-container { border: 3px solid black; }
-.redBicolor #footer { background-color: black; color: white; }
-
-.greyMonochrome { background-color: #ddd; }
-.greyMonochrome #wrapper { background-color: white; }
-.greyMonochrome #header { background-color: #655; }
-.greyMonochrome h1, .greyMonochrome h2 { color: white; }
-.greyMonochrome h2 a { color: white; }
-.greyMonochrome h3 { color: #333; }
-.greyMonochrome a { color: #333; }
-.greyMonochrome #controls li { background-color: black; }
-.greyMonochrome #controls li a { color: white; }
-.greyMonochrome #simplemodal-overlay { background-color: #111; }
-.greyMonochrome #simplemodal-container { background-color: #ddd; }
-.greyMonochrome #simplemodal-container { border: 3px solid black; }
-.greyMonochrome #footer { background-color: black; color: white; }
-
-.rubyRed { background-color: #fdd; }
-.rubyRed #wrapper { background-color: white; }
-.rubyRed #header { background-color: #f00; }
-.rubyRed h1, .rubyRed h2 { color: white; }
-.rubyRed h2 a { color: white; }
-.rubyRed h3 { color: #933; }
-.rubyRed a { color: #933; }
-.rubyRed #controls li { background-color: black; }
-.rubyRed #controls li a { color: white; }
-.rubyRed #simplemodal-overlay { background-color: #544; }
-.rubyRed #simplemodal-container { background-color: #fee; }
-.rubyRed #simplemodal-container { border: 3px solid #e00; }
-.rubyRed #footer { background-color: #f99; color: black; }
-
 /* resets */
 html {
   font-size: 62.5%;
