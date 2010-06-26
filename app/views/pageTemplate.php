@@ -43,7 +43,7 @@
 </div><!-- /#content -->
 
 <div id="footer">
-Copyright &copy; 2010, Dan Parks. All Rights Reserved.
+Copyright &copy; 2010, Loud Rabbit, LLC. All Rights Reserved.
 </div>
 
 </div><!-- /#wrapper -->
