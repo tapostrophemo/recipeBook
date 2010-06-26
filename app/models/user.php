@@ -9,7 +9,7 @@ class User extends Model
     }
 
     $sql = "
-      SELECT u.id, u.username, u.email, b.id AS owns_book_id, e.book_id AS edits_book_id
+      SELECT u.id, u.username, u.email, b.id AS owns_book_id, e.book_id AS edits_book_id, e.status
       FROM users u
         LEFT JOIN books b ON b.owner_id = u.id
         LEFT JOIN editors e ON e.user_id = u.id
@@ -51,6 +51,11 @@ class User extends Model
 
   function getByUsername($username) {
     $query = $this->db->select('id, username, email')->where('username', $username)->get('users');
+    return $query->num_rows == 1 ? $query->row() : null;
+  }
+
+  function getById($id) {
+    $query = $this->db->select('id, username, email')->where('id', $id)->get('users');
     return $query->num_rows == 1 ? $query->row() : null;
   }
 }

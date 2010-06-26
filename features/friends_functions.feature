@@ -30,3 +30,17 @@ Feature: things a friend can do with your cookbook
     When I go to the manage friends page
     Then I should see "Only cookbook owners are allowed to view that screen"
 
+  Scenario: suspended friends are not allowed to edit your cookbook
+    Given a user exists with username: "testFriend2", email: "testFriend2@somewhere.com", password: "Password1"
+    And an editor exists with user_id: 3, book_id: 1, status: "suspended"
+    When I follow "logout"
+    And I am logged in with username: "testFriend2", password: "Password1"
+    Then I should see "Your editing privileges have been suspended. Please contact this cookbook's owner."
+    And I should not see "add recipe"
+    When I follow "recipe name"
+    Then I should not see "edit" within "#controls"
+    When I go to the add recipe page
+    Then I should see "Your account is suspended; you may only view recipes"
+    When I go to the "edit/1" page
+    Then I should see "Your account is suspended; you may only view recipes"
+

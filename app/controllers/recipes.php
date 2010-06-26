@@ -12,6 +12,10 @@ class Recipes extends Controller
       $this->session->set_flashdata('msg', "You must be logged in to $segment recipes");
       redirect('/login');
     }
+    if (in_array($segment, array('add', 'edit')) && $this->session->userdata('is_suspended')) {
+      $this->session->set_flashdata('err', 'Your account is suspended; you may only view recipes.');
+      redirect('/toc');
+    }
   }
 
   function add() {

@@ -57,6 +57,11 @@ class Site extends Controller
       $this->session->set_userdata('is_owner', isset($user->owns_book_id));
       $this->session->set_userdata('current_book_id', $currentBookId);
       $this->session->set_userdata('bookname', $this->Cookbook->getNameById($currentBookId));
+
+      $this->session->set_userdata('is_suspended', $user->status == 'suspended');
+      if ($user->status == 'suspended') {
+        $this->session->set_flashdata('err', "Your editing privileges have been suspended. Please contact this cookbook's owner.");
+      }
   }
 
   function logout() {

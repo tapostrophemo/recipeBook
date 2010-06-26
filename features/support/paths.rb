@@ -14,7 +14,7 @@ module NavigationHelpers
     when /the add recipe page/
       '/add'
 
-    when /the "(recipe|edit|delete)\/(.*)" page/
+    when /the "(recipe|edit|delete|suspend|reactivate)\/(.*)" page/
       '/' + $1 + '/' + $2
 
     when /the manage friends page/

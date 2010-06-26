@@ -39,5 +39,33 @@ class Friends extends Controller
       echo 'An invitation was sent to ' . $this->input->post('email');
     }
   }
+
+  function suspend($friendId) {
+    $this->load->model('Cookbook');
+    if (!$this->Cookbook->isEditorOrOwnerOf($this->session->userdata('current_book_id'), $friendId)) {
+      $this->session->set_flashdata('msg', 'You may not suspend friends that are not yours');
+      redirect('/toc');
+    }
+
+    $this->load->model('User');
+    $user = $this->User->getById($friendId);
+    $this->Cookbook->suspendEditor($this->session->userdata('current_book_id'), $friendId);
+    $this->session->set_flashdata('msg', "'".$user->username."' suspended");
+    redirect('/manage');
+  }
+
+  function reactivate($friendId) {
+    $this->load->model('Cookbook');
+    if (!$this->Cookbook->isEditorOrOwnerOf($this->session->userdata('current_book_id'), $friendId)) {
+      $this->session->set_flashdata('msg', 'You may not re-activate friends that are not yours');
+      redirect('/toc');
+    }
+
+    $this->load->model('User');
+    $user = $this->User->getById($friendId);
+    $this->Cookbook->reactivateEditor($this->session->userdata('current_book_id'), $friendId);
+    $this->session->set_flashdata('msg', "'".$user->username."' re-activated");
+    redirect('/manage');
+  }
 }
 

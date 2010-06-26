@@ -29,5 +29,31 @@ class Cookbook extends Model
       WHERE e.book_id = ?";
     return $this->db->query($sql, array($bookId))->result();
   }
+
+  function isEditorOrOwnerOf($bookId, $userId) {
+    $sql = "
+      SELECT * FROM (
+        SELECT owner_id AS user_id FROM books WHERE id = ?
+        UNION ALL
+        SELECT user_id FROM editors WHERE book_id = ?
+      ) x
+      WHERE user_id = ?";
+    $query = $this->db->query($sql, array($bookId, $bookId, $userId));
+    return $query->num_rows == 1;
+  }
+
+  function suspendEditor($bookId, $userId) {
+    $this->db
+      ->where('book_id', $bookId)
+      ->where('user_id', $userId)
+      ->update('editors', array('status' => 'suspended'));
+  }
+
+  function reactivateEditor($bookId, $userId) {
+    $this->db
+      ->where('book_id', $bookId)
+      ->where('user_id', $userId)
+      ->update('editors', array('status' => 'active'));
+  }
 }
 

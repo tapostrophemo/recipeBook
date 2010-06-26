@@ -10,9 +10,9 @@ $segment = $this->uri->segment(1, '');
  <li><?=anchor('/toc', 'home')?></li>
 <?php endif; ?>
 
-<?php if ($segment == 'toc'): ?>
+<?php if ($segment == 'toc' && !$this->session->userdata('is_suspended')): ?>
  <li><?=anchor('add', 'add recipe', array('id' => 'addControl'))?></li>
-<?php elseif ($segment == 'recipe'): ?>
+<?php elseif ($segment == 'recipe' && !$this->session->userdata('is_suspended')): ?>
  <li><?=anchor('edit/'.$recipe->id, 'edit', array('id' => 'editControl'))?></li>
 
  <?php if ($this->session->userdata('is_owner')): ?>
