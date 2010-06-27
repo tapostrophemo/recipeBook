@@ -1,3 +1,4 @@
+TRUNCATE TABLE marketing;
 TRUNCATE TABLE editors;
 TRUNCATE TABLE recipes;
 TRUNCATE TABLE books;

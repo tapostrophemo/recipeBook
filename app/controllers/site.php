@@ -1,6 +1,6 @@
 <?php
 
-class Site extends Controller
+class Site extends MY_Controller
 {
   var $_user;
 
@@ -97,6 +97,8 @@ class Site extends Controller
         $this->input->post('email'));
       $this->load->model('Cookbook');
       $bookId = $this->Cookbook->create($userId, $this->input->post('plan'));
+      $this->load->model('Marketing');
+      $this->Marketing->markSignup($userId);
 
       $user = $this->User->validateLogin($this->input->post('username'), $this->input->post('password'));
       $this->_setLoginSession($user);

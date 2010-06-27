@@ -66,3 +66,7 @@ end
 
 class Editor < ActiveRecord::Base
 end
+
+class MarketingMetric < ActiveRecord::Base
+  set_table_name "marketing"
+end
