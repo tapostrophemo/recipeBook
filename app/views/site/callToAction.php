@@ -2,7 +2,8 @@
  <h3>Keep Your Recipes Handy</h3>
 
  <p>No more digging through the top shelf looking for your recipe cards. Simply come here to our
-  easy-to-use website to lookup your recipes. We even have a <a href="#">mobile version</a>.</p>
+  easy-to-use website to lookup your recipes. We're even working on a
+  <?=anchor('features', 'mobile version')?>.</p>
 
  <h3>Share Your Cookbook</h3>
 

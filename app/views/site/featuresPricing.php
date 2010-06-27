@@ -5,6 +5,7 @@
   <li>Upload a photo of your recipe (though a photo is not required)</li>
   <li>Invite friends or family members to join along</li>
   <li>Subscribers to paid plans can make their cookbooks private</li>
+  <li>Mobile version (under construction)</li>
  </ul>
 </div>
 
