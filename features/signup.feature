@@ -16,7 +16,7 @@ Feature: Signup for the application
     When I fill in "username" with "testUser1"
     And I fill in "email" with "testUser1@somewhere.com"
     And I fill in "password" with "Password1"
-    When I choose "medium" from "plan"
+    And I choose "medium" from "plan"
     And I press "signupButton"
     Then I should be logged in
     And I should see "Your account has been created"
