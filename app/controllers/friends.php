@@ -36,7 +36,30 @@ class Friends extends Controller
       $guestData = $this->User->createGuest($this->input->post('username'), $this->input->post('email'));
       $this->load->model('Cookbook');
       $this->Cookbook->addEditorToBook($this->session->userdata('current_book_id'), $guestData['id']);
-      echo 'An invitation was sent to ' . $this->input->post('email');
+
+      $owner = $this->User->getByUsername($this->session->userdata('bookname'));
+      $emailData = array(
+        'username' => $this->input->post('username'),
+        'owner' => $owner,
+        'token' => $this->User->createPerishableToken($guestData['id']));
+      $message = $this->load->view('friends/invitation', $emailData, true);
+
+      $this->load->library('email');
+      $this->email->to($this->input->post('email'));
+      $this->email->from('noreply@slice-up.com');
+      $this->email->subject('Invitation to share cookbook at slice-up.com');
+      $this->email->message($message);
+      $content = '<p>';
+      if ($this->email->send()) {
+        $content = 'An invitation was sent to ' . $this->input->post('email');
+        if ($this->email->test_mode) {
+          $content .= "</p>\n<pre>\n$message</pre><p>";
+        }
+      }
+      else {
+        $content = 'Attempt to send email to ' . $this->input->post('email') . ' failed.';
+      }
+      $this->load->view('pageTemplate', array('content' => $content.'</p>'));
     }
   }
 

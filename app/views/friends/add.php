@@ -3,11 +3,11 @@
 <?=form_open('friends/add')?>
 <table>
  <tr>
-  <td><label for="username">Username</label></td>
+  <td><label for="username">Choose Username for Friend</label></td>
   <td><input type="text" name="username"/></td>
  </tr>
  <tr>
-  <td><label for="email">Email</label></td>
+  <td><label for="email">Friend's Email</label></td>
   <td><input type="text" name="email"/></td>
  </tr>
  <tr>

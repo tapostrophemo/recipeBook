@@ -58,5 +58,11 @@ class User extends Model
     $query = $this->db->select('id, username, email')->where('id', $id)->get('users');
     return $query->num_rows == 1 ? $query->row() : null;
   }
+
+  function createPerishableToken($userId) {
+    $token = $this->_salt();
+    $this->db->where('id', $userId)->set('perishable_token', $token)->update('users');
+    return $token;
+  }
 }
 

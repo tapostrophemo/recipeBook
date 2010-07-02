@@ -9,7 +9,6 @@ CREATE TABLE users (
   created_at        DATETIME NOT NULL,
   last_login_at     DATETIME DEFAULT NULL,
   PRIMARY KEY (id),
-  UNIQUE KEY email (email),
   UNIQUE KEY username (username)
 ) engine = InnoDB;
 

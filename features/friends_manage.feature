@@ -17,9 +17,12 @@ Feature: Add friends, family or other users to your cookbook
     And I fill in "email" with "testFriend1@somewhere.com"
     And I press "Send Invitation"
     Then I should see "An invitation was sent to testFriend1@somewhere.com"
+    # NB: email shows only in test environment
+    And I should see "Hi testFriend1."
+    And I should see "Your friend, testUser1 (testUser1@somewhere.com) would like to share"
+    And I should see an invitation link for user: "testFriend1"
     And a user should exist with username: "testFriend1"
     And an editor should exist with user_id: 2, book_id: 1, status: "invited"
-    # TODO: send email, redirect/refresh screen, etc.
 
   Scenario: see my friends
     Given a user exists with username: "testFriend1", email: "testFriend1@somewhere.com", password: "Password1"

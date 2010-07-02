@@ -15,3 +15,12 @@ When /^I choose "([^\"]*)" from "([^\"]*)"$/ do |value, field|
   radio_button = field_by_xpath(".//input[@type='radio'][@name='#{field}'][@value='#{value}']")
   radio_button.choose
 end
+
+Then /^I should see an invitation link for user: "([^"]*)"$/ do |username|
+  regexp = Regexp.new(/\/acceptinvitation\/(.+)/)
+  match = regexp.match(response_body)
+  if match
+    Then %{a user should exist with perishable_token: "#{match[1]}"}
+  end
+  response_body.should contain(regexp)
+end
