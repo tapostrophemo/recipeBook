@@ -51,13 +51,13 @@ class Friends extends Controller
       $this->email->message($message);
       $content = '<p>';
       if ($this->email->send()) {
-        $content = 'An invitation was sent to ' . $this->input->post('email');
+        $content .= 'An invitation was sent to ' . $this->input->post('email');
         if ($this->email->test_mode) {
           $content .= "</p>\n<pre>\n$message</pre><p>";
         }
       }
       else {
-        $content = 'Attempt to send email to ' . $this->input->post('email') . ' failed.';
+        $content .= 'Attempt to send email to ' . $this->input->post('email') . ' failed.';
       }
       $this->load->view('pageTemplate', array('content' => $content.'</p>'));
     }
