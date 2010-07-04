@@ -4,6 +4,15 @@ class Site extends MY_Controller
 {
   var $_user;
 
+  function __construct() {
+    MY_Controller::__construct();
+
+    $segment = $this->uri->segment(1, '');
+    if (($segment == 'toc' || $segment == 'newpass') && !$this->session->userdata('logged_in')) {
+      redirect('/');
+    }
+  }
+
   function index() {
     if ($this->session->userdata('logged_in')) {
       redirect('/toc');
