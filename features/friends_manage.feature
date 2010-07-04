@@ -48,6 +48,24 @@ Feature: Add friends, family or other users to your cookbook
     And I am logged in with username: "testFriend2", password: "newPassword"
     Then I should see "Welcome back, testFriend2"
 
+  Scenario: "add friend" validations
+    Given a user exists with username: "testFriendX", email: "testFriendX@somewhere.com", password: "Password1"
+    When I follow "manage"
+    And I follow "invite friend"
+    When I fill in "username" with "testFriendX"
+    And I fill in "email" with "testFriendX@somewhere.com"
+    And I press "Send Invitation"
+    Then I should see "That username is already taken"
+    When I fill in "username" with " "
+    And I fill in "email" with " "
+    And I press "Send Invitation"
+    Then I should see "The username field is required"
+    And I should see "The email field is required"
+    When I fill in "username" with "testUserY"
+    And I fill in "email" with "invalid2email.com"
+    And I press "Send Invitation"
+    Then I should see "The email field must contain a valid email address"
+
   Scenario: see my friends
     Given a user exists with username: "testFriend1", email: "testFriend1@somewhere.com", password: "Password1"
     And an editor exists with user_id: 2, book_id: 1, status: "active"

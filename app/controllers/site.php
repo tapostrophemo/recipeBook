@@ -119,15 +119,6 @@ class Site extends MY_Controller
     }
   }
 
-  function _username_available($junk) {
-    $this->load->model('User');
-    if ($this->User->getByUsername($this->input->post('username'))) {
-      $this->form_validation->set_message('_username_available', 'That username is already taken');
-      return false;
-    }
-    return true;
-  }
-
   function acceptInvitation($token) {
     $this->load->model('User');
     if ($user = $this->User->resetPerishableToken($token)) {

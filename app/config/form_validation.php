@@ -21,8 +21,8 @@ $config = array(
   ),
 
   'friend' => array(
-    array('field' => 'username', 'label' => 'username', 'rules' => 'trim|xss_clean'),
-    array('field' => 'email', 'label' => 'email', 'rules' => 'trim')
+    array('field' => 'username', 'label' => 'username', 'rules' => 'trim|required|max_length[255]|callback__username_available|xss_clean'),
+    array('field' => 'email', 'label' => 'email', 'rules' => 'trim|required|valid_email')
   ),
 
   'update_password' => array(

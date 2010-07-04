@@ -1,6 +1,6 @@
 <?php
 
-class Friends extends Controller
+class Friends extends MY_Controller
 {
   function __construct() {
     Controller::__construct();
