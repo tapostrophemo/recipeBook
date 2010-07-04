@@ -64,6 +64,16 @@ class Friends extends MY_Controller
     }
   }
 
+  function _within_plan_limits() {
+    $this->load->model('Cookbook');
+    $plan = $this->Cookbook->getPlanById($this->session->userdata('current_book_id'));
+    if (!$plan->can_add_friends) {
+      $this->form_validation->set_message('_within_plan_limits', 'Your account is limited to '.$plan->num_friends_allowed.' friend(s).');
+      return false;
+    }
+    return true;
+  }
+
   function suspend($friendId) {
     $this->load->model('Cookbook');
     if (!$this->Cookbook->isEditorOrOwnerOf($this->session->userdata('current_book_id'), $friendId)) {

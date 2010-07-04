@@ -30,3 +30,17 @@ When /^I logout and "([^"]*)" accepts my invitation$/ do |username|
   When %{I follow "logout"}
   And %{I go to accept an invitation with token "#{token}"}
 end
+
+Given /^I add (\d+) friends to book (\d+)$/ do |num_friends, book_id|
+  # TODO: optimize this by direct DB insert, instead of going through all the screens
+  (1..num_friends.to_i).each do |i|
+    j = i + 1
+    When %{I follow "manage"}
+    And %{I follow "invite friend"}
+    And %{I fill in "username" with "testFriend#{i}"}
+    And %{I fill in "email" with "testFriend#{i}@somewhere.com"}
+    And %{I press "Send Invitation"}
+    Then %{a user should exist with username: "testFriend#{i}", email: "testFriend#{i}@somewhere.com"}
+    And %{an editor should exist with user_id: #{j}, book_id: #{book_id}}
+  end
+end
