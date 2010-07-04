@@ -39,8 +39,6 @@ $total = 0;
 <?php endwhile; ?>
 </table>
 
-<p><?=anchor('friends/add', 'Invite friend?', array('id' => 'addControl'))?></a></p>
-
 </div>
 
 <div style="clear:both"></div>

@@ -2,7 +2,7 @@
 
 <?=validation_errors()?>
 
-<?=form_open('login')?>
+<?=form_open('login', array('name' => 'loginForm'))?>
 <table>
  <tr>
   <td><label for="username">Username</label></td>
@@ -17,4 +17,8 @@
  </tr>
 </table>
 </form>
+
+<script type="text/javascript">
+document.forms["loginForm"].elements["username"].focus();
+</script>
 

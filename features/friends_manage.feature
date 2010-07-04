@@ -12,7 +12,7 @@ Feature: Add friends, family or other users to your cookbook
     Then I should see "1"
     And I should see "2"
     And I should see "10"
-    When I follow "Invite friend?"
+    When I follow "invite friend"
     And I fill in "username" with "testFriend1"
     And I fill in "email" with "testFriend1@somewhere.com"
     And I press "Send Invitation"
