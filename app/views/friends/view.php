@@ -41,5 +41,3 @@ $total = 0;
 
 </div>
 
-<div style="clear:both"></div>
-

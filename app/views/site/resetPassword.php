@@ -1,13 +1,13 @@
 <div id="signup">
 
-<h3>Reset Password</h3>
+<p>Please fill in both fields when updating/resetting your password.</p>
 
 <?=validation_errors()?>
 
 <?=form_open('newpass')?>
 <table>
  <tr>
-  <td><label for="password">Password</label></td>
+  <td><label for="password">New Password</label></td>
   <td><input type="password" name="password"/></td>
  </tr>
  <tr>

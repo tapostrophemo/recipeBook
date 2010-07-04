@@ -26,8 +26,8 @@ $config = array(
   ),
 
   'update_password' => array(
-    array('field' => 'password', 'label' => 'password', 'rules' => ''),
-    array('field' => 'passconf', 'label' => 'password confirmation', 'rules' => '')
+    array('field' => 'password', 'label' => 'password', 'rules' => 'required'),
+    array('field' => 'passconf', 'label' => 'password confirmation', 'rules' => 'required|matches[password]')
   )
 );
 

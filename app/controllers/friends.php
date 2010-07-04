@@ -17,7 +17,8 @@ class Friends extends Controller
     $data = array('friends' => $friends, 'hasMore' => false, 'max' => 10);
     $this->load->view('pageTemplate', array(
       'title' => 'Manage Your Cookbook',
-      'content' => $this->load->view('friends/view', $data, true)));
+      'content' => $this->load->view('friends/view', $data, true) .
+                   $this->load->view('site/userSettings', null, true)));
   }
 
   function add() {

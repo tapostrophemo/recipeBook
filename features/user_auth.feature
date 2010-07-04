@@ -47,3 +47,17 @@ Feature: User Authentication
     And I press "Login"
     Then I should see "Invalid username or password"
 
+  Scenario: password reset validations
+    Given I am logged in with username: "testUser1", password: "Password1"
+    When I follow "manage"
+    And I follow "reset password"
+    And I fill in "password" with " "
+    And I fill in "passconf" with " "
+    And I press "Update Password"
+    Then I should see "The password field is required"
+    And I should see "The password confirmation field is required"
+    When I fill in "password" with "newPassword"
+    And I fill in "passconf" with "xnewPassword"
+    And I press "Update Password"
+    Then I should see "The password confirmation field does not match the password field"
+
