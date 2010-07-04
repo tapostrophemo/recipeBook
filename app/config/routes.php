@@ -17,6 +17,8 @@ $route['acceptinvitation/(:any)'] = 'site/acceptInvitation/$1';
 $route['suspend/(:num)'] = 'friends/suspend/$1';
 $route['reactivate/(:num)'] = 'friends/reactivate/$1';
 
+$route['newpass'] = 'site/newpass';
+
 $route['recipe/(:num)'] = 'recipes/view/$1';
 $route['add'] = 'recipes/add';
 $route['edit/(:num)'] = 'recipes/edit/$1';

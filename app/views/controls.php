@@ -6,7 +6,7 @@ $segment = $this->uri->segment(1, '');
 
 <?php if ($this->session->userdata('logged_in')): ?>
 
-<?php if ($segment != 'toc'): ?>
+<?php if ($segment != 'toc' && $segment != 'newpass'): ?>
  <li><?=anchor('/toc', 'home')?></li>
 <?php endif; ?>
 

@@ -23,6 +23,11 @@ $config = array(
   'friend' => array(
     array('field' => 'username', 'label' => 'username', 'rules' => 'trim|xss_clean'),
     array('field' => 'email', 'label' => 'email', 'rules' => 'trim')
+  ),
+
+  'update_password' => array(
+    array('field' => 'password', 'label' => 'password', 'rules' => ''),
+    array('field' => 'passconf', 'label' => 'password confirmation', 'rules' => '')
   )
 );
 

@@ -23,6 +23,10 @@ module NavigationHelpers
     when /accept an invitation with token "(.+)"/
       '/acceptinvitation/' + $1
 
+    when /accept an invitation for user "(.+)"/
+      user = User.find_by_username($1)
+      '/acceptinvitation/' + user.perishable_token
+
     else
       begin
         page_name =~ /the (.*) page/

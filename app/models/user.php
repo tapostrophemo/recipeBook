@@ -76,5 +76,13 @@ class User extends Model
     }
     return $user;
   }
+
+  function updatePassword($userid, $password) {
+    $salt = $this->_salt();
+    $this->db->where('id', $userid)
+      ->set('crypted_password', sha1($password.$salt))
+      ->set('password_salt', $salt)
+      ->update('users');
+  }
 }
 

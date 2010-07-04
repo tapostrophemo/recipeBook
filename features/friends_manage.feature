@@ -25,8 +25,28 @@ Feature: Add friends, family or other users to your cookbook
     And an editor should exist with user_id: 2, book_id: 1, status: "invited"
     When I logout and "testFriend1" accepts my invitation
     Then a user should exist with username: "testFriend1", perishable_token: ""
-    And I should see "Thanks for visiting, testFriend1. Please set your password before continuing."
+
+  Scenario: friend invitations must have a valid token
+    When I follow "logout"
+    And I go to accept an invitation with token "thisIsNotAValidToken"
+    Then I should see "That invitation link is invalid or expired"
+    And I should not be logged in
+
+  Scenario: friends must set their password when they first accept an invitation
+    Given a user exists with username: "testFriend2", email: "testFriend2@somewhere.com", password: "notARealPassword"
+    And an editor exists with book_id: 1, user_id: 2
+    When I follow "logout"
+    And I go to accept an invitation for user "testFriend2"
+    Then I should see "Thanks for visiting, testFriend2. Please set your password before continuing."
     And I should be logged in
+    But I should not see "home"
+    When I fill in "password" with "newPassword"
+    And I fill in "passconf" with "newPassword"
+    And I press "Update Password"
+    Then I should see "Your password has been saved"
+    When I follow "logout"
+    And I am logged in with username: "testFriend2", password: "newPassword"
+    Then I should see "Welcome back, testFriend2"
 
   Scenario: see my friends
     Given a user exists with username: "testFriend1", email: "testFriend1@somewhere.com", password: "Password1"

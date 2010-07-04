@@ -53,6 +53,7 @@ class Site extends MY_Controller
 
       $currentBookId = isset($user->owns_book_id) ? $user->owns_book_id : $user->edits_book_id;
 
+      $this->session->set_userdata('userid', $user->id);
       $this->session->set_userdata('logged_in', true);
       $this->session->set_userdata('is_owner', isset($user->owns_book_id));
       $this->session->set_userdata('current_book_id', $currentBookId);
@@ -120,9 +121,29 @@ class Site extends MY_Controller
 
   function acceptInvitation($token) {
     $this->load->model('User');
-    $user = $this->User->resetPerishableToken($token);
-    $this->_setLoginSession($user);
-    $this->load->view('pageTemplate', array('content' => '<p>Thanks for visiting, testFriend1. Please set your password before continuing.</p>'));
+    if ($user = $this->User->resetPerishableToken($token)) {
+      $this->_setLoginSession($user);
+      $this->session->set_flashdata('msg', 'Thanks for visiting, '.$user->username.'. Please set your password before continuing.');
+      redirect('/newpass');
+    }
+    else {
+      $this->session->set_flashdata('err', 'That invitation link is invalid or expired.');
+      redirect('/');
+    }
+  }
+
+  function newpass() {
+    if (!$this->form_validation->run('update_password')) {
+      $this->load->view('pageTemplate', array(
+        'title' => 'Reset Password',
+        'content' => $this->load->view('site/resetPassword', null, true)));
+    }
+    else {
+      $this->load->model('User');
+      $this->User->updatePassword($this->session->userdata('userid'), $this->input->post('password'));
+      $this->session->set_flashdata('msg', 'Your password has been saved');
+      redirect('/toc');
+    }
   }
 }
 

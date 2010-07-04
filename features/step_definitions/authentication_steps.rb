@@ -10,3 +10,8 @@ Then /^I should be logged in/ do
   Then %{I should see "logout"}
   But %{I should not see "login"}
 end
+
+Then /^I should not be logged in/ do
+  Then %{I should see "login"}
+  But %{I should not see "logout"}
+end
