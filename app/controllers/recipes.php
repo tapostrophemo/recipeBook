@@ -59,6 +59,16 @@ class Recipes extends Controller
     }
   }
 
+  function _within_plan_limits() {
+    $this->load->model('Cookbook');
+    $plan = $this->Cookbook->getPlanById($this->session->userdata('current_book_id'));
+    if (!$plan->can_add_recipes) {
+      $this->form_validation->set_message('_within_plan_limits', 'Your account is limited to '.$plan->num_recipes_allowed.' recipes.');
+      return false;
+    }
+    return true;
+  }
+
   function view($id) {
     $recipe = $this->_findRecipeValidateExists($id);
     $this->load->view('pageTemplate', array(

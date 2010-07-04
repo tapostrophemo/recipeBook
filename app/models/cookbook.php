@@ -14,9 +14,10 @@ class Cookbook extends Model
 
   function getPlanById($id) {
     $sql = "
-      SELECT b.id, b.plan, count(e.user_id) AS num_friends
+      SELECT b.id, b.plan, Count(e.user_id) AS num_friends, Count(r.id) AS num_recipes
       FROM books b
         LEFT JOIN editors e ON e.book_id = b.id
+        LEFT JOIN recipes r ON r.book_id = b.id
       WHERE b.id = ?
       GROUP BY b.id, b.plan";
     $query = $this->db->query($sql, array($id));
@@ -25,14 +26,20 @@ class Cookbook extends Model
     case "free":
       $row->num_friends_allowed = 1;
       $row->can_add_friends = $row->num_friends < 1;
+      $row->num_recipes_allowed = 10;
+      $row->can_add_recipes = $row->num_recipes < 10;
       break;
     case "medium":
       $row->num_friends_allowed = 10;
       $row->can_add_friends = $row->num_friends < 10;
+      $row->num_recipes_allowed = 100;
+      $row->can_add_recipes = $row->num_recipes < 100;
       break;
     case "large";
       $row->num_friends_allowed = "unlimited";
       $row->can_add_friends = true;
+      $row->num_recipes_allowed = "unlimited";
+      $row->can_add_recipes = true;
       break;
     }
     return $row;
