@@ -13,6 +13,7 @@ $route['logout'] = 'site/logout';
 $route['toc'] = 'site/toc';
 
 $route['manage'] = 'friends';
+$route['acceptinvitation/(:any)'] = 'site/acceptInvitation/$1';
 $route['suspend/(:num)'] = 'friends/suspend/$1';
 $route['reactivate/(:num)'] = 'friends/reactivate/$1';
 

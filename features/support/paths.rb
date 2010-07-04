@@ -20,6 +20,9 @@ module NavigationHelpers
     when /the manage friends page/
       '/manage'
 
+    when /accept an invitation with token "(.+)"/
+      '/acceptinvitation/' + $1
+
     else
       begin
         page_name =~ /the (.*) page/

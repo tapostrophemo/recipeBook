@@ -23,6 +23,10 @@ Feature: Add friends, family or other users to your cookbook
     And I should see an invitation link for user: "testFriend1"
     And a user should exist with username: "testFriend1"
     And an editor should exist with user_id: 2, book_id: 1, status: "invited"
+    When I logout and "testFriend1" accepts my invitation
+    Then a user should exist with username: "testFriend1", perishable_token: ""
+    And I should see "Thanks for visiting, testFriend1. Please set your password before continuing."
+    And I should be logged in
 
   Scenario: see my friends
     Given a user exists with username: "testFriend1", email: "testFriend1@somewhere.com", password: "Password1"

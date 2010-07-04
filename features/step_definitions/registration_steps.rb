@@ -24,3 +24,9 @@ Then /^I should see an invitation link for user: "([^"]*)"$/ do |username|
   end
   response_body.should contain(regexp)
 end
+
+When /^I logout and "([^"]*)" accepts my invitation$/ do |username|
+  token = Regexp.new(/\/acceptinvitation\/(.+)/).match(response_body)[1]
+  When %{I follow "logout"}
+  And %{I go to accept an invitation with token "#{token}"}
+end

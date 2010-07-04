@@ -117,5 +117,12 @@ class Site extends MY_Controller
     }
     return true;
   }
+
+  function acceptInvitation($token) {
+    $this->load->model('User');
+    $user = $this->User->resetPerishableToken($token);
+    $this->_setLoginSession($user);
+    $this->load->view('pageTemplate', array('content' => '<p>Thanks for visiting, testFriend1. Please set your password before continuing.</p>'));
+  }
 }
 
