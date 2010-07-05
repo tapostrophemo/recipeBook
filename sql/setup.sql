@@ -51,4 +51,10 @@ CREATE TABLE marketing (
   landing_page    VARCHAR(255),
   PRIMARY KEY (id)
 );
+ALTER TABLE marketing ADD activity VARCHAR(20);
+ALTER TABLE marketing
+  MODIFY created_at TIMESTAMP
+  DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE marketing
+  MODIFY updated_at TIMESTAMP NOT NULL;
 
