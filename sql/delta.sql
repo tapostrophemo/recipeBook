@@ -1,11 +1,9 @@
-CREATE TABLE marketing (
-  id              INT(11) NOT NULL auto_increment,
-  cookie_id       VARCHAR(36),
-  account_id      INT(11),
-  created_at      TIMESTAMP,
-  updated_at      TIMESTAMP,
-  referring_url   VARCHAR(255),
-  landing_page    VARCHAR(255),
-  PRIMARY KEY (id)
-);
+ALTER TABLE marketing ADD activity VARCHAR(20);
+
+ALTER TABLE marketing
+  MODIFY created_at TIMESTAMP
+  DEFAULT CURRENT_TIMESTAMP;
+
+ALTER TABLE marketing
+  MODIFY updated_at TIMESTAMP NOT NULL;
 

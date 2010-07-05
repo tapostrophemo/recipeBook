@@ -41,6 +41,10 @@ class Site extends MY_Controller
     else {
       $this->_setLoginSession($this->_user);
       $this->session->set_flashdata('msg', 'Welcome back, '.$this->_user->username);
+
+      $this->load->model('Marketing');
+      $this->Marketing->markLogin();
+
       redirect('/toc');
     }
   }
@@ -58,20 +62,20 @@ class Site extends MY_Controller
   }
 
   function _setLoginSession($user) {
-      $this->load->model('Cookbook');
+    $this->load->model('Cookbook');
 
-      $currentBookId = isset($user->owns_book_id) ? $user->owns_book_id : $user->edits_book_id;
+    $currentBookId = isset($user->owns_book_id) ? $user->owns_book_id : $user->edits_book_id;
 
-      $this->session->set_userdata('userid', $user->id);
-      $this->session->set_userdata('logged_in', true);
-      $this->session->set_userdata('is_owner', isset($user->owns_book_id));
-      $this->session->set_userdata('current_book_id', $currentBookId);
-      $this->session->set_userdata('bookname', $this->Cookbook->getNameById($currentBookId));
+    $this->session->set_userdata('userid', $user->id);
+    $this->session->set_userdata('logged_in', true);
+    $this->session->set_userdata('is_owner', isset($user->owns_book_id));
+    $this->session->set_userdata('current_book_id', $currentBookId);
+    $this->session->set_userdata('bookname', $this->Cookbook->getNameById($currentBookId));
 
-      $this->session->set_userdata('is_suspended', $user->status == 'suspended');
-      if ($user->status == 'suspended') {
-        $this->session->set_flashdata('err', "Your editing privileges have been suspended. Please contact this cookbook's owner.");
-      }
+    $this->session->set_userdata('is_suspended', $user->status == 'suspended');
+    if ($user->status == 'suspended') {
+      $this->session->set_flashdata('err', "Your editing privileges have been suspended. Please contact this cookbook's owner.");
+    }
   }
 
   function logout() {
