@@ -23,10 +23,10 @@
  </tr>
  <tr>
   <td><label for="plan">Choose Plan</label></td>
-  <td>
-   <label for="free"><input type="radio" name="plan" value="free"<?=set_radio('plan', 'free')?>/> Small (free)</label> 10 recipes, you and 1 friend<br/>
-   <label for="medium"><input type="radio" name="plan" value="medium"<?=set_radio('plan', 'medium')?>/> Medium ($12.99/year)</label> 100 recipes, 10 friends<br/>
-   <label for="large"><input type="radio" name="plan" value="large"<?=set_radio('plan', 'large')?>/> Large ($24.99/year)</label> Unlimited recipes, unlimited friends
+  <td class="radioGroup">
+   <p><input type="radio" name="plan" value="free"<?=set_radio('plan', 'free')?>/> <label for="free">Small (free)</label> 10 recipes, you and 1 friend</p>
+   <p><input type="radio" name="plan" value="medium"<?=set_radio('plan', 'medium')?>/> <label for="medium">Medium ($12.99/year)</label> 100 recipes, 10 friends</p>
+   <p><input type="radio" name="plan" value="large"<?=set_radio('plan', 'large')?>/> <label for="large">Large ($24.99/year)</label> Unlimited recipes, unlimited friends</p>
   </td>
  </tr>
  <tr>

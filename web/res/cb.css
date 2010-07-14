@@ -112,6 +112,12 @@ h3 {
 #signup td {
   padding: 2px;
 }
+.radioGroup p {
+  line-height: 1.2em;
+  margin: 0 0 0.25em 0;
+  padding-left: 2em;
+  text-indent: -2em;
+}
 
 #controls li {
   -moz-border-radius-bottomleft: 4px;
@@ -142,7 +148,7 @@ h3 {
 
 p, li, .msg, .err, td, th {
   font-family: Arial, sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.65em;
 }
 ul {
