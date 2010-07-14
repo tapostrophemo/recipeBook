@@ -3,7 +3,7 @@
 class Friends extends MY_Controller
 {
   function __construct() {
-    Controller::__construct();
+    MY_Controller::__construct();
 
     if (!$this->session->userdata('is_owner')) {
       $this->session->set_flashdata('err', 'Only cookbook owners are allowed to view that screen');
