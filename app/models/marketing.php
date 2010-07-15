@@ -34,5 +34,13 @@ class Marketing extends Model
       'updated_at' => mdate('%Y-%m-%d %H:%i:%s'));
     $this->db->where('cookie_id', $cookie)->update('marketing', $data);
   }
+
+  function getReport() {
+    $sql = "
+      SELECT m.*, u.id AS user_id, u.username, u.email, u.created_at AS registration_date
+      FROM marketing m
+        LEFT JOIN users u ON u.id = m.account_id";
+    return $this->db->query($sql)->result();
+  }
 }
 

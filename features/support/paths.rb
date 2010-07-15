@@ -27,6 +27,9 @@ module NavigationHelpers
       user = User.find_by_username($1)
       '/acceptinvitation/' + user.perishable_token
 
+    when /the admin page/
+      '/admin'
+
     else
       begin
         page_name =~ /the (.*) page/

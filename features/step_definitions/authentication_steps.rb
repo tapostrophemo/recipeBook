@@ -15,3 +15,10 @@ Then /^I should not be logged in/ do
   Then %{I should see "login"}
   But %{I should not see "logout"}
 end
+
+Given /^I am logged in with admin username: "([^"]*)", password: "([^"]*)"$/ do |username, password|
+  Given %{I go to the admin page}
+  fill_in "username", :with => username
+  fill_in "password", :with => password
+  click_button("Login")
+end

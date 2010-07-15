@@ -60,6 +60,16 @@ class User < ActiveRecord::Base
   end
 end
 
+class AdminUser < ActiveRecord::Base
+  acts_as_authentic do |authconfig|
+    authconfig.require_password_confirmation = false
+
+    authconfig.crypto_provider = Authlogic::CryptoProviders::Sha1
+    Authlogic::CryptoProviders::Sha1.join_token = ""
+    Authlogic::CryptoProviders::Sha1.stretches = 1
+  end
+end
+
 class Book < ActiveRecord::Base
   has_many :recipes
 end

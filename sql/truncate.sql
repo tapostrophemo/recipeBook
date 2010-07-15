@@ -3,4 +3,5 @@ TRUNCATE TABLE editors;
 TRUNCATE TABLE recipes;
 TRUNCATE TABLE books;
 TRUNCATE TABLE users;
+TRUNCATE TABLE admin_users;
 

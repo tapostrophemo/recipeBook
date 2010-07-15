@@ -30,6 +30,13 @@ $config = array(
   'update_password' => array(
     array('field' => 'password', 'label' => 'password', 'rules' => 'required'),
     array('field' => 'passconf', 'label' => 'password confirmation', 'rules' => 'required|matches[password]')
+  ),
+
+  // --- admin stuff below ---
+
+  'admin_login' => array(
+    array('field' => 'username', 'label' => 'username', 'rules' => 'trim'),
+    array('field' => 'password', 'label' => 'password', 'rules' => 'callback__validate_admin_login'),
   )
 );
 
