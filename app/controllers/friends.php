@@ -9,6 +9,8 @@ class Friends extends MY_Controller
       $this->session->set_flashdata('err', 'Only cookbook owners are allowed to view that screen');
       redirect('/toc');
     }
+
+    $this->load->helper('http_caching');
   }
 
   function index() {
@@ -24,6 +26,7 @@ class Friends extends MY_Controller
   function add() {
     if (!$this->form_validation->run('friend')) {
       if ($this->input->is_ajax()) {
+        nocache_response();
         $this->load->view('friends/add');
       }
       else {

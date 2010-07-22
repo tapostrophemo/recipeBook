@@ -4,23 +4,26 @@ class Recipes extends Controller
 {
   function __construct() {
     Controller::__construct();
-    $this->load->model('Recipe');
-    $this->load->library('user_agent');
 
     $segment = $this->uri->segment(1);
     if (in_array($segment, array('add', 'edit', 'delete')) && !$this->session->userdata('logged_in')) {
       $this->session->set_flashdata('msg', "You must be logged in to $segment recipes");
       redirect('/login');
     }
-    if (in_array($segment, array('add', 'edit')) && $this->session->userdata('is_suspended')) {
+    if (in_array($segment, array('add', 'edit' /*TODO: deletes*/)) && $this->session->userdata('is_suspended')) {
       $this->session->set_flashdata('err', 'Your account is suspended; you may only view recipes.');
       redirect('/toc');
     }
+
+    $this->load->model('Recipe');
+    $this->load->library('user_agent');
+    $this->load->helper('http_caching');
   }
 
   function add() {
     if (!$this->form_validation->run('recipe')) {
       if ($this->input->is_ajax()) {
+        nocache_response();
         $this->load->view('recipes/add');
       }
       else {
@@ -81,6 +84,7 @@ class Recipes extends Controller
     $recipe = $this->_findRecipeValidateExists($id);
     if (!$this->form_validation->run('recipe')) {
       if ($this->input->is_ajax()) {
+        nocache_response();
         $this->load->view('recipes/edit', array('recipe' => $recipe));
       }
       else {
