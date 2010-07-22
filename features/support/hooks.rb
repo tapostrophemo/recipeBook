@@ -1,3 +1,3 @@
 Before do
-  run "mysql -u recipebook_user -pbob recipebook < sql/truncate.sql"
+  run "mysql -u #{@@db_user} -p#{@@db_pass} #{@@db_name} < sql/truncate.sql"
 end

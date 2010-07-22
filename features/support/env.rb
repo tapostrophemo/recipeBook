@@ -37,14 +37,23 @@ end
 
 require 'active_record'
 
+@db_config_path = File.dirname(__FILE__)+"/../../app/config/database.php"
+@db_config = File.read(@db_config_path).split("\n")
+@db_config.split("\n") do |line|
+  if line =~ /username.*'([^']+)'/ then @@db_user = $1 end
+  if line =~ /password.*'([^']+)'/ then @@db_pass = $1 end
+  if line =~ /database.*'([^']+)'/ then @@db_name = $1 end
+  if line =~ /hostname.*'([^']+)'/ then @@db_host = $1 end
+  if line =~ /dbdriver.*'([^']+)'/ then @@db_driver = $1 end
+end
+
 # via http://blog.aizatto.com/2007/05/21/activerecord-without-rails/
-# TODO: read/parse connection info from app/config/database.php
 ActiveRecord::Base.establish_connection(
-  :adapter => 'mysql',
-  :database => 'recipebook',
-  :username => 'recipebook_user',
-  :password => 'bob',
-  :host => 'localhost')
+  :adapter => "#{@@db_driver}",
+  :database => "#{@@db_name}",
+  :username => "#{@@db_user}",
+  :password => "#{@@db_pass}",
+  :host => "#{@@db_host}")
 
 class Recipe < ActiveRecord::Base
 end
