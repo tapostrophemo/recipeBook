@@ -7,7 +7,7 @@ Feature: Signup for the application
     Given a user exists with username: "testUser2", email: "testUser2@somewhere.com", password: "Password1"
     And a book exists with owner_id: 1, plan: "free"
     And a recipe exists with book_id: 1, name: "Cold Cereal"
-
+@wip
   Scenario: happy path
     When I go to the home page
     Then I should see "Small (free)"
@@ -21,6 +21,7 @@ Feature: Signup for the application
     Then I should be logged in
     And I should see "Your account has been created"
     And a user should exist with username: "testUser1"
+    And the "created_at" field for user "testUser1" should be today
     And a book should exist with owner_id: 2, plan: "medium"
     And I should have 0 recipes in book: 2
     But I should not see "Cold Cereal"

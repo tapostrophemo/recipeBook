@@ -44,3 +44,11 @@ Given /^I add (\d+) friends to book (\d+)$/ do |num_friends, book_id|
     And %{an editor should exist with user_id: #{j}, book_id: #{book_id}}
   end
 end
+
+Then /^the "([^"]*)" field for user "([^"]*)" should be today$/ do |fieldname, username|
+  user = User.find_by_username(username)
+  now = Time.now
+  user.send(fieldname).year.should == now.year
+  user.send(fieldname).month.should == now.month
+  user.send(fieldname).day.should == now.day
+end

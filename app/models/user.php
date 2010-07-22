@@ -10,7 +10,13 @@ class User extends Model
 
     $query = $this->db->query('SELECT id FROM users WHERE username = ? AND crypted_password = ?',
       array($username, sha1($password.$query->row()->password_salt)));
-    return $query->num_rows == 1 ? $this->getById($query->row()->id) : null;
+    if ($query->num_rows != 1) {
+      return null;
+    }
+
+    $userid = $query->row()->id;
+    $this->db->set('last_login_at', $this->_now())->where('id', $userid)->update('users');
+    return $this->getById($userid);
   }
 
   function create($username, $password, $email) {
@@ -19,7 +25,8 @@ class User extends Model
       'username' => $username,
       'crypted_password' => sha1($password . $salt),
       'password_salt' => $salt,
-      'email' => $email);
+      'email' => $email,
+      'created_at' => $this->_now());
     $this->db->insert('users', $data);
     return $this->db->insert_id();
   }
@@ -31,6 +38,11 @@ class User extends Model
         spl_object_hash(new stdClass()) .
         mt_rand() .
         getmypid()));
+  }
+
+  function _now() {
+    $this->load->helper('date');
+    return mdate('%Y-%m-%d %H:%i:%s', time());
   }
 
   function createGuest($username, $email) {

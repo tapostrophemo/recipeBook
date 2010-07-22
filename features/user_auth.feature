@@ -20,6 +20,7 @@ Feature: User Authentication
     Then I should see "Table of Contents"
     And I should see "Welcome back, testUser1"
     And I should see "logout"
+    And the "last_login_at" field for user "testUser1" should be today
 
   Scenario: cookbook title changes to owner name when user logged in
     When I am on the home page
