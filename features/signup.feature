@@ -7,7 +7,7 @@ Feature: Signup for the application
     Given a user exists with username: "testUser2", email: "testUser2@somewhere.com", password: "Password1"
     And a book exists with owner_id: 1, plan: "free"
     And a recipe exists with book_id: 1, name: "Cold Cereal"
-@wip
+
   Scenario: happy path
     When I go to the home page
     Then I should see "Small (free)"
