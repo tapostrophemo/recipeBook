@@ -2,7 +2,7 @@
 // TODO: generalize this, so should additional metrics need to be collected, we don't have to program them
 ?>
 
-<table width="100%" border="1" cellpadding="1" cellspacing="0">
+<table class="report">
  <tr>
   <th>Account #</th>
   <th>Cookie</th>
@@ -13,8 +13,8 @@
   <th>Last activity</th>
   <th>Registration date</th>
  </tr>
-<?php foreach ($data as $row): ?>
- <tr>
+<?php $i = 0; foreach ($data as $row): ?>
+ <tr<?= $i % 2 ? ' class="alt"' : '';?>>
   <td><?=$row->account_id?></td>
   <td><?=$row->cookie_id?></td>
   <td><?=$row->username?></td>
@@ -24,7 +24,7 @@
   <td><?=$row->activity?></td>
   <td><?=$row->registration_date?></td>
  </tr>
-<?php endforeach; ?>
+<?php $i++; endforeach; ?>
 </table>
 
 <p><?=anchor('/admin', 'Menu')?></p>
