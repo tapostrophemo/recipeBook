@@ -25,11 +25,11 @@
  </tr>
  <tr>
   <td><label for="ingredients">Ingredients</label></td>
-  <td><textarea name="ingredients" id="ingredients" rows="8" cols="30"><?=set_value('ingredients')?></textarea></td>
+  <td><textarea name="ingredients" id="ingredients" rows="6" style="width:75%"><?=set_value('ingredients')?></textarea></td>
  </tr>
  <tr>
   <td><label for="instructions">Instructions</label></td>
-  <td><textarea name="instructions" id="instructions" rows="8" cols="50"><?=set_value('instructions')?></textarea></td>
+  <td><textarea name="instructions" id="instructions" rows="8" style="width:100%"><?=set_value('instructions')?></textarea></td>
  </tr>
  <tr>
   <td colspan="2">
