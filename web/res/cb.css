@@ -108,6 +108,7 @@ h3 {
   margin: 0 auto;
   padding: 10px 30px;
   -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
 }
 #signup td {
   padding: 2px;
@@ -122,6 +123,8 @@ h3 {
 #controls li {
   -moz-border-radius-bottomleft: 4px;
   -moz-border-radius-bottomright: 4px;
+  -webkit-border-radius-bottomleft: 4px;
+  -webkit-border-radius-bottomright: 4px;
   list-style: none;
   float: left;
   margin: 0;
