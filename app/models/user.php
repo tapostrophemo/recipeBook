@@ -62,7 +62,7 @@ class User extends Model
 
   function getById($id) {
     $sql = "
-      SELECT u.id, u.username, u.email, b.id AS owns_book_id, e.book_id AS edits_book_id, e.status
+      SELECT u.id, u.username, u.email, b.plan, b.id AS owns_book_id, e.book_id AS edits_book_id, e.status
       FROM users u
         LEFT JOIN books b ON b.owner_id = u.id
         LEFT JOIN editors e ON e.user_id = u.id

@@ -27,6 +27,7 @@ Feature: Signup for the application
     But I should not see "Cold Cereal"
     When I follow "manage"
     Then I should see "Email: testUser1@somewhere.com"
+    And I should see "Account type: free"
 
   Scenario: validates required fields
     When I signup with username: " ", email: " ", password: " ", plan: " "
@@ -75,6 +76,8 @@ Feature: Signup for the application
 #    And I should see "Your account has been created"
 #    And a user should exist with username: "testUser1"
 #    And a book should exist with owner_id: 2, plan: "medium"
+#    When I follow "manage"
+#    Then I should see "Account type: medium"
 
 #  Scenario: signup for paying plan, unhappy path
 #    Given I begin the signup process for a paid account
