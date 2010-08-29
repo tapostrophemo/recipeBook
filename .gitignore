@@ -2,4 +2,4 @@ webrat.log
 log
 web/uploads
 TODO.txt
-
+app/config/paypal.php

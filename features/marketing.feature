@@ -21,7 +21,7 @@ Feature: collect marketing metrics
     And I fill in "username" with "testUser1"
     And I fill in "email" with "testUser1@somewhere.com"
     And I fill in "password" with "Password1"
-    And I choose "medium" from "plan"
+    And I choose "free" from "plan"
     And I press "signupButton"
     And I follow "logout"
     When I wait for 2 seconds

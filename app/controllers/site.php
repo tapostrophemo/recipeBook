@@ -78,6 +78,18 @@ class Site extends MY_Controller
     }
   }
 
+  function _unsetLoginSession() {
+    $this->session->unset_userdata('userid');
+    $this->session->unset_userdata('logged_in');
+    $this->session->unset_userdata('is_owner');
+    $this->session->unset_userdata('current_book_id');
+    $this->session->unset_userdata('bookname');
+    $this->session->unset_userdata('is_suspended');
+
+    $this->session->unset_flashdata('err');
+    $this->session->unset_flashdata('msg');
+  }
+
   function logout() {
     $this->session->sess_destroy();
     redirect('/');
@@ -104,23 +116,57 @@ class Site extends MY_Controller
     }
     else {
       $this->load->model('User');
-      // TODO: detect successful/failed account creation and behave accordingly
-      $userId = $this->User->create(
-        $this->input->post('username'),
-        $this->input->post('password'),
-        $this->input->post('email'));
       $this->load->model('Cookbook');
-      $bookId = $this->Cookbook->create($userId, $this->input->post('plan'));
       $this->load->model('Marketing');
+
+      // TODO: detect successful/failed account creation and behave accordingly
+      $userId = $this->User->create($this->input->post('username'), $this->input->post('password'), $this->input->post('email'));
+      $bookId = $this->Cookbook->create($userId, $this->input->post('plan'));
       $this->Marketing->markSignup($userId);
 
       $user = $this->User->validateLogin($this->input->post('username'), $this->input->post('password'));
       $this->_setLoginSession($user);
-
-      // TODO: if user signed up for paid plan, redirect/popup to payment vendor, and don't "finalize" new account until $$ transaction completed
       $this->session->set_flashdata('msg', 'Your account has been created');
+
+      if ($this->input->post('plan') != 'free') {
+        $this->config->load('paypal', true);
+        $ppcfg = $this->config->item('paypal');
+        $redir = $ppcfg['base_url'];
+
+        if ($this->input->post('plan') == 'medium') {
+          $redir .= $ppcfg['medium_plan_code'];
+        }
+        else if ($this->input->post('plan') == 'large') {
+          $redir .= $ppcfg['large_plan_code'];
+        }
+        else {
+          echo 'ERROR: invalid plan choice';
+          return;
+        }
+        // TODO: don't finalize plan details until $$ transaction completed
+        redirect($redir);
+      }
+
       redirect('/toc');
     }
+  }
+
+  function signupCancelled() {
+    $this->load->model('User');
+    $this->load->model('Cookbook');
+    $this->load->model('Marketing');
+
+    $userId = $this->session->userdata('userid');
+    $bookId = $this->session->userdata('current_book_id');
+    $this->_unsetLoginSession(); // NB: sess_destroy() wasn't doing the trick; did I do it wrong?
+
+//    $this->Cookbook->cancelAtSignup($bookId, $userId);
+//    $this->User->cancelAtSignup($userId);
+//    $this->Marketing->markCancelAtSignup($userId);
+
+    $this->load->view('pageTemplate', array(
+      'title' => 'Your Online Cookbook',
+      'content' => $this->load->view('site/secondChance', null, true)));
   }
 
   function acceptInvitation($token) {

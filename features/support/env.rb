@@ -33,19 +33,26 @@ end
 
 ###
 
-# make the DB-stuff available to tests with minimal ActiveRecord classes
+# read config from application files
+def app_config_file(filename)
+  File.read(File.dirname(__FILE__)+"/../../app/config/" + filename).split("\n")
+end
 
-require 'active_record'
-
-@db_config_path = File.dirname(__FILE__)+"/../../app/config/database.php"
-@db_config = File.read(@db_config_path).split("\n")
-@db_config.split("\n") do |line|
+app_config_file("database.php").each do |line|
   if line =~ /username.*'([^']+)'/ then @@db_user = $1 end
   if line =~ /password.*'([^']+)'/ then @@db_pass = $1 end
   if line =~ /database.*'([^']+)'/ then @@db_name = $1 end
   if line =~ /hostname.*'([^']+)'/ then @@db_host = $1 end
   if line =~ /dbdriver.*'([^']+)'/ then @@db_driver = $1 end
 end
+
+app_config_file("paypal.php").each do |line|
+  if line =~ /test_buyer.*email.*'([^']+)'/ then @@paypal_buyer_email = $1 end
+  if line =~ /test_buyer.*password.*'([^']+)'/ then @@paypal_buyer_password = $1 end
+end
+
+# make the DB-stuff available to tests with minimal ActiveRecord classes
+require 'active_record'
 
 # via http://blog.aizatto.com/2007/05/21/activerecord-without-rails/
 ActiveRecord::Base.establish_connection(

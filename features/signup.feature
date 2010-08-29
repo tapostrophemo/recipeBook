@@ -16,13 +16,13 @@ Feature: Signup for the application
     When I fill in "username" with "testUser1"
     And I fill in "email" with "testUser1@somewhere.com"
     And I fill in "password" with "Password1"
-    And I choose "medium" from "plan"
+    And I choose "free" from "plan"
     And I press "signupButton"
     Then I should be logged in
     And I should see "Your account has been created"
     And a user should exist with username: "testUser1"
     And the "created_at" field for user "testUser1" should be today
-    And a book should exist with owner_id: 2, plan: "medium"
+    And a book should exist with owner_id: 2, plan: "free"
     And I should have 0 recipes in book: 2
     But I should not see "Cold Cereal"
 
@@ -56,4 +56,30 @@ Feature: Signup for the application
     Given a user exists with username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
     When I signup with username: "testUser1", email: "testUser1@somewhere.com", password: "Password1", plan: "medium"
     Then I should see "That username is already taken"
+
+# have to execute the PayPal integration tests manually...bummer!
+
+#  Scenario: signup for paying plan, happy path
+#    Given I go to the home page
+#    When I fill in "username" with "testUser1"
+#    And I fill in "email" with "testUser1@somewhere.com"
+#    And I fill in "password" with "Password1"
+#    And I choose "medium" from "plan"
+#    And I press "signupButton"
+#    And I login to PayPal as a buyer
+#    And I press "Agree and Pay"
+#    And I press "merchantRet"
+#    Then I should be logged in
+#    And I should see "Your account has been created"
+#    And a user should exist with username: "testUser1"
+#    And a book should exist with owner_id: 2, plan: "medium"
+
+#  Scenario: signup for paying plan, unhappy path
+#    Given I begin the signup process for a paid account
+#    When I get to the PayPal screens
+#    And I balk
+#    Then I should see some friendly copy trying to persuade me to join anyway
+#    And I should also see a comment form
+#    But I should not have an account
+#    And I should not be logged in
 

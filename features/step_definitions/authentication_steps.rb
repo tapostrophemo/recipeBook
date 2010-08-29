@@ -22,3 +22,11 @@ Given /^I am logged in with admin username: "([^"]*)", password: "([^"]*)"$/ do 
   fill_in "password", :with => password
   click_button("Login")
 end
+
+And /^I login to PayPal as a buyer$/ do
+debugger
+  webrat.request_page(webrat.redirected_to, :get, {}) # PayPal sandbox wants us to login first; need cookies?
+  fill_in "login_email", :with => @@paypal_buyer_email
+  fill_in "login_password", :with => @@paypal_buyer_password
+  click_button("Log In")
+end
