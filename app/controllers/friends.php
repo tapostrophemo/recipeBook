@@ -15,12 +15,16 @@ class Friends extends MY_Controller
 
   function index() {
     $this->load->model('Cookbook');
+    $this->load->model('User');
+
     $friends = $this->Cookbook->getEditors($this->session->userdata('current_book_id'));
     $data = array('friends' => $friends, 'hasMore' => false, 'max' => 10);
+    $account = $this->User->getById($this->session->userdata('userid'));
+
     $this->load->view('pageTemplate', array(
       'title' => 'Manage Your Cookbook',
       'content' => $this->load->view('friends/view', $data, true) .
-                   $this->load->view('site/userSettings', null, true)));
+                   $this->load->view('site/userSettings', $account, true)));
   }
 
   function add() {

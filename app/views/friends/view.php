@@ -1,4 +1,5 @@
 <?php
+$segment = $this->uri->segment(1, '');
 $total = 0;
 ?>
 
@@ -7,6 +8,10 @@ $total = 0;
 <h3>Friends</h3>
 <p>Invite others to edit your cookbook. (Suspend them if they're misbehaving. Re-activate them when
  you're back on speaking terms.)</p>
+
+<?php if ($this->session->userdata('is_owner') && $segment == 'manage'): ?>
+<p><?=anchor('friends/add', 'invite friend', array('id' => 'addControl'))?></p>
+<?php endif; ?>
 
 <table>
  <tr>

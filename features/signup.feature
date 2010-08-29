@@ -25,6 +25,8 @@ Feature: Signup for the application
     And a book should exist with owner_id: 2, plan: "free"
     And I should have 0 recipes in book: 2
     But I should not see "Cold Cereal"
+    When I follow "manage"
+    Then I should see "Email: testUser1@somewhere.com"
 
   Scenario: validates required fields
     When I signup with username: " ", email: " ", password: " ", plan: " "

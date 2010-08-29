@@ -24,10 +24,6 @@ $segment = $this->uri->segment(1, '');
  <li><?=anchor('/manage', 'manage')?></li>
 <?php endif; ?>
 
-<?php if ($this->session->userdata('is_owner') && $segment == 'manage'): ?>
- <li><?=anchor('friends/add', 'invite friend', array('id' => 'addControl'))?></li>
-<?php endif; ?>
-
  <li><?=anchor('logout', 'logout')?></li>
 
 <?php else: ?>
