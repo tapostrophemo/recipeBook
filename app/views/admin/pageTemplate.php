@@ -45,7 +45,8 @@ html {
 
 <?=$content?>
 
-<?php if ($this->session->userdata('admin_logged_in')): ?>
+<?php if ($this->session->userdata('admin_logged_in')
+         && (uri_string() == '/admin' || uri_string() == '/admin/login')): ?>
 <p><?=anchor('admin/logout', 'Logout')?></p>
 <?php endif; ?>
 

@@ -6,6 +6,11 @@ Feature: Add recipes
     Given a user exists with username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
     And a book exists with owner_id: 1, plan: "free"
     And I am logged in with username: "testUser1", password: "Password1"
+  # TODO: consider re-writing thusly (from http://elabs.se/blog/15-you-re-cuking-it-wrong):
+  #  Given a user named "testUser1" exists
+  #  And "testUser1" is logged in
+  #  And "testUser1" signed up for the "free" plan
+  #  ...
 
   Scenario: Add recipe
     Given I am on the table of contents page

@@ -51,5 +51,13 @@ class Admin extends Controller
       'title' => 'Marketing Metrics',
       'content' => $this->load->view('admin/marketingMetrics', array('data' => $data), true)));
   }
+
+  function userAccounts() {
+    $this->load->model('User');
+    $data = $this->User->adminReport();
+    $this->load->view('admin/pageTemplate', array(
+      'title' => 'User Accounts',
+      'content' => $this->load->view('admin/userAccounts', array('data' => $data), true)));
+  }
 }
 

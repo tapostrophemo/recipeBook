@@ -40,3 +40,14 @@ Feature: site administration, marketing reports, etc.
 #    Then a marketing_metric should exist with account_id: 1, activity: "login"
 #    And marketing_metric 1 should have been updated
 
+  Scenario: view account list
+    Given a user exists with username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
+    And a book exists with owner_id: 1, plan: "medium"
+    And a user exists with username: "testUser2", email: "testUser2@somewhere.com", password: "Password1"
+    And a book exists with owner_id: 2, plan: "free"
+    When I am logged in with admin username: "testAdmin1", password: "Password1"
+    And I follow "User Accounts"
+    Then I should see "Plan Plan ID Username User ID Registered on Last logged in # Recipes # Friends"
+    And I should see "medium 1 testUser1 1"
+    And I should see "free 2 testUser2 2"
+

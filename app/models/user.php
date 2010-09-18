@@ -96,5 +96,18 @@ class User extends Model
       ->set('password_salt', $salt)
       ->update('users');
   }
+
+  function adminReport() {
+    $sql = "
+      SELECT u.username, u.id AS account_id, u.created_at, u.last_login_at, b.plan, b.id AS plan_id,
+             Count(r.id) AS num_recipes, Count(e.user_id) AS num_editors
+      FROM users u
+        JOIN books b ON b.owner_id = u.id
+        LEFT JOIN recipes r ON r.book_id = b.id
+        LEFT JOIN editors e ON e.book_id = b.id
+        GROUP BY u.username, u.id, u.created_at, u.last_login_at, b.plan, b.id";
+    $query = $this->db->query($sql);
+    return $query->result();
+  }
 }
 
