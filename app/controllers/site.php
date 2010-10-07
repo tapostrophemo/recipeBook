@@ -182,6 +182,26 @@ class Site extends MY_Controller
     }
   }
 
+  function account() {
+    $this->load->model('User');
+    $account = $this->User->getById($this->session->userdata('userid'));
+
+    $friends = '';
+    if ($this->session->userdata('is_owner')) {
+      $this->load->model('Cookbook');
+      $friends = $this->Cookbook->getEditors($this->session->userdata('current_book_id'));
+      $data = array('friends' => $friends, 'hasMore' => false, 'max' => 10);
+      $friends = $this->load->view('friends/view', $data, true);
+    }
+
+    $this->load->view('pageTemplate', array(
+      'title' => 'Manage Your Account',
+      'content' =>
+        '<div id="ingredientsList">'.$this->load->view('site/userSettings', $account, true).'</div>' .
+        '<div id="instructionsList">'.$friends.'</div>' .
+        '<div style="clear:both"></div>'));
+  }
+
   function newpass() {
     if (!$this->form_validation->run('update_password')) {
       $this->load->view('pageTemplate', array(

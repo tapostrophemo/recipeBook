@@ -8,8 +8,9 @@ Feature: Add friends, family or other users to your cookbook
     And I am logged in with username: "testUser1", password: "Password1"
 
   Scenario: add a friend to my cookbook
-    When I follow "manage"
-    Then I should see "1"
+    When I follow "settings"
+    Then I should see "Friends"
+    And I should see "1"
     And I should see "2"
     And I should see "10"
     When I follow "invite friend"
@@ -50,7 +51,7 @@ Feature: Add friends, family or other users to your cookbook
 
   Scenario: "add friend" validations
     Given a user exists with username: "testFriendX", email: "testFriendX@somewhere.com", password: "Password1"
-    When I follow "manage"
+    When I follow "settings"
     And I follow "invite friend"
     When I fill in "username" with "testFriendX"
     And I fill in "email" with "testFriendX@somewhere.com"
@@ -69,13 +70,13 @@ Feature: Add friends, family or other users to your cookbook
   Scenario: see my friends
     Given a user exists with username: "testFriend1", email: "testFriend1@somewhere.com", password: "Password1"
     And an editor exists with user_id: 2, book_id: 1, status: "active"
-    When I follow "manage"
+    When I follow "settings"
     Then I should see "1 testFriend1 active"
 
   Scenario: should be able to suspend and re-activate access for friend
     Given a user exists with username: "testFriend1", email: "testFriend1@somewhere.com", password: "Password1"
     And an editor exists with user_id: 2, book_id: 1, status: "active"
-    When I follow "manage"
+    When I follow "settings"
     And I follow "suspend"
     Then I should see "'testFriend1' suspended"
     And I should see "1 testFriend1 suspended re-activate"

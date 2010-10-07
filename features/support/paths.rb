@@ -17,8 +17,12 @@ module NavigationHelpers
     when /the "(recipe|edit|delete|suspend|reactivate)\/(.*)" page/
       '/' + $1 + '/' + $2
 
-    when /the manage friends page/
-      '/manage'
+    when /the "Manage Your Account" page/
+      # TODO: assert <title/> and <h1/>...
+      '/settings'
+
+    when /the add friends page/
+      '/friends/add'
 
     when /accept an invitation with token "(.+)"/
       '/acceptinvitation/' + $1

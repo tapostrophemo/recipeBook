@@ -15,13 +15,13 @@ $segment = $this->uri->segment(1, '');
 <?php elseif ($segment == 'recipe' && !$this->session->userdata('is_suspended')): ?>
  <li><?=anchor('edit/'.$recipe->id, 'edit', array('id' => 'editControl'))?></li>
 
- <?php if ($this->session->userdata('is_owner')): ?>
+ <?php if ($this->session->userdata('is_owner') && $segment != 'add'): ?>
  <li><?=anchor('delete/'.$recipe->id, 'delete')?></li>
  <?php endif; ?>
 <?php endif; ?>
 
-<?php if ($this->session->userdata('is_owner') && $segment != 'manage'): ?>
- <li><?=anchor('/manage', 'manage')?></li>
+<?php if ($segment == 'toc'): ?>
+ <li><?=anchor('/settings', 'settings')?></li>
 <?php endif; ?>
 
  <li><?=anchor('logout', 'logout')?></li>

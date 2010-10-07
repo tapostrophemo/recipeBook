@@ -26,8 +26,9 @@ Feature: things a friend can do with your cookbook
     Then I should see "Only cookbook owners are allowed to delete recipes"
 
   Scenario: friends are not allowed to manage list of friends
-    Then I should not see "manage"
-    When I go to the manage friends page
+    When I follow "settings"
+    Then I should not see "Friends"
+    When I go to the add friends page
     Then I should see "Only cookbook owners are allowed to view that screen"
 
   Scenario: suspended friends are not allowed to edit your cookbook
@@ -43,4 +44,13 @@ Feature: things a friend can do with your cookbook
     Then I should see "Your account is suspended; you may only view recipes"
     When I go to the "edit/1" page
     Then I should see "Your account is suspended; you may only view recipes"
+
+  Scenario: friends are allowed to change their passwords
+    When I follow "settings"
+    Then I should be on the "Manage Your Account" page
+    And I should see "Username: testFriend1"
+    And I should see "Email: testFriend1@somewhere.com"
+    But I should not see "Account type:"
+    When I follow "reset password"
+    Then I should be able to change my password
 

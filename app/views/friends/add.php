@@ -18,7 +18,7 @@
   <?php if ($this->input->is_ajax()): ?>
    <input type="button" value="Cancel" onclick="$.modal.close()"/>
   <?php else: ?>
-   <input type="button" value="Cancel" onclick="document.location.href='<?=base_url()?>manage'"/>
+   <input type="button" value="Cancel" onclick="document.location.href='<?=base_url()?>settings'"/>
   <?php endif; ?>
   </td>
  </tr>

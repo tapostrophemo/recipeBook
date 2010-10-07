@@ -3,13 +3,11 @@ $segment = $this->uri->segment(1, '');
 $total = 0;
 ?>
 
-<div id="ingredientsList">
-
 <h3>Friends</h3>
 <p>Invite others to edit your cookbook. (Suspend them if they're misbehaving. Re-activate them when
  you're back on speaking terms.)</p>
 
-<?php if ($this->session->userdata('is_owner') && $segment == 'manage'): ?>
+<?php if ($this->session->userdata('is_owner') && $segment == 'settings'): ?>
 <p><?=anchor('friends/add', 'invite friend', array('id' => 'addControl'))?></p>
 <?php endif; ?>
 
@@ -43,6 +41,4 @@ $total = 0;
  </tr>
 <?php endwhile; ?>
 </table>
-
-</div>
 

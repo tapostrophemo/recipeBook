@@ -50,7 +50,7 @@ Feature: User Authentication
 
   Scenario: password reset validations
     Given I am logged in with username: "testUser1", password: "Password1"
-    When I follow "manage"
+    When I follow "settings"
     And I follow "reset password"
     And I fill in "password" with " "
     And I fill in "passconf" with " "

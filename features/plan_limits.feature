@@ -20,14 +20,15 @@ Feature: Allow different levels of functionality for different user plans
   Scenario: free/small plan is limited to 1 friend
     Given a book exists with owner_id: 1, plan: "free"
     And I am logged in with username: "testUser1", password: "Password1"
-    And I follow "manage"
+    And I follow "settings"
     When I follow "invite friend"
     And I fill in "username" with "testFriend1"
     And I fill in "email" with "testFriend1@somewhere.com"
     And I press "Send Invitation"
     Then a user should exist with username: "testFriend1", email: "testFriend1@somewhere.com"
     And an editor should exist with user_id: 2, book_id: 1
-    When I follow "manage"
+    When I follow "home"
+    And I follow "settings"
     And I follow "invite friend"
     And I fill in "username" with "testFriend2"
     And I fill in "email" with "testFriend2@somewhere.com"
@@ -51,7 +52,7 @@ Feature: Allow different levels of functionality for different user plans
     Given a book exists with owner_id: 1, plan: "medium"
     And I am logged in with username: "testUser1", password: "Password1"
     And I add 10 friends to book 1
-    When I follow "manage"
+    When I follow "settings"
     And I follow "invite friend"
     And I fill in "username" with "testFriend11"
     And I fill in "email" with "testFriend11@somewhere.com"
@@ -76,7 +77,7 @@ Feature: Allow different levels of functionality for different user plans
     Given a book exists with owner_id: 1, plan: "large"
     And I am logged in with username: "testUser1", password: "Password1"
     And I add 10 friends to book 1
-    When I follow "manage"
+    When I follow "settings"
     And I follow "invite friend"
     And I fill in "username" with "testFriend11"
     And I fill in "email" with "testFriend101@somewhere.com"

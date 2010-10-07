@@ -25,7 +25,7 @@ Feature: Signup for the application
     And a book should exist with owner_id: 2, plan: "free"
     And I should have 0 recipes in book: 2
     But I should not see "Cold Cereal"
-    When I follow "manage"
+    When I follow "settings"
     Then I should see "Email: testUser1@somewhere.com"
     And I should see "Account type: free"
 

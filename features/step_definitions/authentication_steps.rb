@@ -30,3 +30,15 @@ debugger
   fill_in "login_password", :with => @@paypal_buyer_password
   click_button("Log In")
 end
+
+Then /^I should be able to change my password$/ do
+  assert_have_xpath("//form[contains(@action, '/newpass')]")
+end
+
+Then /^I should have the following controls:$/ do |controls|
+  links = []
+  webrat.dom.xpath("//ul[@id='controls']//a").each do |link|
+    links << [link.text]
+  end
+  controls.diff!(links)
+end

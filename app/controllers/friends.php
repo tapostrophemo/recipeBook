@@ -13,20 +13,6 @@ class Friends extends MY_Controller
     $this->load->helper('http_caching');
   }
 
-  function index() {
-    $this->load->model('Cookbook');
-    $this->load->model('User');
-
-    $friends = $this->Cookbook->getEditors($this->session->userdata('current_book_id'));
-    $data = array('friends' => $friends, 'hasMore' => false, 'max' => 10);
-    $account = $this->User->getById($this->session->userdata('userid'));
-
-    $this->load->view('pageTemplate', array(
-      'title' => 'Manage Your Cookbook',
-      'content' => $this->load->view('friends/view', $data, true) .
-                   $this->load->view('site/userSettings', $account, true)));
-  }
-
   function add() {
     if (!$this->form_validation->run('friend')) {
       if ($this->input->is_ajax()) {
@@ -92,7 +78,7 @@ class Friends extends MY_Controller
     $user = $this->User->getById($friendId);
     $this->Cookbook->suspendEditor($this->session->userdata('current_book_id'), $friendId);
     $this->session->set_flashdata('msg', "'".$user->username."' suspended");
-    redirect('/manage');
+    redirect('/settings');
   }
 
   function reactivate($friendId) {
@@ -106,7 +92,7 @@ class Friends extends MY_Controller
     $user = $this->User->getById($friendId);
     $this->Cookbook->reactivateEditor($this->session->userdata('current_book_id'), $friendId);
     $this->session->set_flashdata('msg', "'".$user->username."' re-activated");
-    redirect('/manage');
+    redirect('/settings');
   }
 }
 
