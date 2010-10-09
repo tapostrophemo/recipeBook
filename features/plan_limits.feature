@@ -29,7 +29,9 @@ Feature: Allow different levels of functionality for different user plans
     And an editor should exist with user_id: 2, book_id: 1
     When I follow "home"
     And I follow "settings"
-    And I follow "invite friend"
+    Then I should not see "invite friend"
+    But I should see "Upgrade your subscription"
+    When I go to the add friends page
     And I fill in "username" with "testFriend2"
     And I fill in "email" with "testFriend2@somewhere.com"
     And I press "Send Invitation"
@@ -53,7 +55,7 @@ Feature: Allow different levels of functionality for different user plans
     And I am logged in with username: "testUser1", password: "Password1"
     And I add 10 friends to book 1
     When I follow "settings"
-    And I follow "invite friend"
+    And I go to the add friends page
     And I fill in "username" with "testFriend11"
     And I fill in "email" with "testFriend11@somewhere.com"
     And I press "Send Invitation"

@@ -7,8 +7,13 @@ $total = 0;
 <p>Invite others to edit your cookbook. (Suspend them if they're misbehaving. Re-activate them when
  you're back on speaking terms.)</p>
 
-<?php if ($this->session->userdata('is_owner') && $segment == 'settings'): ?>
+<?php if ($this->session->userdata('is_owner') && $segment == 'settings' && count($friends) < $max): ?>
 <p><?=anchor('friends/add', 'invite friend', array('id' => 'addControl'))?></p>
+<?php endif; ?>
+
+<?php if (count($friends) >= $max): ?>
+<p><?=anchor('account/upgrade', 'Upgrade your subscription')?> so you can invite more friends and add
+ more recipes to your cookbook.</p>
 <?php endif; ?>
 
 <table>

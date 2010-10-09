@@ -190,7 +190,11 @@ class Site extends MY_Controller
     if ($this->session->userdata('is_owner')) {
       $this->load->model('Cookbook');
       $friends = $this->Cookbook->getEditors($this->session->userdata('current_book_id'));
-      $data = array('friends' => $friends, 'hasMore' => false, 'max' => 10);
+      $data = array(
+        'account' => $account,
+        'friends' => $friends,
+        'plan' => $account->plan,
+        'max' => $account->plan == 'free' ? 1 : ($account->plan == 'medium' ? 10 : 100));
       $friends = $this->load->view('friends/view', $data, true);
     }
 
