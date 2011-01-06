@@ -9,30 +9,44 @@ class Marketing extends Model
     $this->load->helper('date');
   }
 
-  function newVisitor($referrer, $landingPage) {
+  function newVisitor() {
     $sql = "
       INSERT INTO marketing(cookie_id, referring_url, landing_page, activity)
       VALUES (Uuid(), ?, ?, 'new visit')";
-    $this->db->query($sql, array($referrer, $landingPage));
+    $this->db->query($sql, array($this->input->server('HTTP_REFERER'), current_url()));
     $id = $this->db->insert_id();
     return $this->db->where('id', $id)->get('marketing')->row();
   }
 
   function markSignup($accountId) {
-    $cookie = get_cookie('mkt');
     $data = array(
+      'cookie_id' => get_cookie('mkt'),
+      'referring_url' => $this->input->server('HTTP_REFERER'),
+      'landing_page' => current_url(),
       'account_id' => $accountId,
-      'activity' => 'signup',
-      'updated_at' => mdate('%Y-%m-%d %H:%i:%s'));
-    $this->db->where('cookie_id', $cookie)->update('marketing', $data);
+      'activity' => 'signup');
+    $this->db->insert('marketing', $data);
   }
 
-  function markLogin() {
-    $cookie = get_cookie('mkt');
+  function markLogin($accountId) {
     $data = array(
-      'activity' => 'login',
-      'updated_at' => mdate('%Y-%m-%d %H:%i:%s'));
-    $this->db->where('cookie_id', $cookie)->update('marketing', $data);
+      'cookie_id' => get_cookie('mkt'),
+      'referring_url' => $this->input->server('HTTP_REFERER'),
+      'landing_page' => current_url(),
+      'account_id' => $accountId,
+      'activity' => 'login');
+    $this->db->insert('marketing', $data);
+  }
+
+  function markInvite($accountId, $inviteeAccountId) {
+    $data = array(
+      'cookie_id' => get_cookie('mkt'),
+      'referring_url' => $this->input->server('HTTP_REFERER'),
+      'landing_page' => current_url(),
+      'account_id' => $accountId,
+      'invitee_id' => $inviteeAccountId,
+      'activity' => 'invite friend');
+    $this->db->insert('marketing', $data);
   }
 
   function getReport() {

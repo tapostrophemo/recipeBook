@@ -31,6 +31,9 @@ class Friends extends MY_Controller
       $this->load->model('Cookbook');
       $this->Cookbook->addEditorToBook($this->session->userdata('current_book_id'), $guestData['id']);
 
+      $this->load->model('Marketing');
+      $this->Marketing->markInvite($this->session->userdata('userid'), $guestData['id']);
+
       $owner = $this->User->getByUsername($this->session->userdata('bookname'));
       $emailData = array(
         'username' => $this->input->post('username'),

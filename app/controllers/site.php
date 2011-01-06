@@ -43,7 +43,7 @@ class Site extends MY_Controller
       $this->session->set_flashdata('msg', 'Welcome back, '.$this->_user->username);
 
       $this->load->model('Marketing');
-      $this->Marketing->markLogin();
+      $this->Marketing->markLogin($this->session->userdata('userid'));
 
       redirect('/toc');
     }
