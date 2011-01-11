@@ -26,7 +26,7 @@ $total = 0;
 <?php foreach ($friends as $friend): ?>
  <tr>
   <td><?=++$total?></td>
-  <td><?=$friend->username?></td>
+  <td><?=$friend->name?> (<?=$friend->status == 'invited' && substr($friend->username, 0, 13) == 'TEMP_USERNAME' ? 'username pending' : $friend->username?>)</td>
   <td><?=$friend->status?></td>
   <td>
   <?php if ($friend->status != 'suspended'): ?>

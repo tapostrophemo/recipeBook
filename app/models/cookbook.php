@@ -56,7 +56,7 @@ class Cookbook extends Model
 
   function getEditors($bookId) {
     $sql = "
-      SELECT u.id, u.username, e.status
+      SELECT u.id, u.name, u.username, e.status
       FROM editors e
         JOIN users u ON u.id = e.user_id
       WHERE e.book_id = ?";

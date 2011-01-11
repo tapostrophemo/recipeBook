@@ -26,6 +26,13 @@ Feature: Add friends, family or other users to your cookbook
     And an editor should exist with user_id: 2, book_id: 1, status: "invited"
     When I logout and "Bob" accepts my invitation as username "testFriend1"
     Then a user should exist with name: "Bob", username: "testFriend1", perishable_token: ""
+    And an editor should exist with status: "active"
+    When I follow "logout"
+    And I follow "login"
+    And I fill in "username" with "testFriend1"
+    And I fill in "password" with "Password1"
+    And I press "Login"
+    Then I should be logged in
 
   Scenario: friend invitations must have a valid token
     When I follow "logout"
@@ -55,7 +62,17 @@ Feature: Add friends, family or other users to your cookbook
     Given a user exists with name: "Bob", username: "testFriend1", email: "testFriend1@somewhere.com", password: "Password1"
     And an editor exists with user_id: 2, book_id: 1, status: "active"
     When I follow "settings"
-    Then I should see "1 testFriend1 active"
+    Then I should see "1 Bob (testFriend1) active"
+
+  Scenario: view for invited friends shows no username if they have not yet accepted
+    Given I follow "settings"
+    And I follow "invite friend"
+    And I fill in "name" with "Bob"
+    And I fill in "email" with "testFriend1@somewhere.com"
+    And I press "Send Invitation"
+    When I go to the home page
+    And I follow "settings"
+    Then I should see "1 Bob (username pending) invited"
 
   Scenario: should be able to suspend and re-activate access for friend
     Given a user exists with name: "Bob", username: "testFriend1", email: "testFriend1@somewhere.com", password: "Password1"
@@ -63,10 +80,10 @@ Feature: Add friends, family or other users to your cookbook
     When I follow "settings"
     And I follow "suspend"
     Then I should see "'testFriend1' suspended"
-    And I should see "1 testFriend1 suspended re-activate"
+    And I should see "1 Bob (testFriend1) suspended re-activate"
     When I follow "re-activate"
     Then I should see "'testFriend1' re-activated"
-    And I should see "1 testFriend1 active suspend"
+    And I should see "1 Bob (testFriend1) active suspend"
 
   Scenario: should not be able to suspend friends that are not mine
     Given a user exists with name: "Bob", username: "testUser2", email: "testUser2@somewhere.com", password: "Password1"

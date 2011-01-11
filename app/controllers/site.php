@@ -180,6 +180,7 @@ class Site extends MY_Controller
         $user->username = $this->input->post('username');
         $this->_setLoginSession($user);
         $this->User->completeInvitation($user);
+        $this->User->updatePassword($this->session->userdata('userid'), $this->input->post('password'));
         $this->session->set_flashdata('msg', 'Your account is complete.');
         redirect('/toc');
       }
