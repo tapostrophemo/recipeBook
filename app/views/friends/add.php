@@ -5,8 +5,8 @@
 <?=form_open('friends/add')?>
 <table>
  <tr>
-  <td><label for="username">Choose Username for Friend</label></td>
-  <td><input type="text" name="username" value="<?=set_value('username')?>"/></td>
+  <td><label for="name">Friend's Name</label></td>
+  <td><input type="text" name="name" value="<?=set_value('name')?>"/></td>
  </tr>
  <tr>
   <td><label for="email">Friend's Email</label></td>

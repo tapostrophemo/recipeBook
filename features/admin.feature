@@ -23,7 +23,7 @@ Feature: site administration, marketing reports, etc.
     Then I should see "Authorized Administrators Only!"
 
   Scenario: view marketing metrics report
-    Given a user exists with username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
+    Given a user exists with name: "Abe", username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
     And a book exists with owner_id: 1, plan: "medium"
     And a marketing_metric exists with account_id: 1, activity: "signup", cookie_id: "abc123", created_at: "2010-07-01", referring_url: "referrer", landing_page: "landing page"
     When I am logged in with admin username: "testAdmin1", password: "Password1"
@@ -41,9 +41,9 @@ Feature: site administration, marketing reports, etc.
 #    And marketing_metric 1 should have been updated
 
   Scenario: view account list
-    Given a user exists with username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
+    Given a user exists with name: "Abe", username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
     And a book exists with owner_id: 1, plan: "medium"
-    And a user exists with username: "testUser2", email: "testUser2@somewhere.com", password: "Password1"
+    And a user exists with name: "Bob", username: "testUser2", email: "testUser2@somewhere.com", password: "Password1"
     And a book exists with owner_id: 2, plan: "free"
     When I am logged in with admin username: "testAdmin1", password: "Password1"
     And I follow "User Accounts"

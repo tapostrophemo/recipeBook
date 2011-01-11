@@ -19,9 +19,10 @@ class User extends Model
     return $this->getById($userid);
   }
 
-  function create($username, $password, $email) {
+  function create($name, $username, $password, $email) {
     $salt = $this->_salt();
     $data = array(
+      'name' => $name,
       'username' => $username,
       'crypted_password' => sha1($password . $salt),
       'password_salt' => $salt,
@@ -45,9 +46,10 @@ class User extends Model
     return mdate('%Y-%m-%d %H:%i:%s', time());
   }
 
-  function createGuest($username, $email) {
+  function createGuest($name, $email) {
     $tempPassword = $this->_salt();
-    $id = $this->create($username, $tempPassword, $email); // TODO: fail gracefully on error
+    $username = 'TEMP_USERNAME_' . time();
+    $id = $this->create($name, $username, $tempPassword, $email); // TODO: fail gracefully on error
     return array('id' => $id, 'temp_password' => $tempPassword);
   }
 
@@ -56,13 +58,13 @@ class User extends Model
   }
 
   function getByUsername($username) {
-    $query = $this->db->select('id, username, email')->where('username', $username)->get('users');
+    $query = $this->db->select('id, name, username, email')->where('username', $username)->get('users');
     return $query->num_rows == 1 ? $query->row() : null;
   }
 
   function getById($id) {
     $sql = "
-      SELECT u.id, u.username, u.email, b.plan, b.id AS owns_book_id, e.book_id AS edits_book_id, e.status
+      SELECT u.id, u.name, u.username, u.email, b.plan, b.id AS owns_book_id, e.book_id AS edits_book_id, e.status
       FROM users u
         LEFT JOIN books b ON b.owner_id = u.id
         LEFT JOIN editors e ON e.user_id = u.id
@@ -77,16 +79,23 @@ class User extends Model
     return $token;
   }
 
-  function resetPerishableToken($token) {
+  function getByPerishableToken($token) {
     $query = $this->db->select('id')->where('perishable_token', $token)->get('users');
     if (!$query->num_rows == 1) {
       return null;
     }
     $user = $this->getById($query->row()->id);
-    if ($user) {
-      $this->db->where('perishable_token', $token)->set('perishable_token', '')->update('users');
-    }
+    $user->perishable_token = $token;
     return $user;
+  }
+
+  function completeInvitation($user) {
+    $this->db
+      ->where('perishable_token', $user->perishable_token)
+      ->set('perishable_token', '')
+      ->set('username', $user->username)
+      ->update('users');
+    $this->db->where('user_id', $user->id)->set('status', 'active')->update('editors');
   }
 
   function updatePassword($userid, $password) {

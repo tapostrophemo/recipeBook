@@ -120,7 +120,7 @@ class Site extends MY_Controller
       $this->load->model('Marketing');
 
       // TODO: detect successful/failed account creation and behave accordingly
-      $userId = $this->User->create($this->input->post('username'), $this->input->post('password'), $this->input->post('email'));
+      $userId = $this->User->create($this->input->post('name'), $this->input->post('username'), $this->input->post('password'), $this->input->post('email'));
       $bookId = $this->Cookbook->create($userId, $this->input->post('plan'));
       $this->Marketing->markSignup($userId);
 
@@ -171,10 +171,18 @@ class Site extends MY_Controller
 
   function acceptInvitation($token) {
     $this->load->model('User');
-    if ($user = $this->User->resetPerishableToken($token)) {
-      $this->_setLoginSession($user);
-      $this->session->set_flashdata('msg', 'Thanks for visiting, '.$user->username.'. Please set your password before continuing.');
-      redirect('/newpass');
+    if ($user = $this->User->getByPerishableToken($token)) {
+      if (!$this->form_validation->run('complete_invitation')) {
+        $content = $this->load->view('friends/completeInvitation', array('user' => $user), true);
+        $this->load->view('pageTemplate', array('content' => $content));
+      }
+      else {
+        $user->username = $this->input->post('username');
+        $this->_setLoginSession($user);
+        $this->User->completeInvitation($user);
+        $this->session->set_flashdata('msg', 'Your account is complete.');
+        redirect('/toc');
+      }
     }
     else {
       $this->session->set_flashdata('err', 'That invitation link is invalid or expired.');

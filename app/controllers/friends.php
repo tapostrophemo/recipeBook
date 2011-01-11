@@ -27,7 +27,7 @@ class Friends extends MY_Controller
     }
     else {
       $this->load->model('User');
-      $guestData = $this->User->createGuest($this->input->post('username'), $this->input->post('email'));
+      $guestData = $this->User->createGuest($this->input->post('name'), $this->input->post('email'));
       $this->load->model('Cookbook');
       $this->Cookbook->addEditorToBook($this->session->userdata('current_book_id'), $guestData['id']);
 
@@ -36,7 +36,7 @@ class Friends extends MY_Controller
 
       $owner = $this->User->getByUsername($this->session->userdata('bookname'));
       $emailData = array(
-        'username' => $this->input->post('username'),
+        'name' => $this->input->post('name'),
         'owner' => $owner,
         'token' => $this->User->createPerishableToken($guestData['id']));
       $message = $this->load->view('friends/invitation', $emailData, true);

@@ -4,9 +4,9 @@ Feature: states of navigation controls
   By displaying only appropriate navigation controls on appropriate screens
 
   Background:
-    Given a user exists with username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
+    Given a user exists with name: "Abe", username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
     And a book exists with owner_id: 1, plan: "medium"
-    And a user exists with username: "testFriend1", email: "testFriend1@somewhere.com", password: "Password1"
+    And a user exists with name: "Bob", username: "testFriend1", email: "testFriend1@somewhere.com", password: "Password1"
     And an editor exists with user_id: 2, book_id: 1
     And a recipe exists with name: "recipe name", book_id: 1
 
@@ -50,7 +50,7 @@ Feature: states of navigation controls
       |logout    |
 
   Scenario: navigation controls for a suspended cookbook editor
-    Given a user exists with username: "testFriend2", email: "testFriend2@somewhere.com", password: "Password1"
+    Given a user exists with name: "Cal", username: "testFriend2", email: "testFriend2@somewhere.com", password: "Password1"
     And an editor exists with user_id: 3, book_id: 1, status: "suspended"
     And I am logged in with username: "testFriend2", password: "Password1"
     Then I should have the following controls:

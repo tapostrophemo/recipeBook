@@ -10,6 +10,10 @@
 <?=form_open('signup')?>
 <table>
  <tr>
+  <td><label for="name">Your Name</label></td>
+  <td><input type="text" name="name" value="<?=set_value('name')?>"/></td>
+ </tr>
+ <tr>
   <td><label for="username">Choose&nbsp;Username</label></td>
   <td><input type="text" name="username" value="<?=set_value('username')?>"/></td>
  </tr>

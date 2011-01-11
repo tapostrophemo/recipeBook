@@ -30,12 +30,12 @@ Feature: collect marketing metrics
     And a marketing_metric should exist with account_id: 1, activity: "login"
 
   Scenario: create marketing metric when user invites friend
-    Given a user exists with username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
+    Given a user exists with name: "Abe", username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
     And a book exists with owner_id: 1, plan: "medium"
     And I am logged in with username: "testUser1", password: "Password1"
     And I follow "settings"
     And I follow "invite friend"
-    When I fill in "username" with "testFriend1"
+    When I fill in "name" with "Bob1"
     And I fill in "email" with "testFriend1@somewhere.com"
     And I press "Send Invitation"
     Then a marketing_metric should exist with activity: "invite friend", invitee_id: 2

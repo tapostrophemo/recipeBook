@@ -4,7 +4,7 @@ Feature: Signup for the application
   So that I can use the site
 
   Background:
-    Given a user exists with username: "testUser2", email: "testUser2@somewhere.com", password: "Password1"
+    Given a user exists with name: "Bob", username: "testUser2", email: "testUser2@somewhere.com", password: "Password1"
     And a book exists with owner_id: 1, plan: "free"
     And a recipe exists with book_id: 1, name: "Cold Cereal"
 
@@ -13,24 +13,28 @@ Feature: Signup for the application
     Then I should see "Small (free)"
     And I should see "Medium ($12.99/year)"
     And I should see "Large ($24.99/year)"
-    When I fill in "username" with "testUser1"
+    When I fill in "name" with "Abe"
+    And I fill in "username" with "testUser1"
     And I fill in "email" with "testUser1@somewhere.com"
     And I fill in "password" with "Password1"
     And I choose "free" from "plan"
     And I press "signupButton"
     Then I should be logged in
     And I should see "Your account has been created"
-    And a user should exist with username: "testUser1"
+    And a user should exist with name: "Abe", username: "testUser1"
     And the "created_at" field for user "testUser1" should be today
     And a book should exist with owner_id: 2, plan: "free"
     And I should have 0 recipes in book: 2
     But I should not see "Cold Cereal"
     When I follow "settings"
-    Then I should see "Email: testUser1@somewhere.com"
+    Then I should see "Name: Abe"
+    And I should see "Username: testUser1"
+    And I should see "Email: testUser1@somewhere.com"
     And I should see "Account type: free"
 
   Scenario: validates required fields
-    When I signup with username: " ", email: " ", password: " ", plan: " "
+    When I signup with name: " ", username: " ", email: " ", password: " ", plan: " "
+    Then I should see "The name field is required"
     Then I should see "The username field is required"
     And I should see "The email field is required"
     And I should see "The password field is required"
@@ -49,15 +53,18 @@ Feature: Signup for the application
     And I press "signupButton"
     Then I should see "The email field must contain a valid email address."
 
-  Scenario: validates maxlength of username
+  Scenario: validates maxlength of name username
     When I go to the home page
     And I fill in "username" with "0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345"
     And I press "signupButton"
     Then I should see "The username field can not exceed 255 characters in length."
+    When I fill in "name" with "0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345"
+    And I press "signupButton"
+    Then I should see "The name field can not exceed 255 characters in length."
 
   Scenario: desired username already chosen
-    Given a user exists with username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
-    When I signup with username: "testUser1", email: "testUser1@somewhere.com", password: "Password1", plan: "medium"
+    Given a user exists with name: "Abe", username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
+    When I signup with name: "Abe", username: "testUser1", email: "testUser1@somewhere.com", password: "Password1", plan: "medium"
     Then I should see "That username is already taken"
 
 # have to execute the PayPal integration tests manually...bummer!

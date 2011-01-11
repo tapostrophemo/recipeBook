@@ -1,5 +1,6 @@
-When /^I signup with username: "([^\"]*)", email: "([^\"]*)", password: "([^\"])*", plan: "([^\"]*)"$/ do |username, email, password, plan|
+When /^I signup with name: "([^\"]*)", username: "([^\"]*)", email: "([^\"]*)", password: "([^\"])*", plan: "([^\"]*)"$/ do |name, username, email, password, plan|
   When %{I go to the home page}
+  fill_in "name", :with => name
   fill_in "username", :with => username
   fill_in "email", :with => email
   fill_in "password", :with => password
@@ -25,16 +26,21 @@ Then /^I should see an invitation link for user: "([^"]*)"$/ do |username|
   response_body.should contain(regexp)
 end
 
-When /^I logout and "([^"]*)" accepts my invitation$/ do |username|
+When /^I logout and "([^\"]*)" accepts my invitation as username "([^\"]*)"$/ do |name, username|
   token = Regexp.new(/\/acceptinvitation\/(.+)/).match(response_body)[1]
   When %{I follow "logout"}
   And %{I go to accept an invitation with token "#{token}"}
+  Then %{I should see "Thanks for visiting, #{name}. Please choose a username and password to continue."}
+  And %{I should not see "logout"}
+  fill_in "username", :with => username
+  fill_in "password", :with => "Password1"
+  click_button("completeInvitation")
 end
 
 Given /^I add (\d+) friends to book (\d+)$/ do |num_friends, book_id|
   (1..num_friends.to_i).each do |i|
     j = i + 1
-    user = User.create!({:username => "testFriend#{i}", :email => "testFriend#{i}@somewhere.com", :password => "Password#{i}"})
+    user = User.create!({:name => "name#{i}", :username => "testFriend#{i}", :email => "testFriend#{i}@somewhere.com", :password => "Password#{i}"})
     Editor.create({:user_id => user.id, :book_id => book_id})
 
     Then %{a user should exist with username: "testFriend#{i}", email: "testFriend#{i}@somewhere.com"}

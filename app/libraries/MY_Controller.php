@@ -26,5 +26,18 @@ class MY_Controller extends Controller
     }
     return true;
   }
+
+  function _email_unused($junk) {
+    $sql = "
+      SELECT Count(*) AS c
+      FROM users
+      WHERE email = ?";
+    $c = $this->db->query($sql, $this->input->post('email'))->row()->c;
+    if (0 != $c) {
+      $this->form_validation->set_message('_email_unused', 'That email address is already in use.');
+      return false;
+    }
+    return true;
+  }
 }
 

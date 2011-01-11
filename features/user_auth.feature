@@ -3,9 +3,9 @@ Feature: User Authentication
   I want to be able to log in and out of the site
 
   Background:
-    Given a user exists with username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
+    Given a user exists with name: "Abe", username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
     And a book exists with owner_id: 1, plan: "free"
-    And a user exists with username: "testUser2", email: "testUser2@somewhere.com", password: "Password2"
+    And a user exists with name: "Bob", username: "testUser2", email: "testUser2@somewhere.com", password: "Password2"
     And an editor exists with user_id: 2, book_id: 1
     And I go to the home page
     Then I should see "login"

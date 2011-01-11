@@ -15,6 +15,7 @@ $config = array(
   ),
 
   'signup' => array(
+    array('field' => 'name', 'label' => 'name', 'rules' => 'trim|required|max_length[255]|xss_clean'),
     array('field' => 'username', 'label' => 'username', 'rules' => 'trim|required|max_length[255]|callback__username_available|xss_clean'),
     array('field' => 'email', 'label' => 'email', 'rules' => 'trim|required|valid_email'),
     array('field' => 'password', 'label' => 'password', 'rules' => 'required'),
@@ -22,9 +23,14 @@ $config = array(
   ),
 
   'friend' => array(
-    array('field' => 'username', 'label' => 'username', 'rules' => 'trim|required|max_length[255]|callback__username_available|xss_clean'),
+    array('field' => 'name', 'label' => 'name', 'rules' => 'trim|required|max_length[255]|callback__email_unused|xss_clean'),
     array('field' => 'email', 'label' => 'email', 'rules' => 'trim|required|valid_email'),
     array('field' => 'plan', 'label' => 'plan', 'rules' => 'callback__within_plan_limits')
+  ),
+
+  'complete_invitation' => array(
+    array('field' => 'username', 'label' => 'username', 'rules' => 'trim|required|max_length[255]|callback__username_available|xss_clean'),
+    array('field' => 'password', 'label' => 'password', 'rules' => 'required'),
   ),
 
   'update_password' => array(

@@ -4,7 +4,7 @@ Feature: Allow different levels of functionality for different user plans
   So that I may charge customers different rates according to their needs and willingness to pay
 
   Background:
-    Given a user exists with username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
+    Given a user exists with name: "Abe", username: "testUser1", email: "testUser1@somewhere.com", password: "Password1"
 
   Scenario: free/small plan is limited to 10 recipes
     Given a book exists with owner_id: 1, plan: "free"
@@ -22,17 +22,17 @@ Feature: Allow different levels of functionality for different user plans
     And I am logged in with username: "testUser1", password: "Password1"
     And I follow "settings"
     When I follow "invite friend"
-    And I fill in "username" with "testFriend1"
+    And I fill in "name" with "Bob"
     And I fill in "email" with "testFriend1@somewhere.com"
     And I press "Send Invitation"
-    Then a user should exist with username: "testFriend1", email: "testFriend1@somewhere.com"
+    Then a user should exist with name: "Bob", email: "testFriend1@somewhere.com"
     And an editor should exist with user_id: 2, book_id: 1
     When I follow "home"
     And I follow "settings"
     Then I should not see "invite friend"
     But I should see "Upgrade your subscription"
     When I go to the add friends page
-    And I fill in "username" with "testFriend2"
+    And I fill in "name" with "Cal"
     And I fill in "email" with "testFriend2@somewhere.com"
     And I press "Send Invitation"
     Then I should see "Your account is limited to 1 friend(s)"
@@ -56,7 +56,7 @@ Feature: Allow different levels of functionality for different user plans
     And I add 10 friends to book 1
     When I follow "settings"
     And I go to the add friends page
-    And I fill in "username" with "testFriend11"
+    And I fill in "name" with "Kat"
     And I fill in "email" with "testFriend11@somewhere.com"
     And I press "Send Invitation"
     Then I should see "Your account is limited to 10 friend(s)"
@@ -81,11 +81,11 @@ Feature: Allow different levels of functionality for different user plans
     And I add 10 friends to book 1
     When I follow "settings"
     And I follow "invite friend"
-    And I fill in "username" with "testFriend11"
+    And I fill in "name" with "Kat"
     And I fill in "email" with "testFriend101@somewhere.com"
     And I press "Send Invitation"
     Then I should see "An invitation was sent to testFriend101@somewhere.com"
-    And a user should exist with username: "testFriend11"
+    And a user should exist with name: "Kat", email: "testFriend101@somewhere.com"
     And an editor should exist with user_id: 12, book_id: 1
     But I should not see "Your account is limited to unlimited friend(s)"
 

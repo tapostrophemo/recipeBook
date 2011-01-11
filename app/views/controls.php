@@ -28,7 +28,9 @@ $segment = $this->uri->segment(1, '');
 
 <?php else: ?>
 
+ <?php if ($segment != 'acceptinvitation'): ?>
  <li><?=anchor('login', 'login')?></li>
+ <?php endif; ?>
 
 <?php endif; ?>
 
